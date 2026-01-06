@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive Python Tutorial - Learn Python basics with examples and code snippets.">
+    <meta name="keywords" content="Python tutorial, learn Python, Python for beginners">
+    <title>Python Tutorial - Interactive Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .accordion-button {
+            font-weight: bold;
+            background-color: #e9ecef;
+        }
+        .accordion-body {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-top: none;
+            padding: 1.5rem;
+        }
+        pre {
+            background-color: #f1f1f1;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            overflow-x: auto;
+        }
+        code {
+            color: #d63384;
+        }
+        .container {
+            max-width: 900px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #343a40;
+        }
+        .additional-examples {
+            margin-top: 1.5rem;
+            border-top: 1px solid #dee2e6;
+            padding-top: 1rem;
+        }
+        .additional-examples h3 {
+            color: #495057;
+        }
+        .ad-placeholder {
+            background-color: #e9ecef;
+            padding: 1rem;
+            text-align: center;
+            margin: 1rem 0;
+            border: 1px dashed #ccc;
+        }
+    </style>
+    <!-- Google Analytics Placeholder (replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'YOUR_TRACKING_ID');
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Python Tutorial</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pythonTutorialAccordion">Sections</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.amazon.com/s?k=python+books&tag=YOUR_AFFILIATE_TAG" target="_blank">Recommended Books (Affiliate)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://buymeacoffee.com/YOUR_USERNAME" target="_blank">Support Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <!-- Top Ad Placeholder (replace with AdSense code) -->
+        <div class="ad-placeholder">Top Banner Ad - Insert Google AdSense Code Here</div>
+
+        <h1>Python Tutorial</h1>
+        <div class="accordion" id="pythonTutorialAccordion">
+
+            <!-- Introduction -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading1">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                        1: Introduction
+                    </button>
+                </h2>
+                <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="heading1" data-bs-parent="#pythonTutorialAccordion">
+                    <div class="accordion-body">
+                        <p>Discover Python:</p>
+                        <p>Python stands out as one of the most widely used programming languages today. Developed by Guido van Rossum, it first became available in 1991.</p>
+                        <p>Common applications include:</p>
+                        <p>1: Backend web development</p>
+                        <p>2: Building software tools</p>
+                        <p>3: Mathematical computations</p>
+                        <p>4: Automating system tasks</p>
+                        <p>Capabilities of Python</p>
+                        <p>1: Create dynamic web applications when running on servers</p>
+                        <p>2: Integrate with existing software to automate processes</p>
+                        <p>3: Interact with databases, including reading and editing files</p>
+                        <p>4: Manage large datasets and solve advanced math problems</p>
+                        <p>5: Support quick prototyping as well as building robust, production-level applications</p>
+                        <p>6: It is a preferable programming language for Artificial Intelligence.</p>
+                        <p>Advantages of Choosing Python</p>
+                        <p>1: Compatible across multiple operating systems (like Windows, macOS, Linux, Raspberry Pi, and more</p>
+                        <p>2: Features straightforward syntax that resembles natural English</p>
+                        <p>3: Enables programmers to express ideas in less code compared to many alternative languages</p>
+                        <p>4: Operates through an interpreter, allowing immediate code execution—which speeds up testing and prototyping significantly</p>
+                        <p>5: Supports various programming styles: procedural, object-oriented, or functional</p>
+                        <p>Key Information</p>
+                        <p>The current primary version is Python 3, and that's the one covered throughout this guide.</p>
+                        <p>Code examples here are entered via a basic text editor, though for bigger projects, tools like Thonny, PyCharm, NetBeans, or Eclipse (as IDEs) can be especially helpful.</p>
+                        <p>How Python's Syntax Differs from Other Languages</p>
+                        <p>1: Python prioritizes ease of reading, drawing inspiration from English and mathematical notation.</p>
+                        <p>2: It ends commands with line breaks instead of relying heavily on semicolons or parentheses like some languages.</p>
+                        <p>3: Scope (for elements like loops, functions, and classes) is determined by indentation and spaces, rather than braces {} commonly seen elsewhere.</p>
+                        <div class="additional-examples">
+                            <h3>Additional Examples</h3>
+                            <p>Example 1: Printing a simple message</p>
+                            <pre><code>print("Hello, Python!")  # Output: Hello, Python!</code></pre>
+                            <p>Example 2: Basic arithmetic</p>
+                            <pre><code>result = 5 + 3 * 2
+print(result)  # Output: 11</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inline Ad Placeholder -->
+            <div class="ad-placeholder">Inline Ad Between Sections - Insert Google AdSense Code Here</div>
+
+            <!-- Python's Data Types -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                        2: Python's Data Types
+                    </button>
+                </h2>
+                <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#pythonTutorialAccordion">
+                    <div class="accordion-body">
+                        <p>Python's Built-in Data Types</p>
+                        <p>Python features a variety of built-in data types that allow you to store and manipulate different kinds of information.These types are categorized into several groups,as outlined in the official Python documentation.</p>
+                        <p>Here are the main categories and examples:</p>
+                        <p>1: Numeric Types</p>
+                        <p>int: Whole numbers (no size limit), e.g., 42, -10</p>
+                        <p>float: Floating-point numbers with decimals, e.g., 3.14, -0.001</p>
+                        <p>complex: Complex numbers with real and imaginary parts, e.g., 3 + 4j</p>
+                        <p>bool: Boolean values (True or False), a subclass of int</p>
+                        <p>2: Sequence Types</p>
+                        <p>str: Text strings (immutable Unicode), e.g., 'Hello, World!'</p>
+                        <p>list: Ordered, mutable collections, e.g., [1, 'apple', 3.5]</p>
+                        <p>tuple: Ordered, immutable collections, e.g., (1, 'apple', 3.5)</p>
+                        <p>range: Immutable sequence of numbers, often used in loops, e.g., range(0, 10)</p>
+                        <p>3: Mapping Type</p>
+                        <p>dict: Key-value pairs (unordered until Python 3.7+, now insertion-ordered), e.g., {'name' :'Alice', 'age': 30}</p>
+                        <p>4: Set Types</p>
+                        <p>set: Unordered collection of unique items (mutable), e.g., {1, 2, 3}</p>
+                        <p>frozenset: Immutable version of a set, e.g., frozenset([1, 2, 3])</p>
+                        <p>5: Binary Types</p>
+                        <p>bytes: Immutable sequence of bytes, e.g., b,'hello'</p>
+                        <p>bytearray: Mutable sequence of bytes</p>
+                        <p>memoryview: View object for accessing binary data without copying</p>
+                        <p>Other:</p>
+                        <p>NoneType: Represents the absence of a value, with the singleton None</p>
+                        <p>Python is dynamically typed,so you don't need to declare a variable's type explicitly—it is determined at runtime.</p>
+                        <p>To check the type of any object, use the built-in type() function:</p>
+                        <p>print(type(42))       # <class 'int'></p>
+                        <p>print(type('hello'))  # <class 'str'></p>
+                        <p>print(type([1, 2]))   # <class 'list'></p>
+                        <p>For visual overviews of how these data types are classified:</p>
+                        <p>These diagrams illustrate the hierarchy and common classifications of Python's data types.For the most authoritative details,refer to the Python Standard Types documentation.</p>
+                        <div class="additional-examples">
+                            <h3>Additional Examples</h3>
+                            <p>Example 1: Using sets</p>
+                            <pre><code>my_set = {1, 2, 3, 2}  # Duplicates removed
+print(my_set)  # Output: {1, 2, 3}</code></pre>
+                            <p>Example 2: Complex numbers</p>
+                            <pre><code>c = 2 + 3j
+print(c.real)  # Output: 2.0</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Variables -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                        3: Variables
+                    </button>
+                </h2>
+                <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#pythonTutorialAccordion">
+                    <div class="accordion-body">
+                        <p>What Are Variables in Python?</p>
+                        <p>In Python,a variable is a named storage location in memory that holds a value.Think of it as a labeled box where you can store data (like numbers, text, or more complex objects) and refer to it later by its name.</p>
+                        <p>Variables allow you to store, retrieve, and manipulate data throughout your program.</p>
+                        <p>Basic Rules for Variable Names:</p>
+                        <p>1: Must start with a letter (a-z, A-Z) or underscore _.</p>
+                        <p>2: Can contain letters, digits (0-9), and underscores.</p>
+                        <p>3: Case-sensitive: age, Age, and AGE are different variables.</p>
+                        <p>4: Cannot be a Python keyword (e.g., if, for, class, etc.).</p>
+                        <p>5: Recommended style: Use lowercase with underscores for multi-word names (snake_case), e.g., user_name.</p>
+                        <p>Creating (Assigning) a Variable:</p>
+                        <p>You create a variable by assigning a value to it using the = operator.Python automatically determines the type (dynamic typing).</p>
+                        <p>name = "Alice"   string</p>
+                        <p>age = 25    integer</p>
+                        <p>height = 5.9   float</p>
+                        <p>is_student = True   boolean</p>
+                        <p>No need to declare the type beforehand!</p>
+                        <p>Example Program:</p>
+                        <p>Assigning variables:</p>
+                        <p>first_name = "John"</p>
+                        <p>last_name = "Doe"</p>
+                        <p>age = 30</p>
+                        <p>salary = 55000.50</p>
+                        <p>Using variables</p>
+                        <p>full_name = first_name + " " + last_name</p>
+                        <p>print("Name:", full_name)</p>
+                        <p>print("Age:", age)</p>
+                        <p>print("Salary:", salary)</p>
+                        <p>Reassigning a variable:</p>
+                        <p>age = 31 now age holds a new value</p>
+                        <p>print("Updated age:", age)</p>
+                        <p>Output:</p>
+                        <p>Name: John Doe</p>
+                        <p>Age: 30</p>
+                        <p>Salary: 55000.5</p>
+                        <p>Updated age: 31</p>
+                        <p>Key Features of Python Variables</p>
+                        <p>Dynamic typing:You don't specify the type;Python infers it.</p>
+                        <p>x = 10  x is int</p>
+                        <p>x = "hello" now x is str(type changed!)</p>
+                        <p>Multiple assignment:</p>
+                        <p>a, b, c = 1, 2, 3</p>
+                        <p>print(a, b, c)  1 2 3</p>
+                        <p>x = y = z = 0  all get value 0</p>
+                        <p>Swapping values (Pythonic way):</p>
+                        <p>a = 5</p>
+                        <p>b = 10</p>
+                        <p>a, b = b, a  now a=10, b=5</p>
+                        <p>Checking Type and Value</p>
+                        <p>x = 42</p>
+                        <p>print(type(x))  <class 'int'></p>
+                        <p>print(id(x))  memory address of the object</p>
+                        <p>Common Mistakes</p>
+                        <p>Invalid names</p>
+                        <p>2var = 10 SyntaxError: can't start with number</p>
+                        <p>my-var = 5     SyntaxError: hyphen not allowed</p>
+                        <p>class = "Python" SyntaxError: class is a keyword</p>
+                        <p>Use meaningful names to make your code readable!</p>
+                        <p>Variables are the foundation of any Python program—once you're comfortable with them, you'll be ready to move on to control flow,functions,and more.</p>
+                        <div class="additional-examples">
+                            <h3>Additional Examples</h3>
+                            <p>Example 1: Swapping without temp variable</p>
+                            <pre><code>a, b = 100, 200
+a, b = b, a
+print(a, b)  # Output: 200 100</code></pre>
+                            <p>Example 2: Chained assignment</p>
+                            <pre><code>x = y = z = "same"
+print(x, y, z)  # Output: same same same</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Getting information from users -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading4">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                        4: Getting information from users
+                    </button>
+                </h2>
+                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#pythonTutorialAccordion">
+                    <div class="accordion-body">
+                        <p>Getting User Input in Python:</p>
+                        <p>In Python,the input() function allows your program to accept data directly from the user during execution.This makes programs interactive,enabling you to collect information like names,numbers,or choices on the fly.</p>
+                        <p>How to Use input()</p>
+                        <p>The simplest form displays a prompt and waits for the user to type something:</p>
+                        <p>name = input("Enter your name: ")</p>
+                        <p>print("Hello,", name)</p>
+                        <p>What happens:</p>
+                        <p>The text inside input() (the prompt) appears on the screen.</p>
+                        <p>The program pauses until the user types a response and presses Enter.</p>
+                        <p>Whatever the user types is returned as a string and can be assigned to a variable.</p>
+                        <p>Sample run:</p>
+                        <p>Enter your name: Alice</p>
+                        <p>Hello, Alice</p>
+                        <p>Key Point: input() Always Returns a String</p>
+                        <p>Even if the user enters digits,the result is text:</p>
+                        <p>age = input("Enter your age: ")</p>
+                        <p>print("Next year you will be", age + 1)  Error! Can not add int to string</p>
+                        <p>To perform calculations,you must convert the input to the correct type.</p>
+                        <p>Converting Input</p>
+                        <p>For integers: int(input(...))</p>
+                        <p>For decimals: float(input(...))</p>
+                        <p>age = int(input("Enter your age: "))</p>
+                        <p>print("Next year you will be", age + 1)</p>
+                        <p>Output:</p>
+                        <p>Enter your age: 25</p>
+                        <p>Next year you will be 26</p>
+                        <p>height = float(input("Enter your height in meters: "))</p>
+                        <p>print("Your height is", height, "meters")</p>
+                        <p>Full Interactive Example</p>
+                        <p>Collect users' details</p>
+                        <p>name = input("What is your name? ")</p>
+                        <p>age = int(input("How old are you? "))</p>
+                        <p>favorite_color = input("What is your favorite color? ")</p>
+                        <p>print("\n--- Summary ---")</p>
+                        <p>print("Name:", name)</p>
+                        <p>print("Age:", age)</p>
+                        <p>print("Favorite color:",favorite_color)</p>
+                        <p>print("In 10 years you will be", age + 10)</p>
+                        <p>Sample run:</p>
+                        <p>What is your name? Bob</p>
+                        <p>How old are you? 18</p>
+                        <p>What is your favorite color? Blue</p>
+                        <p>Output:</p>
+                        <p>Name: Bob</p>
+                        <p>Age: 18</p>
+                        <p>Favorite color: Blue</p>
+                        <p>In 10 years you will be 28</p>
+                        <p>Helpful Tips</p>
+                        <p>Add a space at the end of prompts for better appearance: input("Age: ")</p>
+                        <p>Use clear variable names (e.g., user_age instead of x).</p>
+                        <p>For more robust programs,consider error handling:</p>
+                        <p>try:</p>
+                        <p>  age = int(input("Enter your age: "))</p>
+                        <p>except ValueError:</p>
+                        <p>print("Please type a valid number.")</p>
+                        <p>Common Pitfalls:</p>
+                        <p>Forgetting conversion</p>
+                        <p>score = input("Score: ") * 2  Duplicates the string,not math!</p>
+                        <p>No error handling</p>
+                        <p>num = int(input("Number: ")) Crashes if non-numeric input</p>
+                        <p>Mastering input() lets you build calculators,quizzes,simple games,and more interactive tools.Combine it with conditionals and loops next to create even more powerful programs. Keep practicing!</p>
+                        <div class="additional-examples">
+                            <h3>Additional Examples</h3>
+                            <p>Example 1: Basic calculator</p>
+                            <pre><code>num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+print("Sum:", num1 + num2)</code></pre>
+                            <p>Example 2: With error handling</p>
+                            <pre><code>try:
+    year = int(input("Birth year: "))
+    print("Age:", 2026 - year)
+except ValueError:
+    print("Invalid input")</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Operator -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading5">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                        5: Comparison Operator
+                    </button>
+                </h2>
+                <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#pythonTutorialAccordion">
+                    <div class="accordion-body">
+                        <p>A Complete Guide to Python’s Comparison Operators</p>
+                        <p>Python provides a set of operators that allow you to compare values and determine how they relate to one another. These operators evaluate two expressions and always produce a Boolean result: True if the relationship is satisfied, or False if it is not. They are fundamental for controlling program flow in conditionals, loops, and many other logical operations.There are exactly six built-in comparison operators in Python. Below is a detailed, step-by-step exploration of each one, including their purpose, mechanics, behavior with different data types, practical examples, and important nuances.</p>
+                        <p>1: Equality Operator (==)</p>
+                        <p>Purpose: Determines whether two values are identical in content.</p>
+                        <p>How it operates: Python examines the actual data stored in each operand. For simple types (numbers, strings), it performs a direct match. For containers (lists, tuples, dictionaries), it compares the contents element-by-element or key-value pair.</p>
+                        <p>Examples:</p>
+                        <p>10 == 10  True</p>
+                        <p>10 == 20  False</p>
+                        <p>"Python" == "Python"  True</p>
+                        <p>"Python" == "python"  False (case-sensitive)</p>
+                        <p>[1, 2, 3] == [1, 2, 3]  True</p>
+                        <p>{1, 2} == {2, 1}  True (sets ignore order)</p>
+                        <p>2: Inequality Operator (!=)</p>
+                        <p>Purpose: Checks whether two values are different.</p>
+                        <p>How it operates: It is the logical opposite of ==. If the values match, it returns False; otherwise, True.</p>
+                        <p>Examples:</p>
+                        <p>10 != 20  True</p>
+                        <p>10 != 10  False</p>
+                        <p>"cat" != "dog"  True</p>
+                        <p>None != None  False</p>
+                        <p>3: Greater Than Operator (>)</p>
+                        <p>Purpose: Tests if the left value is strictly larger than the right value.</p>
+                        <p>How it operates: For numeric types, it uses standard mathematical ordering. For strings, it performs lexicographical (alphabetical) comparison based on Unicode code points. For sequences, it compares elements pairwise until a difference is found.</p>
+                        <p>Examples:</p>
+                        <p>15 > 8  True</p>
+                        <p>5 > 10  False</p>
+                        <p>"zebra" > "apple"  True (z comes after a)</p>
+                        <p>[1, 2, 10] > [1, 2, 3]  True (difference at third element)</p>
+                        <p>Note: Attempting to compare incompatible types (e.g., string vs. integer) raises a TypeError.</p>
+                        <p>4: Less Than Operator (<)</p>
+                        <p>Purpose: Tests if the left value is strictly smaller than the right value.</p>
+                        <p>How it operates: Mirror image of >, following the same rules for numbers, strings, and sequences.</p>
+                        <p>Examples:</p>
+                        <p>7 < 12  True</p>
+                        <p>20 < 10 False</p>
+                        <p>"apple" < "banana"  True</p>
+                        <p>(1, 2) < (1, 3)  True</p>
+                        <p>5: Greater Than or Equal To Operator (>=)</p>
+                        <p>Purpose: Returns True if the left value is larger than or identical to the right value.</p>
+                        <p>How it operates: Combines the logic of > and ==.</p>
+                        <p>Examples:</p>
+                        <p>10 >= 10  True</p>
+                        <p>15 >= 8  True</p>
+                        <p>5 >= 10  False</p>
+                        <p>"same" >= "same"  True</p>
+                        <p>6. Less Than or Equal To Operator (<=)</p>
+                        <p>Purpose: Returns True if the left value is smaller than or identical to the right value.</p>
+                        <p>How it operates: Combines the logic of < and ==.</p>
+                        <p>Examples:</p>
+                        <p>5 <= 5  True</p>
+                        <p>3 <= 7  True</p>
+                        <p>10 <= 4  False</p>
+                        <p>Additional Features and Concepts</p>
+                        <p>Operator Chaining</p>
+                        <p>Python allows you to chain comparisons in a readable way:</p>
+                        <p>a < b <= c is equivalent to a < b and b <= c, but evaluated more efficiently (short-circuiting).</p>
+                        <p>Examples:</p>
+                        <p>1 < 5 < 10  True</p>
+                        <p>10 > 20 > 5  False (short-circuits after first failure)</p>
+                        <p>Identity vs. Equality</p>
+                        <p>Remember that == checks value equality, while is checks object identity (whether two variables point to the exact same object in memory).</p>
+                        <p>Example:</p>
+                        <p>a = [1, 2]</p>
+                        <p>b = [1, 2]</p>
+                        <p>print(a == b)  True  (same contents)</p>
+                        <p>print(a is b)  False (different objects)</p>
+                        <p>Special Cases</p>
+                        <p>Floating-point comparisons can suffer from precision issues; prefer math.isclose() for approximate equality.</p>
+                        <p>float('nan') (Not a Number) returns False for all comparisons except !=.</p>
+                        <p>None only equals itself.</p>
+                        <p>These operators form the foundation of logical decision-making in Python programs. Mastering their behavior across different data types will help you write clear, correct, and efficient conditional logic. For the authoritative reference, see the Python documentation section on comparisons.</p>
+                        <div class="additional-examples">
+                            <h3>Additional Examples</h3>
+                            <p>Example 1: Chaining with strings</p>
+                            <pre><code>print("a" < "b" < "c")  # Output: True</code></pre>
+                            <p>Example 2: Comparing lists</p>
+                            <pre><code>print([1, 2] < [1, 3])  # Output: True</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- For and While loop -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading6">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                        6: For and While loop
+                    </button>
+                </h2>
+                <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#pythonTutorialAccordion">
+                    <div class="accordion-body">
+                        <p>Python provides two primary loop constructs: for loops (ideal for iterating over sequences) and while loops (ideal for repeating until a condition changes).for Loop</p>
+                        <p>Use a for loop to iterate over a sequence (like a list, tuple, string, or range).</p>
+                        <p>Syntax:</p>
+                        <p>for variable in iterable:</p>
+                        <p>code block</p>
+                        <p>Examples:</p>
+                        <p>Basic iteration over a list:</p>
+                        <p>fruits = ["apple", "banana", "cherry"]</p>
+                        <p>for fruit in fruits:</p>
+                        <p>print(fruit)</p>
+                        <p>Output:</p>
+                        <p>apple</p>
+                        <p>banana</p>
+                        <p>cherry</p>
+                        <p>Using range() for a fixed number of iterations:</p>
+                        <p>for i in range(5):</p>
+                        <p>print(i)</p>
+                        <p>With enumerate() for index and value:</p>
+                        <p>for index, fruit in enumerate(fruits):</p>
+                        <p>print(index, fruit)</p>
+                        <p>The while Loop</p>
+                        <p>Use a while loop to execute code as long as a condition is True. Be careful to avoid infinite loops by updating the condition.</p>
+                        <p>Syntax:</p>
+                        <p>while condition:</p>
+                        <p>Indented block of codes</p>
+                        <p>Examples:</p>
+                        <p>Simple countdown:</p>
+                        <p>count = 5</p>
+                        <p>while count > 0:</p>
+                        <p>print(count)</p>
+                        <p>count -= 1</p>
+                        <p>print("Blast off!")</p>
+                        <p>Infinite loop with break:</p>
+                        <p>while True:</p>
+                        <p>user_input = input("Enter quit to exit: ")</p>
+                        <p>if user_input == "quit":</p>
+                        <p>  break</p>
+                        <p>print("You entered:, user_input")</p>
+                        <p>Loop Control Statements</p>
+                        <p>break — Exits the loop immediately.</p>
+                        <p>continue — Skips the rest of the current iteration and moves to the next.</p>
+                        <p>pass — Does nothing (placeholder).</p>
+                        <p>else clause (unique to Python) — Runs if the loop completes normally (without break).</p>
+                        <p>Example with controls:</p>
+                        <p>for i in range(10):</p>
+                        <p>if i == 3:</p>
+                        <p> continue  # Skip 3</p>
+                        <p>if i == 7:</p>
+                        <p>  break     # Stop at 7</p>
+                        <p>print(i)</p>
+                        <p>else:</p>
+                        <p>print("Loop completed fully")  # Will not print due to break</p>
+                        <p>Diagram showing break, continue, and pass:</p>
+                        <p>Python break, pass and continue</p>
+                        <p>Nested Loops</p>
+                        <p>It is possible to nest loops inside each other:</p>
+                        <p>for i in range(3):</p>
+                        <p>   for j in range(2):</p>
+                        <p>print(i, j)</p>
+                        <div class="additional-examples">
+                            <h3>Additional Examples</h3>
+                            <p>Example 1: Nested for loop for multiplication table</p>
+                            <pre><code>for i in range(1, 4):
+    for j in range(1, 4):
+        print(i * j, end=" ")
+    print()</code></pre>
+                            <p>Example 2: While with continue</p>
+                            <pre><code>i = 0
+while i < 5:
+    i += 1
+    if i % 2 == 0:
+        continue
+    print(i)  # Prints 1 3 5</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- If and Else Statements -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading7">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                        7: If and Else Statements
+                    </button>
+                </h2>
+                <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#pythonTutorialAccordion">
+                    <div class="accordion-body">
+                        <p>Python Conditional Statements: if, elif, and else</p>
+                        <p>In Python, if, elif, and else allow your program to make decisions by running different code blocks depending on whether certain conditions are True or False.</p>
+                        <p>Syntax:</p>
+                        <p>if condition1: Checked first</p>
+                        <p>Code runs if condition1 is True</p>
+                        <p>elif condition2: Checked only if condition1 is False</p>
+                        <p>Code runs if condition2 is True</p>
+                        <p>elif condition3: You can have as many elifs as needed</p>
+                        <p>Code runs if condition3 is True</p>
+                        <p>else: Optional — no condition</p>
+                        <p>Code runs if none of the above conditions are True</p>
+                        <p>Important points:</p>
+                        <p>Conditions are evaluated top to bottom.</p>
+                        <p>Only the first True block executes;the rest are skipped(short-circuiting).</p>
+                        <p>Indentation defines the blocks (usually 4 spaces).</p>
+                        <p>Colons (:) after each line are required.</p>
+                        <p>More Examples</p>
+                        <p>1: Basic number comparison</p>
+                        <p>age = 25</p>
+                        <p>if age < 13:</p>
+                        <p>print("Child")</p>
+                        <p>elif age < 18:</p>
+                        <p>print("Teenager")</p>
+                        <p>elif age < 65:</p>
+                        <p>print("Adult")</p>
+                        <p>else:</p>
+                        <p>print("Senior")</p>
+                        <p>Output: Adult</p>
+                        <p>2: Checking username and password (simple login simulation)</p>
+                        <p>username = "admin"</p>
+                        <p>password = "secret123"</p>
+                        <p>if username == "admin" and password == "secret123":</p>
+                        <p>print("Login successful! Welcome.")</p>
+                        <p>elif username != "admin":</p>
+                        <p>print("Unknown username.")</p>
+                        <p>else: username is correct, but password is wrong</p>
+                        <p>print("Incorrect password.")</p>
+                        <p>Output (with correct credentials): Login successful! Welcome.</p>
+                        <p>3: Determining if a number is positive, negative, or zero</p>
+                        <p>num = -7</p>
+                        <p>if num > 0:</p>
+                        <p>print("Positive")</p>
+                        <p>elif num < 0:</p>
+                        <p>print("Negative")</p>
+                        <p>else:</p>
+                        <p>print("Zero")</p>
+                        <p>Output: Negative</p>
+                        <p>4: Day of the week message</p>
+                        <p>day = "Saturday"</p>
+                        <p>if day == "Saturday" or day == "Sunday":</p>
+                        <p>print("It is the weekend! Relax.")</p>
+                        <p>elif day in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]:</p>
+                        <p>print("It is a weekday. Time to work.")</p>
+                        <p>else:</p>
+                        <p>print("Invalid day entered.")</p>
+                        <p>Output: It is the weekend! Relax.</p>
+                        <p>5: Nested conditionals (temperature advice)</p>
+                        <p>temperature = 28</p>
+                        <p>is_raining = False</p>
+                        <p>if temperature > 30:</p>
+                        <p>print("It is very hot outside.")</p>
+                        <p>elif temperature > 20:</p>
+                        <p>if is_raining:</p>
+                        <p>print("It is warm but raining — take an umbrella.")</p>
+                        <p>else:</p>
+                        <p>print("Perfect weather for a walk!")</p>
+                        <p>else:</p>
+                        <p>print("It is cold — wear a jacket.")</p>
+                        <p>Output: Perfect weather for a walk!</p>
+                        <p>6: Simple traffic light simulator</p>
+                        <p>light = "green"</p>
+                        <p>if light == "green":</p>
+                        <p>print("Go!")</p>
+                        <p>elif light == "yellow":</p>
+                        <p>print("Slow down and prepare to stop.")</p>
+                        <p>elif light == "red":</p>
+                        <p>print("Stop!")</p>
+                        <p>else:</p>
+                        <p>print("Invalid light color.")</p>
+                        <p>Output: Go!</p>
+                        <p>7: Checking multiple conditions with logical operators</p>
+                        <p>score = 92</p>
+                        <p>attendance = 85 percentage</p>
+                        <p>if score >= 90 and attendance >= 90:</p>
+                        <p>print("Excellent performance — bonus points!")</p>
+                        <p>elif score >= 80 or attendance >= 95:</p>
+                        <p>print("Good job!")</p>
+                        <p>else:</p>
+                        <p>print("Needs improvement.")</p>
+                        <p>Output: Excellent performance — bonus points!</p>
+                        <p>These examples show how flexible if-elif-else chains can be for real-world decision-making. Feel free to modify the values and run them yourself to see how the output changes! If you'd like examples for a specific scenario, just let me know.</p>
+                        <div class="additional-examples">
+                            <h3>Additional Examples</h3>
+                            <p>Example 1: Even or odd check</p>
+                            <pre><code>num = 4
+if num % 2 == 0:
+    print("Even")
+else:
+    print("Odd")  # Output: Even</code></pre>
+                            <p>Example 2: Nested if for grade</p>
+                            <pre><code>score = 85
+if score >= 90:
+    print("A")
+else:
+    if score >= 80:
+        print("B")  # Output: B</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Structures -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading8">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                        8: Data Structures
+                    </button>
+                </h2>
+                <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#pythonTutorialAccordion">
+                    <div class="accordion-body">
+                        <p>Pythons built_in data structures are mentioned below.</p>
+                        <p>1: String</p>
+                        <p>2: List</p>
+                        <p>3: Tuple</p>
+                        <p>4: Dictionary</p>
+                        <div class="accordion mt-3" id="dataStructuresSubAccordion">
+                            <!-- String -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="subHeading1">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#subCollapse1" aria-expanded="false" aria-controls="subCollapse1">
+                                        String
+                                    </button>
+                                </h2>
+                                <div id="subCollapse1" class="accordion-collapse collapse" aria-labelledby="subHeading1" data-bs-parent="#dataStructuresSubAccordion">
+                                    <div class="accordion-body">
+                                        <p>Uncovering Python Text Sequences:A Thorough Examination</p>
+                                        <p>In Python,text sequences—known as strings—function as adaptable arrays of symbols designed for managing textual information.They remain unchangeable(incapable of direct edits),accommodate Unicode to support diverse scripts and icons,and operate similarly to fixed collections for retrieval operations.</p>
+                                        <p>Strings are formed by wrapping content within single quote, double quotes,or triple quotation mark</p>
+                                        <p>Section 1: Constructing Text Sequences</p>
+                                        <p>Initiate the formation of strings through varied techniques.</p>
+                                        <p>Essential Insight: Opt for single or double quotes in straightforward cases,whereas triple quotes excel for extended blocks or those incorporating other quote types.</p>
+                                        <p>Illustrations:</p>
+                                        <p>Simple form with single quotes.</p>
+                                        <p>welcome = 'Greetings!'</p>
+                                        <p>Employing double quotes(ideal for contractions)</p>
+                                        <p>statement = "That is fantastic."</p>
+                                        <p>Extended format via triple quotes</p>
+                                        <p>narrative = """In ancient times,within a distant realm,resided a programmer."""</p>
+                                        <p>print(narrative)</p>
+                                        <p>Displays:</p>
+                                        <p>In ancient times,</p>
+                                        <p>within a distant realm,</p>
+                                        <p>resided a programmer.</p>
+                                        <p>Section 2: Retrieving Symbols (Positioning and Segmenting)</p>
+                                        <p>Text sequences act as structured arrays,enabling the extraction of specific symbols or sections.</p>
+                                        <p>Essential Insight:</p>
+                                        <p>Positioning begins from 0; backward counting uses negative values (e.g., -1 for the final symbol).</p>
+                                        <p>Segmenting employs [initial:terminal:interval] (terminal position excluded).</p>
+                                        <p>Illustrations:</p>
+                                        <p>phrase = "Coding"</p>
+                                        <p>print(phrase[0])    'C' (opening symbol)</p>
+                                        <p>print(phrase[-1])   'g' (closing symbol)</p>
+                                        <p>print(phrase[1:4])  'odi' (partial sequence)</p>
+                                        <p>print(phrase[:3])   'Cod' (from outset)</p>
+                                        <p>print(phrase[3:])   'ing' (to closure)</p>
+                                        <p>print(phrase[::-1]) 'gnidoC' (flipped)</p>
+                                        <p>Due to their fixed nature, attempts at direct alterations like phrase[0] = 'B' trigger an error. Operations yield fresh sequences instead.</p>
+                                        <p>Section 3: Routine Actions on Text Sequences</p>
+                                        <p>Execute basic functions such as merging, duplicating,sizing, and verifying elements.</p>
+                                        <p>Merging (+):</p>
+                                        <p>"Welcome" + " to " + "Earth" 'Welcome to Earth'</p>
+                                        <p>Duplicating (*):</p>
+                                        <p>"Repeat " * 4 'Repeat Repeat Repeat Repeat '</p>
+                                        <p>Sizing (len()):</p>
+                                        <p>len("Scripting")   9</p>
+                                        <p>Verifying inclusion (in):</p>
+                                        <p>"Scr" in "Scripting"  True</p>
+                                        <p>Section 4: Structuring Text Sequences</p>
+                                        <p>Dynamically embed data into text with contemporary methods.</p>
+                                        <p>Favored: f-sequences (efficient and clear):</p>
+                                        <p>user = "Jordan"</p>
+                                        <p>points = 88</p>
+                                        <p>note = f"{user} achieved {points}% in the exam."</p>
+                                        <p>print(note) 'Jordan achieved 88% in the exam.'</p>
+                                        <p>Option: .format():</p>
+                                        <p>"Hello, {}!".format(user)</p>
+                                        <p>Section 5: Core Integrated Functions</p>
+                                        <p>Text sequences include robust functions that generate updated variants (source remains intact).</p>
+                                        <p>Frequently utilized functions encompass:</p>
+                                        <p>Function</p>
+                                        <p>Objective</p>
+                                        <p>Sample Application</p>
+                                        <p>.upper()</p>
+                                        <p>Convert to all capitals</p>
+                                        <p>"greet".upper()</p>
+                                        <p>'GREET'</p>
+                                        <p>.lower()</p>
+                                        <p>Switch to small letters</p>
+                                        <p>"GREET".lower()</p>
+                                        <p>'greet'</p>
+                                        <p>.title()</p>
+                                        <p>Capitalize every word</p>
+                                        <p>'data analysis'.title()</p>
+                                        <p>'Data Analysis'</p>
+                                        <p>There are more string methods just go to Python string documentation!</p>
+                                        <div class="additional-examples">
+                                            <h3>Additional Examples</h3>
+                                            <p>Example 1: String replacement</p>
+                                            <pre><code>s = "Hello World"
+print(s.replace("World", "Python"))  # Output: Hello Python</code></pre>
+                                            <p>Example 2: Splitting strings</p>
+                                            <pre><code>s = "apple,banana,cherry"
+print(s.split(","))  # Output: ['apple', 'banana', 'cherry']</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- List -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="subHeading2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#subCollapse2" aria-expanded="false" aria-controls="subCollapse2">
+                                        List
+                                    </button>
+                                </h2>
+                                <div id="subCollapse2" class="accordion-collapse collapse" aria-labelledby="subHeading2" data-bs-parent="#dataStructuresSubAccordion">
+                                    <div class="accordion-body">
+                                        <p>Python Lists:A Comprehensive Guide with Examples and Operations</p>
+                                        <p>In Python,a list is a flexible,ordered collection that can be modified and contains items of various types (such as numbers, strings, booleans, or even other lists).You create lists by enclosing elements in square brackets [].</p>
+                                        <p>Fundamental Examples</p>
+                                        <p>1: Declaring a list:</p>
+                                        <p>fruits = ['apple', 'banana', 'cherry', 42, False]</p>
+                                        <p>print(fruits)</p>
+                                        <p>Output: ['apple', 'banana', 'cherry', 42, False]</p>
+                                        <p>2: Using list comprehension for quick creation:</p>
+                                        <p>even_numbers = [x * 2 for x in range(1, 11)]</p>
+                                        <p>print(even_numbers)</p>
+                                        <p>Output: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]</p>
+                                        <p>3: Accessing elements with indexing and slicing:</p>
+                                        <p>numbers = [10, 20, 30, 40, 50, 60]</p>
+                                        <p>print(numbers[2])     #Single element</p>
+                                        <p>print(numbers[1:4])   # Slice from index 1 to 3</p>
+                                        <p>print(numbers[-3:])   # Last three elements</p>
+                                        <p>print(numbers[::-1])  # Full reverse</p>
+                                        <p>Output:</p>
+                                        <p>30</p>
+                                        <p>[20, 30, 40]</p>
+                                        <p>[40, 50, 60]</p>
+                                        <p>[60, 50, 40, 30, 20, 10]</p>
+                                        <p>4: Nested lists (lists within lists):</p>
+                                        <p>matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]</p>
+                                        <p>print(matrix[1][2])   # Access row 1, column 2</p>
+                                        <p>Output: 6</p>
+                                        <p>4: Concatenation and repetition:</p>
+                                        <p>list1 = [1, 2]</p>
+                                        <p>list2 = [3, 4]</p>
+                                        <p>combined = list1 + list2</p>
+                                        <p>repeated = list1 * 3</p>
+                                        <p>print(combined)</p>
+                                        <p>print(repeated)</p>
+                                        <p>Output:</p>
+                                        <p>[1, 2, 3, 4]</p>
+                                        <p>[1, 2, 1, 2, 1, 2]</p>
+                                        <p>5: Key List Operations (Methods)</p>
+                                        <p>Most methods alter the list directly.Here's a starting list for demonstrations:</p>
+                                        <p>animals = ['cat', 'dog', 'bird']</p>
+                                        <p>1: The append method:</p>
+                                        <p>Add one element at the end</p>
+                                        <p>animals.append('fish')</p>
+                                        <p>print(animals)</p>
+                                        <p>['cat', 'dog', 'bird', 'fish']</p>
+                                        <p>2: The extend method</p>
+                                        <p>.extend(iterable)</p>
+                                        <p>Add multiple elements from another iterable</p>
+                                        <p>animals.extend(['rabbit', 'hamster'])</p>
+                                        <p>print(animals)</p>
+                                        <p>['cat', 'dog', 'bird', 'fish', 'rabbit', 'hamster']</p>
+                                        <p>3: The insert method</p>
+                                        <p>.insert(position, element)</p>
+                                        <p>Insert element at a specific position</p>
+                                        <p>animals.insert(1, 'elephant')</p>
+                                        <p>print(animals)</p>
+                                        <p>['cat', 'elephant', 'dog', 'bird', 'fish', 'rabbit', 'hamster']</p>
+                                        <p>4: The remove method</p>
+                                        <p>.remove(element)</p>
+                                        <p>Delete the first matching element</p>
+                                        <p>animals.remove('dog')</p>
+                                        <p>print(animals)</p>
+                                        <p>['cat', 'elephant', 'bird', 'fish', 'rabbit', 'hamster']</p>
+                                        <p>5: The pop method</p>
+                                        <p>pop([position])</p>
+                                        <p>Remove and return element (default: last)</p>
+                                        <p>removed = animals.pop(2)</p>
+                                        <p>print(removed)</p>
+                                        <p>print(animals)</p>
+                                        <p>['cat', 'elephant', 'fish', 'rabbit', 'hamster']</p>
+                                        <p>6: The index method</p>
+                                        <p>.index(element)</p>
+                                        <p>Find the position of the first matching element</p>
+                                        <p>pos = animals.index('rabbit')</p>
+                                        <p>pos</p>
+                                        <p>3</p>
+                                        <p>7: The count method</p>
+                                        <p>.count(element)</p>
+                                        <p>Count how many times an element appears.</p>
+                                        <p>animals.append('cat')</p>
+                                        <p>print(animals.count('cat'))</p>
+                                        <p>2</p>
+                                        <p>8: The sort method</p>
+                                        <p>.sort()</p>
+                                        <p>Arrange elements in ascending order (in-place).</p>
+                                        <p>scores = [85, 92, 78, 95, 88]</p>
+                                        <p>scores.sort()</p>
+                                        <p>print(scores)</p>
+                                        <p>[78, 85, 88, 92, 95]</p>
+                                        <p>.sort(reverse=True)</p>
+                                        <p>Sort in descending order.</p>
+                                        <p>scores.sort(reverse=True)</p>
+                                        <p>print(scores)</p>
+                                        <p>[95, 92, 88, 85, 78]</p>
+                                        <p>9: The reverse method</p>
+                                        <p>.reverse()</p>
+                                        <p>Flip the order of elements.</p>
+                                        <p>scores.reverse()</p>
+                                        <p>print(scores)</p>
+                                        <p>[78, 85, 88, 92, 95] (or whatever current)</p>
+                                        <p>10: The copy method</p>
+                                        <p>.copy()</p>
+                                        <p>Create a shallow duplicate.</p>
+                                        <p>backup = scores.copy()</p>
+                                        <p>print(backup)</p>
+                                        <p>Same as current scores</p>
+                                        <p>11: The clear method</p>
+                                        <p>.clear()</p>
+                                        <p>Empty the entire list</p>
+                                        <p>animals.clear()</p>
+                                        <p>print(animals)</p>
+                                        <p>[]</p>
+                                        <p>Additional Useful Examples</p>
+                                        <p>Sorting strings:</p>
+                                        <p>words = ['zebra', 'apple', 'banana', 'cherry']</p>
+                                        <p>words.sort()</p>
+                                        <p>print(words)</p>
+                                        <p>Output: ['apple', 'banana', 'cherry', 'zebra']</p>
+                                        <p>Custom sorting with key:</p>
+                                        <p>words.sort(key=len)  # Sort by length</p>
+                                        <p>print(words)</p>
+                                        <p>Output: ['apple', 'zebra', 'banana', 'cherry'] (all similar length here, but works for varying)</p>
+                                        <p>Membership testing:</p>
+                                        <p>print('fish' in animals)   # After previous operations</p>
+                                        <p>print('lion' not in animals)</p>
+                                        <p>Output: True (if present)</p>
+                                        <p>Python lists are highly versatile for managing sequences.Combine them with built-ins like len(), sum(), min(), or max() for even more power (e.g., len(animals), sum(scores)).</p>
+                                        <p>Here are some visual illustrations of Python lists and related data structures:</p>
+                                        <p>And a helpful cheat sheet for data structures (including lists):</p>
+                                        <p>Data Structures with Python Cheat Sheet - Intellipaat</p>
+                                        <div class="additional-examples">
+                                            <h3>Additional Examples</h3>
+                                            <p>Example 1: List comprehension with condition</p>
+                                            <pre><code>evens = [x for x in range(10) if x % 2 == 0]
+print(evens)  # Output: [0, 2, 4, 6, 8]</code></pre>
+                                            <p>Example 2: Removing duplicates</p>
+                                            <pre><code>my_list = [1, 2, 2, 3]
+unique = list(set(my_list))
+print(unique)  # Output: [1, 2, 3]</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tuple -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="subHeading3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#subCollapse3" aria-expanded="false" aria-controls="subCollapse3">
+                                        Tuple
+                                    </button>
+                                </h2>
+                                <div id="subCollapse3" class="accordion-collapse collapse" aria-labelledby="subHeading3" data-bs-parent="#dataStructuresSubAccordion">
+                                    <div class="accordion-body">
+                                        <p>What Exactly is a Tuple in Python?</p>
+                                        <p>A tuple is a built-in Python data structure designed to hold an ordered collection of elements.It is immutable,meaning its contents cannot be altered after creation,and it permits duplicate values.Tuples can store items of different types,including a mix of data within the same tuple.</p>
+                                        <p>The primary distinction from lists lies in their unchanging nature:you can't add,remove, or modify elements once a tuple is defined.</p>
+                                        <p>How to Define Tuples</p>
+                                        <p>Enclose values in parentheses() separated by commas.</p>
+                                        <p>An empty tuple: empty = ()</p>
+                                        <p>A tuple with one element requires a trailing comma:single = (42,)</p>
+                                        <p>Parentheses are optional: t = 1, 2, 3 (known as tuple packing).</p>
+                                        <p>Examples:</p>
+                                        <p>colors = ("red", "green", "blue")</p>
+                                        <p>varied = (5, "text", 2.718, False)</p>
+                                        <p>nested_example = (10, (20, 30), [40, 50])  # May include other tuples or mutable structures</p>
+                                        <p>no_items = ()</p>
+                                        <p>one_item = ("only",)</p>
+                                        <p>Alternatively, use the tuple() function to convert iterables:</p>
+                                        <p>from_string = tuple('abc')  # ('a', 'b', 'c')</p>
+                                        <p>Retrieving Elements</p>
+                                        <p>Tuples support indexing (starting from 0) and slicing, similar to lists.</p>
+                                        <p>colors = ("red", "green", "blue")</p>
+                                        <p>print(colors[1])     # "green"</p>
+                                        <p>print(colors[-2])    # "green" (counting from the end)</p>
+                                        <p>print(colors[0:2])      # ("red", "green") (slice creates a new tuple)</p>
+                                        <p>Membership test</p>
+                                        <p>if "blue" in colors:</p>
+                                        <p>print("Found!")</p>
+                                        <p>Unchangeable Nature</p>
+                                        <p>Direct modification is not allowed:</p>
+                                        <p>colors[0] = "yellow"  # Raises TypeError: tuple object does not support item assignment</p>
+                                        <p>Common alternatives (create a new tuple instead):</p>
+                                        <p>Transform to a list, edit, then convert back:</p>
+                                        <p>temp_list = list(colors)</p>
+                                        <p>temp_list[0] = "yellow"</p>
+                                        <p>colors = tuple(temp_list)</p>
+                                        <p>Use concatenation or slicing to form a fresh tuple.</p>
+                                        <p>Frequently Used Operations and Built-in Methods</p>
+                                        <p>Many sequence operations work with tuples:</p>
+                                        <p>1: Size: len(colors)  3</p>
+                                        <p>2: Joining: (1, 2) + (3,) + (1, 2, 3)</p>
+                                        <p>3: Multiplication: ("repeat",) * 4  ("repeat", "repeat", "repeat", "repeat")</p>
+                                        <p>4: Occurrence count: colors.count("green")  1</p>
+                                        <p>5: Position lookup: colors.index("blue")  2 (raises ValueError if absent)</p>
+                                        <p>Only two methods are available directly on tuples:</p>
+                                        <p>1:.count(item): Returns how many times the item appears.</p>
+                                        <p>2: .index(item): Returns the first index of the item.</p>
+                                        <p>Iterating Over Tuples:</p>
+                                        <p>for color in colors:</p>
+                                        <p>print(color)</p>
+                                        <p>for idx in range(len(colors)):</p>
+                                        <p>print(idx, colors[idx])</p>
+                                        <p>Packing and Unpacking Features</p>
+                                        <p>One of the most useful aspects:</p>
+                                        <p>Packing: coords = 100, 200, 300</p>
+                                        <p>Unpacking: x, y, z = coords  x=100, y=200, z=300</p>
+                                        <p>Best Scenarios for Using Tuples:</p>
+                                        <p>When data should remain constant (e.g., geographic coordinates,fixed records).</p>
+                                        <p>As keys in dictionaries (tuples are hashable if containing only immutable elements).</p>
+                                        <p>For storing mixed-type records (e.g., employee = ("John", 35, "Developer")).</p>
+                                        <p>They are generally faster and use less memory than lists for static collections.</p>
+                                        <p>In sets or as dictionary keys.</p>
+                                        <p>Opt for tuples instead of lists whenever you want to guarantee that the data won't be accidentally modified.</p>
+                                        <div class="additional-examples">
+                                            <h3>Additional Examples</h3>
+                                            <p>Example 1: Tuple unpacking in loop</p>
+                                            <pre><code>points = ((1, 2), (3, 4))
+for x, y in points:
+    print(x + y)</code></pre>
+                                            <p>Example 2: Returning multiple values</p>
+                                            <pre><code>def get_coords():
+    return 10, 20
+x, y = get_coords()
+print(x, y)  # Output: 10 20</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Dictionary -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="subHeading4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#subCollapse4" aria-expanded="false" aria-controls="subCollapse4">
+                                        Dictionary
+                                    </button>
+                                </h2>
+                                <div id="subCollapse4" class="accordion-collapse collapse" aria-labelledby="subHeading4" data-bs-parent="#dataStructuresSubAccordion">
+                                    <div class="accordion-body">
+                                        <p>Understanding Dictionaries in Python:</p>
+                                        <p>A dictionary is a core Python data structure that holds pairs of keys and values.Starting from Python 3.7, it maintains insertion order,is fully changeable(mutable),and enforces unique keys.Keys must be immutable types (such as strings, numbers, or tuples), whereas values can be anything and may appear multiple times.</p>
+                                        <p>Often called "dicts",these structures excel at quick retrieval using keys,making them perfect for representing associations or mappings.</p>
+                                        <p>How to Create Dictionaries</p>
+                                        <p>Enclose pairs inside curly braces {}, with each key and value separated by a colon : and pairs separated by commas.</p>
+                                        <p>Empty dictionary: empty = {}</p>
+                                        <p>Alternative: the dict() constructor.</p>
+                                        <p>Examples:</p>
+                                        <p>profile = {"username": "alex", "level": 42, "active": True}</p>
+                                        <p>diverse = {42: "answer", "e": 2.718, False: {"status": "offline"}}</p>
+                                        <p>deep = {"details": {"score": 150, "achievements": ["gold", "silver"]}}</p>
+                                        <p>blank = {}</p>
+                                        <p>from_list = dict([("x", 10), ("y", 20)])  # {"x": 10, "y": 20}</p>
+                                        <p>from_keywords = dict(city="London", year=2023)</p>
+                                        <p>Retrieving Values:</p>
+                                        <p>Access values directly via their keys (KeyError if the key is missing):</p>
+                                        <p>print(profile["username"])   # "alex"</p>
+                                        <p>print(profile.get("level"))  # 42 (returns None if absent)</p>
+                                        <p>print(profile.get("country","N/A"))  # "N/A" (provides fallback)</p>
+                                        <p>Updating Dictionaries:</p>
+                                        <p>They support full modification:</p>
+                                        <p>profile["level"] = 43                # Change an existing entry</p>
+                                        <p>profile["country"] = "Canada"        # Insert a new entry</p>
+                                        <p>del profile["active"]                # Delete a specific entry</p>
+                                        <p>value = profile.pop("country")       # Delete and return the value</p>
+                                        <p>profile.popitem()                    # Delete and return the most recent pair</p>
+                                        <p>profile.clear()                      # Remove all entries</p>
+                                        <p>Typical Operations and Methods</p>
+                                        <p>Count of pairs: len(profile)  number of entries</p>
+                                        <p>Key existence: "username" in profile  True (only checks keys)</p>
+                                        <p>All keys: profile.keys()  view object of keys</p>
+                                        <p>All values: profile.values()  view object of values</p>
+                                        <p>All pairs: profile.items()  view object of (key, value) tuples</p>
+                                        <p>Key methods include:</p>
+                                        <p>.update(another_dict): Combine with another dictionary (existing keys are overwritten)</p>
+                                        <p>.setdefault(key, fallback): Get value if present; otherwise add the fallback and return it</p>
+                                        <p>.copy(): Create a shallow duplicate</p>
+                                        <p>Looping Through Dictionaries</p>
+                                        <p>for key in profile:</p>
+                                        <p>print(key, profile[key])</p>
+                                        <p>Preferred approach:</p>
+                                        <p>for key, value in profile.items():</p>
+                                        <p>print(f"{key}  {value}")</p>
+                                        <p>Keys only or values only</p>
+                                        <p>for k in profile.keys():</p>
+                                        <p>print(k)</p>
+                                        <p>for v in profile.values():</p>
+                                        <p>print(v)</p>
+                                        <p>Dictionary Comprehensions</p>
+                                        <p>A concise syntax for building new dictionaries:</p>
+                                        <p>cubes = {n: n**3 for n in range(5)}  # {0: 0, 1: 1, 2: 8, 3: 27, 4: 64}</p>
+                                        <p>selected = {k: v for k, v in profile.items() if k.startswith("u")}</p>
+                                        <p>Ideal Use Cases for Dictionaries</p>
+                                        <p>Situations requiring rapid access via a unique label (e.g., ID and record).</p>
+                                        <p>Tracking frequencies (e.g., character or word counts).</p>
+                                        <p>Modeling structured information similar to JSON.</p>
+                                        <p>Organizing related data with descriptive names instead of numeric positions.</p>
+                                        <p>Handling keyword arguments via **kwargs.</p>
+                                        <p>Select dictionaries instead of lists when you need named access over positional indexing and when key uniqueness is important.</p>
+                                        <p>For more in-depth information,consult the official Python documentation on mapping types, focusing on the dictionary section.</p>
+                                        <div class="additional-examples">
+                                            <h3>Additional Examples</h3>
+                                            <p>Example 1: Merging dictionaries</p>
+                                            <pre><code>d1 = {'a': 1}
+d2 = {'b': 2}
+d1.update(d2)
+print(d1)  # Output: {'a': 1, 'b': 2}</code></pre>
+                                            <p>Example 2: Dictionary comprehension</p>
+                                            <pre><code>squares = {x: x**2 for x in range(5)}
+print(squares)  # Output: {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Functions -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading9">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                        9: Functions
+                    </button>
+                </h2>
+                <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="heading9" data-bs-parent="#pythonTutorialAccordion">
+                    <div class="accordion-body">
+                        <p>What Are Functions in Python?</p>
+                        <p>Functions in Python are reusable blocks of code designed to perform a specific task.They improve code organization,readability, and reusability by allowing you to avoid repeating the same code multiple times. Python provides many built-in functions (e.g., print(), len()) and lets you create your own custom functions.</p>
+                        <p>Defining a Function:</p>
+                        <p>You define a function using the def keyword:</p>
+                        <p>def function_name(parameters):</p>
+                        <p>Optional docstring for documentation.</p>
+                        <p># Indented code block</p>
+                        <p>  statements</p>
+                        <p>return value  # Optional: returns a result to the caller</p>
+                        <p>Here are visual syntax diagrams illustrating function definitions:</p>
+                        <p>Basic Examples:</p>
+                        <p>A simple function that prints a message:</p>
+                        <p>def greet(name):</p>
+                        <p>  print(f"Hello, {name}!")</p>
+                        <p>greet("Alice")     # Output: Hello, Alice!</p>
+                        <p>greet("World")     # Output: Hello, World!</p>
+                        <p>A function that returns a value:</p>
+                        <p>def add(a, b):</p>
+                        <p>  return a + b</p>
+                        <p>result = add(10, 7)</p>
+                        <p>print(result)  # Output: 17</p>
+                        <p>print(add(3, 4))  # Output: 7 (directly printing the return value)</p>
+                        <p>Function with default arguments (parameters can have default values):</p>
+                        <p>def greet_with_title(name, title="Mr./Ms."):</p>
+                        <p>  print(f"Hello, {title} {name}!")</p>
+                        <p>greet_with_title("Bob") # Output: Hello, Mr./Ms. Bob!</p>
+                        <p>greet_with_title("Alice", "Dr.")   # Output: Hello, Dr. Alice!</p>
+                        <p>Visual examples of functions with default parameters:</p>
+                        <p>Variable-Length Arguments</p>
+                        <p>Using *args for arbitrary positional arguments:</p>
+                        <p>def sum_numbers(*args):</p>
+                        <p>  total = 0</p>
+                        <p>  for num in args:</p>
+                        <p>  total += num</p>
+                        <p>  return total</p>
+                        <p>print(sum_numbers(1, 2, 3))   # Output: 6</p>
+                        <p>print(sum_numbers(10, 20, 30, 40)) # Output: 100</p>
+                        <p>print(sum_numbers())   # Output: 0</p>
+                        <p>Using **kwargs for arbitrary keyword arguments:</p>
+                        <p>def print_info(**kwargs):</p>
+                        <p> for key, value in kwargs.items():</p>
+                        <p>print(f"{key}: {value}")</p>
+                        <p>print_info(name="Eve", age=30, city="New York")</p>
+                        <p>Output:</p>
+                        <p>name: Eve</p>
+                        <p>age: 30</p>
+                        <p>city: New York</p>
+                        <p>Functions are first-class objects:They can be assigned to variables,passed as arguments,or returned from other functions.</p>
+                        <p>For in-depth details, refer to the official Python documentation on defining functions.</p>
+                        <div class="additional-examples">
+                            <h3>Additional Examples</h3>
+                            <p>Example 1: Lambda function</p>
+                            <pre><code>double = lambda x: x * 2
+print(double(5))  # Output: 10</code></pre>
+                            <p>Example 2: Recursive function</p>
+                            <pre><code>def factorial(n):
+    if n == 1:
+        return 1
+    return n * factorial(n-1)
+print(factorial(5))  # Output: 120</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Classes -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading10">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                        10: Classes
+                    </button>
+                </h2>
+                <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="heading10" data-bs-parent="#pythonTutorialAccordion">
+                    <div class="accordion-body">
+                        <p>Understanding Classes in Python.</p>
+                        <p>In Python,classes form the core of object-oriented programming(OOP).They enable you to create your own data types by combining properties(data) and actions(methods) into a single unit.A class serves as a template,while objects (or instances) are the actual entities built from that template.</p>
+                        <p>Every value in Python is an object,and each object belongs to a specific class.</p>
+                        <p>How to Create a Class:</p>
+                        <p>You declare a class with the class keyword:</p>
+                        <p>class MyClass:</p>
+                        <p>  Docstring explaining the class purpose.</p>
+                        <p>Class-level variables(shared among instances)</p>
+                        <p>shared_value = "Available to all objects"</p>
+                        <p>def some_method(self, args):</p>
+                        <p>#Method body</p>
+                        <p>Here are some visual overviews of class structure and syntax:</p>
+                        <p>Practical Examples:</p>
+                        <p>A minimal class with a method:</p>
+                        <p>class Cat:</p>
+                        <p>def meow(self):</p>
+                        <p> print("Meow!")</p>
+                        <p>whiskers = Cat()  # Instantiate an object</p>
+                        <p>whiskers.meow()   # Output: Meow!</p>
+                        <p>Using __init__ to set up object attributes upon creation:</p>
+                        <p>class Book:</p>
+                        <p>  def __init__(self, title, author, pages):</p>
+                        <p>    self.title = title</p>
+                        <p>    self.author = author</p>
+                        <p>    self.pages = pages</p>
+                        <p>def summary(self):</p>
+                        <p>print(f"{self.title} by {self.author}, {self.pages} pages.")</p>
+                        <p>my_book = Book("1984", "George Orwell", 328)</p>
+                        <p>my_book.summary()  # Output: 1984 by George Orwell, 328 pages</p>
+                        <p>Core OOP Concepts Illustrated</p>
+                        <p>Python supports the four pillars of OOP:</p>
+                        <p>1: Encapsulation: Grouping data and methods; protect attributes with _ or __.</p>
+                        <p>2: Inheritance: Reusing code from parent classes.</p>
+                        <p>3: Polymorphism: Same method name behaving differently in subclasses.</p>
+                        <p>4: Abstraction: Hiding details (e.g., via abstract base classes from abc module)</p>
+                        <div class="additional-examples">
+                            <h3>Additional Examples</h3>
+                            <p>Example 1: Inheritance</p>
+                            <pre><code>class Animal:
+    def speak(self):
+        pass
+
+class Dog(Animal):
+    def speak(self):
+        print("Woof!")
+
+d = Dog()
+d.speak()  # Output: Woof!</code></pre>
+                            <p>Example 2: Class variables</p>
+                            <pre><code>class Counter:
+    count = 0
+
+c1 = Counter()
+c2 = Counter()
+Counter.count += 1
+print(Counter.count)  # Output: 1</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Programs -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading11">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse11" aria-expanded="false" aria-controls="collapse11">
+                        11: Programs
+                    </button>
+                </h2>
+                <div id="collapse11" class="accordion-collapse collapse" aria-labelledby="heading11" data-bs-parent="#pythonTutorialAccordion">
+                    <div class="accordion-body">
+                        <p>print("\nAutomated List Generator")</p>
+                        <p>def list_creator():</p>
+                        <p>  pets = []</p>
+                        <p>  while True:</p>
+                        <p>     pets_entry = input("Your pets(quit to exit): ")</p>
+                        <p>     if pets_entry == "quit":</p>
+                        <p>        break</p>
+                        <p>     else:</p>
+                        <p>        pets += [pets_entry]</p>
+                        <p>        print(pets)</p>
+                        <p>list_creator()</p>
+                        <div class="additional-examples">
+                            <h3>Additional Examples</h3>
+                            <p>Example 1: Simple Fibonacci sequence</p>
+                            <pre><code>def fibonacci(n):
+    a, b = 0, 1
+    for _ in range(n):
+        print(a, end=" ")
+        a, b = b, a + b
+fibonacci(10)  # Output: 0 1 1 2 3 5 8 13 21 34</code></pre>
+                            <p>Example 2: Prime number checker</p>
+                            <pre><code>def is_prime(num):
+    if num <= 1:
+        return False
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+print(is_prime(17))  # Output: True</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Ad Placeholder (replace with AdSense code) -->
+        <div class="ad-placeholder">Bottom Banner Ad - Insert Google AdSense Code Here</div>
+    </div>
+
+    <footer class="bg-light text-center py-3 mt-5">
+        <p>&copy; 2026 Python Tutorial Site. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</html>
+</body>
