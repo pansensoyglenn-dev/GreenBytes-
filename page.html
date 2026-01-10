@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags – Crucial for SEO & GitHub Pages indexing -->
+    <title>Python ATM & Encapsulation Guide | Glenn Pansensoy</title>
+    <meta name="description" content="Master Python encapsulation through a practical Mini ATM simulation. Learn protective attributes, name mangling, authentication logic and clean OOP design. Full code + breakdown included.">
+    <meta name="keywords" content="Python ATM script, Python Encapsulation, Automate the Boring Stuff, Python Tutorial, Glenn Pansensoy, Python OOP, name mangling, private attributes">
+    <meta name="author" content="Glenn Pansensoy">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical – Helps search engines & social previews (update with your real GitHub Pages URL) -->
+    <link rel="canonical" href="https://yourusername.github.io/your-repo-name/">
+
+    <!-- Open Graph (Facebook, LinkedIn, Discord, etc.) -->
+    <meta property="og:title" content="Python ATM & Encapsulation Guide | Glenn Pansensoy">
+    <meta property="og:description" content="Build a secure Mini ATM in Python while mastering encapsulation, property protection, and clean architecture. Full source code + step-by-step explanation.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://yourusername.github.io/your-repo-name/">
+    <meta property="og:image" content="https://yourusername.github.io/your-repo-name/images/atm-python-preview.jpg"> <!-- Upload 1200x630 image! -->
+    <meta property="og:site_name" content="Glenn Pansensoy Python Guides">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Python ATM & Encapsulation Guide | Glenn Pansensoy">
+    <meta name="twitter:description" content="Practical Python ATM project teaching encapsulation professionally. Full code, breakdown & recommended courses.">
+    <meta name="twitter:image" content="https://yourusername.github.io/your-repo-name/images/atm-python-preview.jpg">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4575646748966866" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --obsidian-dark: #0f172a;
+            --obsidian-card: #1e293b;
+            --accent-blue: #38bdf8;
+            --accent-gold: #fbbf24;
+            --text-main: #ffffff;
+            --text-dim: #cbd5e1;
+        }
+
+        body { font-family: 'Inter', sans-serif; background-color: var(--obsidian-dark); line-height: 1.6; color: var(--text-main); }
+        .hero-section { background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%); padding: 100px 0; border-bottom: 1px solid #334155; }
+        .section-card { background: var(--obsidian-card); border-radius: 16px; padding: 40px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 1px solid #334155; }
+        
+        h2 { color: var(--accent-blue); font-weight: 600; margin-bottom: 25px; border-bottom: 2px solid var(--accent-blue); display: inline-block; padding-bottom: 5px; }
+        h3 { color: var(--accent-gold); margin-top: 25px; font-weight: 500; }
+        
+        p, li, .text-muted, .small { color: #ffffff !important; }
+        .quote-box { color: #ffffff !important; font-style: italic; }
+
+        .method-badge { font-family: 'Fira Code', monospace; background: #0c4a6e; color: var(--accent-blue); padding: 4px 10px; border-radius: 6px; font-size: 0.9em; }
+        
+        .course-highlight { border: 1px solid var(--accent-gold); background: rgba(251, 191, 36, 0.1); border-radius: 12px; transition: 0.3s; }
+        .course-highlight h5 { color: #ffffff !important; font-weight: 700; }
+        .course-highlight:hover { background: rgba(251, 191, 36, 0.2); transform: translateY(-5px); }
+        
+        .btn-buy { background: var(--accent-gold); color: #000 !important; font-weight: 700; border: none; padding: 10px; width: 100%; border-radius: 8px; transition: 0.3s; }
+        .btn-buy:hover { background: #fcd34d; box-shadow: 0 0 15px rgba(251, 191, 36, 0.4); }
+
+        .step-list { border-left: 3px solid var(--accent-blue); padding-left: 20px; list-style: none; position: relative; }
+        .step-list li { margin-bottom: 15px; position: relative; color: #ffffff; }
+        .step-list li::before { content: "›"; color: var(--accent-blue); font-weight: bold; position: absolute; left: -15px; font-size: 1.5rem; line-height: 1; }
+
+        footer { background: #020617; color: #ffffff; padding: 80px 0 40px; border-top: 1px solid #1e293b; }
+        .footer-heading { color: var(--accent-blue) !important; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; margin-bottom: 20px; }
+        footer a { color: #ffffff !important; text-decoration: none; transition: 0.2s; border-bottom: 1px solid transparent; }
+        footer a:hover { color: var(--accent-gold) !important; border-bottom: 1px solid var(--accent-gold); }
+        
+        .footer-form .form-control { background: #0f172a; border: 1px solid var(--accent-blue); color: white; border-radius: 8px; }
+        .social-link { font-size: 1.4rem; margin-right: 20px; color: #ffffff !important; }
+        .social-link:hover { color: var(--accent-gold) !important; }
+    </style>
+</head>
+<body>
+
+<header class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-3 fw-bold text-white">Pythonic Foundations</h1>
+        <p class="lead text-white opacity-90">Architecture, Automation, and the Dark Elegance of Encapsulation.</p>
+    </div>
+</header>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+            <div class="section-card">
+                <h2>The Architect’s Vision</h2>
+                <p>In the early days of computing, speaking to a machine felt like bargaining with a fickle, ancient god. One misplaced semicolon, and the entire ritual collapsed.</p>
+                <p><strong>Python</strong> was designed by <strong>Guido van Rossum</strong> to ensure code could be read like poetry—clear, rhythmic, and human.</p>
+                
+                <div class="row mt-4 g-4">
+                    <div class="col-md-4">
+                        <div class="h-100 p-3 bg-dark rounded border border-secondary text-center">
+                            <h5 class="h6 fw-bold text-info">Language of Discovery</h5>
+                            <p class="small mb-0">Used by scientists to sequence genomes or map the stars without syntax friction.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="h-100 p-3 bg-dark rounded border border-secondary text-center">
+                            <h5 class="h6 fw-bold text-info">DNA of AI</h5>
+                            <p class="small mb-0">The core interface for steering neural networks and modern automation engines.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="h-100 p-3 bg-dark rounded border border-secondary text-center">
+                            <h5 class="h6 fw-bold text-info">Democratizing Creation</h5>
+                            <p class="small mb-0">Moving the focus from "How do I code?" to "What can I solve?"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <h2>The Philosophy: Protective Wrapping</h2>
+                <p>In Python, encapsulation is a <span class="text-info fw-bold">"gentleman’s agreement."</span> We follow the philosophy that <strong>"we are all consenting adults here."</strong></p>
+
+                <div class="quote-box p-4" style="background: rgba(56, 189, 248, 0.1); border-left: 4px solid var(--accent-blue); border-radius: 0 8px 8px 0;">
+                    "Encapsulation is less about hiding secrets and more about reducing cognitive load. By exposing only what is necessary, you allow others to use your code effectively."
+                </div>
+
+                <h3 class="h5 mt-4">Levels of Access</h3>
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover mt-3">
+                        <thead>
+                            <tr class="text-info">
+                                <th>Type</th>
+                                <th>Convention</th>
+                                <th>Developer Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Public</strong></td><td><code>balance</code></td><td>Accessible to all.</td></tr>
+                            <tr><td><strong>Protected</strong></td><td><code>_balance</code></td><td>"Please don't touch unless internal."</td></tr>
+                            <tr><td><strong>Private</strong></td><td><code>__balance</code></td><td>Strong warning via Name Mangling.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <h2>Full ATM Implementation</h2>
+                <p>Below is the complete, robust source code for a Mini ATM system. This script implements all the concepts discussed above.</p>
+                
+                <pre><code class="language-python">class ATM:
+    """Mini ATM with proper None handling and user-friendly input"""
+    
+    def __init__(self, card_number: str, initial_balance: float = 0.0):
+        self._card_number = self._validate_card_number(card_number)
+        self._balance = float(initial_balance)
+        self._is_authenticated = False
+        self._attempts = 0
+        self._max_attempts = 3
+        self._correct_pin = "1234"
+
+    def _validate_card_number(self, card_number: str) -> str:
+        cleaned = ''.join(filter(str.isdigit, str(card_number)))
+        if len(cleaned) != 16:
+            raise ValueError("Card number must contain exactly 16 digits")
+        return cleaned
+
+    def authenticate(self) -> bool:
+        if self._is_authenticated: return True
+        if self._attempts >= self._max_attempts:
+            print("\n" + "!"*60 + "\n CARD IS LOCKED \n" + "!"*60)
+            return False
+
+        print(f"\nEnter PIN ({self._max_attempts - self._attempts} attempts remaining)")
+        pin = input("PIN: ").strip()
+        if pin == self._correct_pin:
+            self._is_authenticated = True
+            self._attempts = 0
+            print("\n✓ Login successful!\n")
+            return True
+        else:
+            self._attempts += 1
+            print("✗ Wrong PIN!")
+            return False
+
+    def _get_positive_amount(self, action: str):
+        print(f"\n{action.upper()} TRANSACTION")
+        while True:
+            user_input = input("Amount ₱ ").strip().lower()
+            if user_input in {'cancel', 'c'}: return None
+            cleaned = user_input.replace("₱", "").replace(",", "").replace(" ", "")
+            try:
+                amount = float(cleaned)
+                if amount > 0 and amount % 100 == 0 and amount <= 50000: return amount
+                print("Invalid (₱100 multiples, max ₱50k)")
+            except ValueError:
+                print("Invalid number input.")
+
+    def check_balance(self) -> None:
+        if not self._is_authenticated: return
+        print(f"\n  Current Balance: ₱{self._balance:,.2f}\n")
+
+    def deposit(self) -> None:
+        if not self._is_authenticated: return
+        amount = self._get_positive_amount("Deposit")
+        if amount:
+            self._balance += amount
+            print(f"Success! New balance: ₱{self._balance:,.2f}")
+
+    def withdraw(self) -> None:
+        if not self._is_authenticated: return
+        amount = self._get_positive_amount("Withdraw")
+        if amount and amount <= self._balance:
+            self._balance -= amount
+            print(f"Success! New balance: ₱{self._balance:,.2f}")
+        elif amount:
+            print("Insufficient funds!")
+
+    def logout(self) -> None:
+        self._is_authenticated = False
+        print("Logged out. Goodbye!")
+
+def main():
+    atm = ATM("1234-5678-9012-3456", 12475.50)
+    while not atm._is_authenticated:
+        if not atm.authenticate() and atm._attempts >= atm._max_attempts: return
+    while True:
+        print("\n1. Balance | 2. Deposit | 3. Withdraw | 4. Logout")
+        choice = input("Select: ").strip()
+        if choice == "1": atm.check_balance()
+        elif choice == "2": atm.deposit()
+        elif choice == "3": atm.withdraw()
+        elif choice == "4": 
+            atm.logout()
+            break
+
+if __name__ == "__main__":
+    main()</code></pre>
+            </div>
+
+            <div class="section-card">
+                <h2>Step-by-Step Logical Breakdown</h2>
+                <ul class="step-list">
+                    <li><strong>The Data Bundle:</strong> We use <code>_balance</code> to signal internal management, protecting it from external logic errors.</li>
+                    <li><strong>Methods as Gatekeepers:</strong> Functions like <code>authenticate()</code> ensure that sensitive data is only accessed after validation.</li>
+                    <li><strong>Input Sanitization:</strong> The logic handles user-friendly symbols (like ₱ or commas) while keeping the math clean in the background.</li>
+                </ul>
+            </div>
+
+            <div class="section-card">
+                <h2 class="h4">Master Python: Elite Recommendations</h2>
+                <div class="row g-4 mt-1">
+                    <div class="col-md-6">
+                        <div class="p-4 course-highlight h-100 d-flex flex-column text-center">
+                            <h5>Automate the Boring Stuff</h5>
+                            <p class="small">Master practical automation for your daily tasks (often discounted on Udemy).</p>
+                            <a href="https://www.udemy.com/course/automate/" 
+                               class="btn btn-buy mt-3" target="_blank" rel="noopener noreferrer">
+                                Access Course
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="p-4 course-highlight h-100 d-flex flex-column text-center">
+                            <h5>The Python Mega Course</h5>
+                            <p class="small">Build 20 real-world apps & AI agents (updated 2025).</p>
+                            <a href="https://www.udemy.com/course/the-python-mega-course/" 
+                               class="btn btn-buy mt-3" target="_blank" rel="noopener noreferrer">
+                                Access Course
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="footer-heading">About Glenn</h5>
+                <p class="small">I provide high-level Python insights for the next generation of architects.</p>
+                <div class="mt-3">
+                    <a href="#" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4 px-lg-4 text-white">
+                <h5 class="footer-heading">Free Resources</h5>
+                <p class="small">Get the ATM Script (PDF) & Weekly Tips.</p>
+                <form class="footer-form mt-2">
+                    <input type="email" class="form-control mb-2" placeholder="Your Email" required>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" id="footerOptIn" required>
+                        <label class="form-check-label small" for="footerOptIn">I agree to the privacy policy.</label>
+                    </div>
+                    <button class="btn btn-buy btn-sm w-100" type="submit">Download PDF</button>
+                </form>
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="footer-heading">Contact</h5>
+                <p class="small mb-1">Direct Support:</p>
+                <a href="mailto:pansensoyglenn@gmail.com" class="fw-bold">pansensoyglenn@gmail.com</a>
+            </div>
+
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-heading">Legal</h5>
+                <ul class="list-unstyled small">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Affiliate Disclosure</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center pt-5 border-top border-secondary mt-4">
+            <p class="small">&copy; 2026 Glenn Pansensoy | Designed for Performance</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
+</body>
+</html>
