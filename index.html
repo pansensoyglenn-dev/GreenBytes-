@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="W4mG8BILDB1kz03uenlN4jx7ecEShyXtqgHKGKCb9Xo" />
     <meta name="google-site-verification: google8de01975421a9193.html"/>
     <meta name="google-site-verification: google8de01975421a9193.html"/>
@@ -24,7 +24,6 @@
             --electric-blue: #00aaff;
             --accent-blue: #1e3a8a;
             --text-silver: #e2e8f0;
-            --card-bg: #111827;
         }
         body { 
             background-color: var(--obsidian); 
@@ -74,33 +73,30 @@
         .nav-tabs .nav-link.active { background: none; color: var(--electric-blue); border-bottom: 4px solid var(--electric-blue); }
         pre { border-radius: 8px; border: 1px solid #334155; }
         .logic-step { color: var(--electric-blue); font-weight: bold; margin-right: 5px; }
-        
-        /* New Custom Styles */
-        .opt-in-box {
-            background: linear-gradient(135deg, var(--midnight-blue), #080a0c);
-            border: 1px solid var(--accent-blue);
-            padding: 40px;
-            border-radius: 15px;
-            margin: 40px 0;
-        }
-        .course-card {
-            background: var(--card-bg);
-            border: 1px solid #1e293b;
-            transition: transform 0.3s;
-            color: #ffffff !important; /* Forces text to white */
-        }
-        .course-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--electric-blue);
-        }
-        .btn-download {
-            background-color: #10b981;
-            border: none;
-            padding: 12px 30px;
-            font-weight: bold;
-        }
         footer { border-top: 1px solid var(--midnight-blue); margin-top: 50px; }
-        .narrative-text { font-style: italic; color: #94a3b8; border-left: 3px solid var(--accent-blue); padding-left: 20px; }
+        
+        .intro-narrative {
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            font-style: italic;
+            color: #94a3b8;
+            text-align: center;
+            border-bottom: 1px solid var(--accent-blue);
+            padding-bottom: 20px;
+        }
+        .outro-narrative {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(30, 58, 138, 0.1);
+            border: 1px solid var(--accent-blue);
+            border-radius: 15px;
+        }
+        .diagram-container {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
     </style>
     <script>
         function copyCode(id) {
@@ -118,34 +114,12 @@
 
 <div class="container my-5">
     
-    <section class="mb-5">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <h2 class="text-center mb-4" style="color: var(--electric-blue);">The Philosophy of Structured Creation</h2>
-                <div class="narrative-text">
-                    <p>In the realm of digital architecture, Python Object-Oriented Programming (OOP) is not merely a syntax; it is a lens through which we interpret the complexities of reality. By distilling chaotic data into organized "objects," we mirror the very structure of the universe. This guide serves as your blueprint for mastering the four pillars—Encapsulation, Abstraction, Inheritance, and Polymorphism. Whether you are building scalable systems or refining your logical precision, these paradigms will transform your code from a list of instructions into a living, breathing ecosystem.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="intro-narrative">
+        <p>"In the vast digital expanse, code is often viewed as a mere set of instructions. But to the true architect, programming is the art of modeling reality itself. Object-Oriented Programming (OOP) is not just a syntax; it is a philosophy—a way of compartmentalizing chaos into order, creating digital entities that possess their own attributes, behaviors, and secrets. As you step into this guide, think of classes not as files, but as blueprints for existence. Welcome to the profound world where logic meets structure."</p>
+    </div>
 
-    <div class="opt-in-box text-center">
-        <h3 class="mb-3">Master Python OOP Offline</h3>
-        <p>Download the complete collection of 40+ OOP examples as a high-fidelity PDF guide and join our developer newsletter for weekly insights.</p>
-        <div class="row justify-content-center mt-4">
-            <div class="col-md-6">
-                <form class="input-group mb-3">
-                    <input type="email" class="form-control bg-dark text-white border-secondary" placeholder="Enter your email" required>
-                    <button class="btn btn-primary" type="submit">Join & Get Access</button>
-                </form>
-                <a href="#" class="btn btn-download mt-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download me-2" viewBox="0 0 16 16">
-                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-                    </svg> Download PDF Guide
-                </a>
-            </div>
-        </div>
+    <div class="diagram-container">
+        
     </div>
 
     <ul class="nav nav-tabs justify-content-center mb-4" id="oopTab">
@@ -161,8 +135,6 @@
                 <h2>The Logic of Encapsulation</h2>
                 <p>Encapsulation in Python involves bundling data (attributes) and methods that operate on the data within a class, while restricting direct access to some components (e.g., using private variables with underscores). This promotes data hiding and controlled access via getter and setter methods. Below are 10 sample programs, each with an algorithmic narrative and step-by-step explanation.</p>
             </div>
-
-            
 
             <div class="accordion" id="encapAcc">
                 <div class="accordion-item">
@@ -306,8 +278,6 @@ print(my_car.get_fuel()) # Output: 60.0</code></pre>
                 <p>Abstraction in Python hides complex implementation details and exposes only essential features, often using abstract base classes (ABCs). Below are 10 samples with step-by-step explanations.</p>
             </div>
 
-            
-
             <div class="accordion" id="absAcc">
                 <div class="accordion-item">
                     <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#a1">Sample 1: Shape Area</button></h2>
@@ -373,8 +343,6 @@ class Video(Media):
                 <p>Inheritance allows a subclass to inherit attributes and methods from a base class, promoting code reuse. Below are 10 samples with step-by-step narratives.</p>
             </div>
 
-            
-
             <div class="accordion" id="inheritAcc">
                 <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#i1">Sample 1: Animal and Dog</button></h2><div id="i1" class="accordion-collapse collapse"><div class="accordion-body"><pre><code class="language-python">class Animal:
     def eat(self): return "Eating"
@@ -434,8 +402,6 @@ class Hammer(Tool):
                 <p>Polymorphism allows objects of different classes to be treated as objects of a common superclass, with methods behaving differently. Below are 10 samples with step-by-step explanations.</p>
             </div>
 
-            
-
             <div class="accordion" id="polyAcc">
                 <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#p1">Sample 1: Shapes Drawing</button></h2><div id="p1" class="accordion-collapse collapse"><div class="accordion-body"><pre><code class="language-python" id="pc1">class Shape:
     def draw(self): return "Shape"
@@ -491,59 +457,20 @@ class Stripe:
         </div>
     </div>
 
-    <section class="mt-5">
-        <h2 class="text-center mb-4" style="color: var(--electric-blue);">Accelerate Your Learning</h2>
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card course-card h-100 p-3">
-                    <h5 class="text-info">Zero to Master: Python 2026</h5>
-                    <p class="small">Complete roadmap from basic syntax to enterprise-level architecture.</p>
-                    <a href="#" class="btn btn-outline-info mt-auto">View Course</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card course-card h-100 p-3">
-                    <h5 class="text-info">Python Design Patterns</h5>
-                    <p class="small">Advanced OOP concepts and structural design patterns for senior roles.</p>
-                    <a href="#" class="btn btn-outline-info mt-auto">View Course</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card course-card h-100 p-3">
-                    <h5 class="text-info">Backend Pro: FastAPI & OOP</h5>
-                    <p class="small">Leveraging Object-Oriented principles to build lightning-fast APIs.</p>
-                    <a href="#" class="btn btn-outline-info mt-auto">View Course</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="outro-narrative">
+        <h4 style="color: var(--electric-blue);">The Journey Doesn't End Here</h4>
+        <p>You’ve navigated the four pillars—<strong>Encapsulation</strong>, <strong>Abstraction</strong>, <strong>Inheritance</strong>, and <strong>Polymorphism</strong>. But remember: mastering OOP is like learning an instrument. You now know the notes, but the music comes from how you compose them. </p>
+        <p>Will you build a scalable banking system? Or perhaps an intricate game engine? The code you’ve seen here are the seeds; your imagination is the soil. Go forth and instantiate greatness. <strong>Happy Coding!</strong></p>
+    </div>
 
-    <section class="mt-5 py-5 text-center">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <h3 style="color: var(--electric-blue);">Beyond the Syntax</h3>
-                <p class="narrative-text">Programming is the art of naming things and managing complexity. By mastering these 40 examples, you haven't just learned how to write classes—you've learned how to design systems that endure. Remember that the best code is not the one that is most clever, but the one that is most human-readable and maintainable. Carry these principles into your next project and watch as your technical debt vanishes and your creative potential expands.</p>
-            </div>
-        </div>
-    </section>
 </div>
 
 <footer class="text-center py-5" style="background-color: #000;">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-4 text-start">
-                <h4 style="color: var(--electric-blue);">About Glenn Pansensoy</h4>
-                <p class="small">Glenn Pansensoy is a Senior Technical Architect and Python specialist. With a decade of experience in systems design, he focuses on bridging the gap between theoretical computer science and practical, scalable engineering. His mission is to empower the next generation of developers with clear, logical, and profound educational resources.</p>
-            </div>
-            <div class="col-md-4 text-center"> <p>Contact: <a href="mailto:pansensoyglenn@gmail.com" style="color: var(--electric-blue); text-decoration: none;">pansensoyglenn@gmail.com</a></p>
-                <div class="mt-3">
-                    <a href="#" class="text-secondary mx-2 small">Privacy Policy</a> | 
-                    <a href="#" class="text-secondary mx-2 small">Terms of Service</a>
-                </div>
-                <p class="mt-3" style="font-size: 0.9rem; color: #64748b;">© 2026 Python OOP Examples. <br>Crafted with logical precision.</p> </div>
-            <div class="col-md-4 text-end">
-                </div>
-        </div>
+        <h3>About Glenn Pansensoy</h3>
+        <p>I am a Python enthusiast dedicated to simplifying complex programming concepts for developers worldwide.</p>
+        <p>Contact: <a href="mailto:pansensoyglenn@gmail.com" style="color: var(--electric-blue); text-decoration: none;">pansensoyglenn@gmail.com</a></p>
+        <p style="font-size: 0.9rem; color: #64748b;">© 2026 Python OOP Examples. All rights reserved.</p>
     </div>
 </footer>
 
