@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenBytes | Python Vegetable Store Logic & Encapsulation</title>
+    <meta name="description" content="A comprehensive deep-dive into Python Encapsulation and OOP logic. Learn through the Vegetable Store implementation with full step-by-step explanations.">
+    
+    <link rel="canonical" href="https://pansensoyglenn-dev.github.io/GreenBytes/" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4575646748966866" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --midnight-blue: #0a192f;
+            --obsidian: #020c1b;
+            --obsidian-light: #112240;
+            --accent-green: #64ffda;
+            --text-main: #ccd6f6;
+            --text-dim: #8892b0;
+            --white: #ffffff;
+            --border: #233554;
+            --code-bg: #011627;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            background-color: var(--obsidian);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Top Navigation */
+        nav {
+            background-color: rgba(10, 25, 47, 0.9);
+            padding: 15px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a.brand {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            font-family: 'Fira Code', monospace;
+            letter-spacing: -0.5px;
+        }
+
+        header {
+            background: linear-gradient(180deg, var(--midnight-blue) 0%, var(--obsidian) 100%);
+            padding: 5rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            color: var(--white);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin: 0;
+            font-weight: 800;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(100, 255, 218, 0.05);
+            color: var(--accent-green);
+            text-decoration: none;
+            border: 1px solid var(--accent-green);
+            border-radius: 4px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--accent-green);
+            color: var(--obsidian);
+            transform: translateX(-5px);
+        }
+
+        /* Course Monetization Grid */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .course-card {
+            background: var(--obsidian-light);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .course-card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-5px);
+        }
+
+        .course-price {
+            color: var(--accent-green);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 15px 0;
+        }
+
+        .buy-now {
+            display: block;
+            text-align: center;
+            background: var(--accent-green);
+            color: var(--obsidian);
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        .ad-container {
+            margin: 40px auto;
+            text-align: center;
+            min-height: 90px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 4px;
+            padding: 15px;
+        }
+
+        h2 { 
+            color: var(--accent-green); 
+            font-size: 1.8rem; 
+            margin-top: 80px; 
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::after {
+            content: "";
+            height: 1px;
+            background: var(--border);
+            flex-grow: 1;
+            margin-left: 20px;
+        }
+
+        .code-block {
+            background-color: var(--code-bg);
+            color: #d6deeb;
+            padding: 30px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .explanation-box {
+            background: var(--obsidian-light);
+            border: 1px solid var(--border);
+            margin-bottom: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .explanation-box:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-2px);
+        }
+
+        .insight-header {
+            background: rgba(100, 255, 218, 0.05);
+            padding: 15px 25px;
+            font-weight: 600;
+            color: var(--accent-green);
+            font-family: 'Fira Code', monospace;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        .content-body { padding: 30px; }
+        
+        .label-group { margin-bottom: 25px; }
+
+        .logic-label { 
+            color: var(--accent-green); 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            font-size: 0.7rem; 
+            letter-spacing: 1.5px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .text-section { color: var(--text-main); font-size: 1.05rem; }
+
+        .summary-list { list-style: none; padding: 0; }
+        .summary-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+        .summary-list li::before {
+            content: "➜";
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+        }
+
+        /* Social Share AI Bar */
+        .share-ai-bar {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1001;
+        }
+
+        .ai-share-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            color: var(--obsidian);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+
+        .ai-share-btn:hover { transform: scale(1.1); }
+
+        /* Intelligent About Me Footer */
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 50px;
+            text-align: left;
+        }
+
+        footer {
+            padding: 80px 20px;
+            border-top: 1px solid var(--border);
+            margin-top: 100px;
+            background-color: var(--midnight-blue);
+        }
+
+        footer h3 { color: var(--accent-green); margin-bottom: 20px; }
+
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; }
+            .container { padding: 0 15px; }
+            .footer-content { grid-template-columns: 1fr; }
+            .share-ai-bar { bottom: 10px; right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="encapsulation.html" class="brand">GreenBytes Tutorial</a>
+    <a href="#courses" style="color: var(--accent-green); text-decoration: none; font-weight: 600;">Premium Courses</a>
+</nav>
+
+<header>
+    <h1>The Vegetable Store</h1>
+    <p style="color: var(--text-dim); margin-top: 15px; font-size: 1.2rem;">Complete Object-Oriented Logic & Encapsulation Guide</p>
+    <div class="container">
+        <a href="encapsulation.html" class="back-btn"><i class="fas fa-chevron-left"></i> Return to Lesson</a>
+    </div>
+</header>
+
+<div class="container">
+
+    <h2 id="courses">Master Python Development</h2>
+    <div class="course-grid">
+        <div class="course-card">
+            <h3>Advanced OOP Patterns</h3>
+            <p>Deep dive into inheritance, polymorphism, and architectural clean code in Python.</p>
+            <div class="course-price">$49.99</div>
+            <a href="#" class="buy-now">Enroll Now</a>
+        </div>
+        <div class="course-card">
+            <h3>Backend Logic & APIs</h3>
+            <p>Learn how to scale the logic from this Vegetable Store into a full web application.</p>
+            <div class="course-price">$59.99</div>
+            <a href="#" class="buy-now">Enroll Now</a>
+        </div>
+    </div>
+
+    <div class="ad-container">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4575646748966866"
+             data-ad-slot="1234567890" 
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    
+
+    <h2>I. Full Source Code</h2>
+    <div class="code-block">
+<pre>
+# Vegetable class to encapsulate properties of each vegetable
+class Vegetable:
+    def __init__(self, name, price_per_kilo, initial_stock):
+        self.name = name
+        self.price_per_kilo = price_per_kilo
+        self.stock = initial_stock  # Initial stock in kilos
+
+    def sell(self, quantity):
+        if quantity > self.stock:
+            raise ValueError(f"Not enough stock for {self.name}. Available: {self.stock} kg")
+        self.stock -= quantity
+        return quantity * self.price_per_kilo
+
+    def get_remaining_stock(self):
+        return self.stock
+
+# Store class to manage multiple vegetables
+class VegetableStore:
+    def __init__(self):
+        # Dictionary of vegetables with their details (assuming initial stock of 100 kg each)
+        self.vegetables = {
+            "asparagus": Vegetable("Asparagus", 180, 100),
+            "cabbage": Vegetable("Cabbage", 140, 100),
+            "onion": Vegetable("Onion", 180, 100),
+            "garlic": Vegetable("Garlic", 190, 100),
+            "tomatoes": Vegetable("Tomatoes", 160, 100),
+            "lettuce": Vegetable("Lettuce", 180, 100),
+            "broccoli": Vegetable("Broccoli", 230, 100),
+            "cauliflower": Vegetable("Cauliflower", 220, 100),
+            "potatoes": Vegetable("Potatoes", 180, 100)
+        }
+
+    def list_vegetables(self):
+        print("Available Vegetables:")
+        for key, veg in self.vegetables.items():
+            print(f"{key.capitalize()}: {veg.price_per_kilo} per kg, Stock: {veg.get_remaining_stock()} kg")
+
+    def sell_vegetable(self, choice, quantity):
+        choice_lower = choice.lower()
+        if choice_lower not in self.vegetables:
+            raise ValueError(f"{choice} is not available in the store.")
+        total_price = self.vegetables[choice_lower].sell(quantity)
+        return total_price, self.vegetables[choice_lower].get_remaining_stock()
+
+# Main function to run the program
+def main():
+    store = VegetableStore()
+    
+    while True:
+        store.list_vegetables()
+        
+        choice = input("\nEnter the vegetable you want to buy (or 'exit' to quit): ").strip()
+        if choice.lower() == 'exit':
+            break
+        
+        try:
+            quantity = float(input(f"Enter the quantity in kg for {choice}: "))
+            if quantity <= 0:
+                print("Quantity must be positive.")
+                continue
+            
+            total, remaining = store.sell_vegetable(choice, quantity)
+            print(f"Total price: {total}")
+            print(f"Remaining stock for {choice}: {remaining} kg")
+        
+        except ValueError as e:
+            print(e)
+        
+        print("\n")
+
+if __name__ == "__main__":
+    main()
+</pre>
+    </div>
+
+    
+
+    <h2>II. Vegetable Class Breakdown</h2>
+
+    <div class="explanation-box">
+        <div class="insight-header">class Vegetable:</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Logical Insight</span>
+                <div class="text-section">This line defines a new class named Vegetable. In Python, classes are blueprints for creating objects that bundle data and methods together.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Significance</span>
+                <div class="text-section">It sets up the foundation for encapsulation by grouping related attributes (like name, price, and stock) and behaviors (like selling) into a single unit. This promotes modularity and reusability—each vegetable type can be treated as an independent entity without exposing internal details.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">How it Works</span>
+                <div class="text-section">When executed, Python creates a class object in memory. Objects instantiated from this class will inherit its structure. This is the entry point for object-oriented programming (OOP) principles in the program.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="explanation-box">
+        <div class="insight-header">def __init__(self, name, price_per_kilo, initial_stock):</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Logical Insight</span>
+                <div class="text-section">This is the constructor method, called automatically when a new Vegetable object is created. It initializes the object's state with provided values.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Significance</span>
+                <div class="text-section">Encapsulation starts here by binding data (attributes) to the object. It ensures every vegetable instance has a consistent setup, preventing uninitialized states that could lead to errors.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">How it Works</span>
+                <div class="text-section">When you do Vegetable("Asparagus", 180, 100), Python calls __init__ with self (the new object) and the arguments. It assigns values to instance variables, making them accessible via self.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="explanation-box">
+        <div class="insight-header">Attribute Initialization (self.name, self.price_per_kilo, self.stock)</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Logical Insight</span>
+                <div class="text-section">These lines assign the passed arguments to instance attributes. self.name stores the vegetable's name, self.price_per_kilo its price, and self.stock the available quantity.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Significance</span>
+                <div class="text-section">This hides the data within the object (encapsulation's data hiding aspect). External code can't directly tamper with these without going through methods, reducing bugs from invalid modifications.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">How it Works</span>
+                <div class="text-section">self refers to the current instance, so these become properties of the object. The comment clarifies units, aiding readability. If you try to access veg.stock directly outside the class, it's possible in Python (no strict private access), but the design encourages using methods for interaction.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ad-container">
+        <ins class="adsbygoogle"
+             style="display:block; text-align:center;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
+             data-ad-client="ca-pub-4575646748966866"
+             data-ad-slot="0987654321"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="explanation-box">
+        <div class="insight-header">def sell(self, quantity):</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Logical Insight</span>
+                <div class="text-section">Defines a method to handle selling a specified quantity of the vegetable.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Significance</span>
+                <div class="text-section">This is a key encapsulation feature—it provides controlled access to modify stock. Instead of allowing direct subtraction (which could go negative), it enforces rules, maintaining data integrity.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">How it Works</span>
+                <div class="text-section">When called like veg.sell(5), it receives quantity and uses self to access the object's data. It performs checks and calculations internally.</div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="explanation-box">
+        <div class="insight-header">if quantity > self.stock:</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Logical Insight</span>
+                <div class="text-section">Checks if the requested quantity exceeds available stock and raises an error if so.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Significance</span>
+                <div class="text-section">Prevents invalid states (e.g., negative stock), embodying encapsulation's role in validation. It makes the program robust and user-friendly by providing informative errors.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">How it Works</span>
+                <div class="text-section">Compares quantity to self.stock. If true, it creates a ValueError with a formatted string (using f-string for dynamic insertion of values) and throws it, halting execution unless caught.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="explanation-box">
+        <div class="insight-header">self.stock -= quantity</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Logical Insight</span>
+                <div class="text-section">Subtracts the sold quantity from the stock.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Significance</span>
+                <div class="text-section">This is the core mutation of encapsulated data—only allowed after passing the validation check, ensuring consistency.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">How it Works</span>
+                <div class="text-section">Uses the -= operator to decrement self.stock. Since stock is a number (float or int), this arithmetic operation updates the instance's state permanently.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="explanation-box">
+        <div class="insight-header">return quantity * self.price_per_kilo</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Logical Insight</span>
+                <div class="text-section">Calculates and returns the total cost of the sold quantity.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Significance</span>
+                <div class="text-section">Separates concerns—method handles both state change and computation, returning only what's needed (total price) without exposing internal stock details unnecessarily.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">How it Works</span>
+                <div class="text-section">Multiplies quantity by self.price_per_kilo and returns the result. This allows the caller to get the price without direct access to attributes.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="explanation-box">
+        <div class="insight-header">def get_remaining_stock(self):</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Logical Insight</span>
+                <div class="text-section">Defines a getter method to retrieve the current stock level.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Significance</span>
+                <div class="text-section">Encapsulates read access to stock. Direct access could be risky if logic changes (e.g., adding units conversion); this method allows future modifications without breaking external code.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">How it Works</span>
+                <div class="text-section">Simply returns self.stock when called, like veg.get_remaining_stock(). It's a read-only interface, promoting the "tell, don't ask" principle in OOP.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Return Logic Insight</span>
+                <div class="text-section">Returns the value of the stock attribute.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Return Significance</span>
+                <div class="text-section">Keeps the method simple and focused, aligning with encapsulation by not allowing modification here.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Return How it Works</span>
+                <div class="text-section">The return statement sends the value back to the caller, ending the method execution.</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>III. VegetableStore Class Breakdown</h2>
+
+    <div class="explanation-box">
+        <div class="insight-header">class VegetableStore:</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Logical Insight</span>
+                <div class="text-section">Defines a class to manage a collection of Vegetable objects, acting as a store inventory.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Significance</span>
+                <div class="text-section">Builds on encapsulation by composing multiple encapsulated objects into a higher-level structure. It centralizes store operations, making the program scalable (e.g., add more veggies easily).</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">How it Works</span>
+                <div class="text-section">Similar to the Vegetable class, this creates a blueprint for store instances.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="explanation-box">
+        <div class="insight-header">def __init__(self):</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Logical Insight</span>
+                <div class="text-section">Constructor for initializing the store with a dictionary of vegetables.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Significance</span>
+                <div class="text-section">Sets up the initial inventory, encapsulating the collection of items. This hides how vegetables are stored (as a dict) from external code.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">How it Works</span>
+                <div class="text-section">Called on VegetableStore(), it creates the dictionary with predefined vegetables.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="explanation-box">
+        <div class="insight-header">self.vegetables = { ... }</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Logical Insight</span>
+                <div class="text-section">Initializes a dictionary where keys are lowercase vegetable names and values are Vegetable instances.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Significance</span>
+                <div class="text-section">Encapsulates the inventory as a private attribute (self.vegetables). Using a dict allows fast lookups by name, and the comment explains assumptions for clarity.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">How it Works</span>
+                <div class="text-section">Each entry creates a new Vegetable object on the fly. The dict is stored in self, making it accessible to other methods in the class.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="explanation-box">
+        <div class="insight-header">def list_vegetables(self):</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Logical Insight</span>
+                <div class="text-section">Method to display all available vegetables with prices and stock.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Significance</span>
+                <div class="text-section">Provides a user-friendly interface to view inventory without exposing the internal dict, reinforcing encapsulation.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">How it Works</span>
+                <div class="text-section">Iterates over the dict and prints formatted info.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Print Logic Insight</span>
+                <div class="text-section">Prints a header, then loops through the dict to display each vegetable's details.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Print Significance</span>
+                <div class="text-section">Uses the encapsulated getter get_remaining_stock() to access stock safely. Capitalizes keys for better display.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Print How it Works</span>
+                <div class="text-section">items() yields key-value pairs. f-string formats the output dynamically, calling methods on veg objects.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="explanation-box">
+        <div class="insight-header">def sell_vegetable(self, choice, quantity):</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Logical Insight</span>
+                <div class="text-section">Method to process a sale for a specific vegetable.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Significance</span>
+                <div class="text-section">Acts as a facade, hiding details of lookup and sale logic. It integrates with Vegetable's encapsulated methods.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">How it Works</span>
+                <div class="text-section">Takes user input params, performs lookup, and delegates to the vegetable's sell().</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Normalization Insight</span>
+                <div class="text-section">Normalizes the choice to lowercase and checks if it exists in the dict.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Lookup Significance</span>
+                <div class="text-section">Handles case-insensitivity for user input, and validates existence to prevent key errors.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Lookup How it Works</span>
+                <div class="text-section">lower() converts string; not in checks dict keys. Raises error if missing.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Return Logic Insight</span>
+                <div class="text-section">Calls the vegetable's sell() and getter, then returns the results.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Return Significance</span>
+                <div class="text-section">Encapsulates the transaction—external code gets only the outcomes, not the internals.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Return How it Works</span>
+                <div class="text-section">Accesses the object via dict, calls methods, and returns a tuple.</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>IV. Execution Flow & Main Entry</h2>
+
+    <div class="explanation-box">
+        <div class="insight-header">def main():</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Logical Insight</span>
+                <div class="text-section">Defines the main function and creates a store instance.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Significance</span>
+                <div class="text-section">Entry point for the program's logic, keeping it separate from class defs for organization.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">How it Works</span>
+                <div class="text-section">Instantiates store using the constructor.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Loop Logic Insight</span>
+                <div class="text-section">Starts an infinite loop for continuous interaction, listing veggies each time.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Loop Significance</span>
+                <div class="text-section">Creates a simple REPL-like interface for multiple transactions without restarting.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Loop How it Works</span>
+                <div class="text-section">while True loops forever until broken.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="explanation-box">
+        <div class="insight-header">User Input Management</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Input Logic Insight</span>
+                <div class="text-section">Prompts for vegetable choice and exits if 'exit' is entered.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Input Significance</span>
+                <div class="text-section">Handles user input gracefully, allowing program termination.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Input How it Works</span>
+                <div class="text-section">input() reads from stdin; strip() removes whitespace; lower() for case-insensitive check; break exits loop.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Validation Logic Insight</span>
+                <div class="text-section">Tries to get quantity as float, checks if positive.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Validation Significance</span>
+                <div class="text-section">Validates input to prevent invalid sales; uses try for error handling.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Validation How it Works</span>
+                <div class="text-section">float() converts string; if <=0, prints message and continue skips to next iteration.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="explanation-box">
+        <div class="insight-header">Results & Error Handling</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Execution Logic Insight</span>
+                <div class="text-section">Calls the sell method, unpacks results, and prints them.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Execution Significance</span>
+                <div class="text-section">Displays transaction outcomes, tying user input to encapsulated logic.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Execution How it Works</span>
+                <div class="text-section">Method call returns tuple; f-strings format output.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Error Logic Insight</span>
+                <div class="text-section">Catches ValueError from invalid inputs or stock issues.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Error Significance</span>
+                <div class="text-section">Makes the program resilient to errors without crashing.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Error How it Works</span>
+                <div class="text-section">except block prints the error message.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Formatting Logic Insight</span>
+                <div class="text-section">Prints a newline for spacing between interactions.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Formatting Significance</span>
+                <div class="text-section">Improves UI readability.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Formatting How it Works</span>
+                <div class="text-section">Simple print of empty line.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="explanation-box">
+        <div class="insight-header">if __name__ == "__main__":</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Logical Insight</span>
+                <div class="text-section">Standard Python idiom to run main() only if the script is executed directly.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Significance</span>
+                <div class="text-section">Allows the file to be imported as a module without running the program automatically.</div>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">How it Works</span>
+                <div class="text-section">Checks if the module name is "main" (true when run as script), then calls main().</div>
+            </div>
+        </div>
+    </div>
+
+    <h2>V. Overall Program Summary</h2>
+    <div class="explanation-box">
+        <div class="content-body">
+            <p>This program exemplifies encapsulation by:</p>
+            <ul class="summary-list">
+                <li>Bundling data and methods in classes (Vegetable for items, VegetableStore for management).</li>
+                <li>Controlling access via methods (e.g., sell() validates before changing state).</li>
+                <li>Hiding internals (e.g., dict structure, direct stock access discouraged). It works as an interactive loop: lists inventory, takes inputs, processes sales with checks, updates states, and repeats. This design ensures data integrity, modularity, and ease of extension (e.g., add discounts via new methods).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-bottom: 50px;">
+        <a href="encapsulation.html" class="back-btn"><i class="fas fa-arrow-left"></i> Finished? Back to Modules</a>
+    </div>
+
+    <div class="ad-container">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4575646748966866"
+             data-ad-slot="9988776655" 
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+</div>
+
+<div class="share-ai-bar">
+    <button class="ai-share-btn" onclick="sharePage('github')" title="View Github"><i class="fab fa-github"></i></button>
+    <button class="ai-share-btn" onclick="sharePage('facebook')" title="Share on Facebook"><i class="fab fa-facebook"></i></button>
+    <button class="ai-share-btn" onclick="sharePage('linkedin')" title="Share on LinkedIn"><i class="fab fa-linkedin"></i></button>
+    <button class="ai-share-btn" onclick="sharePage('instagram')" title="Share on Instagram"><i class="fab fa-instagram"></i></button>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="about-section">
+            <h3>About the Author</h3>
+            <p>I am a Python Developer and Educator passionate about distilling complex architectural patterns into practical, easy-to-understand tutorials. GreenBytes is my portal for sharing deep-dives into OOP, automation, and clean logic.</p>
+            <p>For collaboration or private tutoring, please contact me directly.</p>
+        </div>
+        <div class="contact-section">
+            <h3>Contact</h3>
+            <p><a href="mailto:pansensoyglenn@gmail.com"><i class="fas fa-envelope"></i> pansensoyglenn@gmail.com</a></p>
+            <p style="margin-top: 20px; color: var(--text-dim); font-size: 0.9rem;">
+                GreenBytes Educational Portal &copy; 2026
+            </p>
+            <p><a href="https://pansensoyglenn-dev.github.io/GreenBytes/" target="_blank">View GitHub Project</a></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Intelligent Sharing Function
+    function sharePage(platform) {
+        const url = window.location.href;
+        const text = "Check out this amazing Python Encapsulation tutorial on GreenBytes!";
+        
+        const shareURLs = {
+            github: "https://github.com/pansensoyglenn-dev/GreenBytes",
+            facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+            linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+            instagram: "https://www.instagram.com" // Direct link since IG doesn't support easy URL injection
+        };
+
+        window.open(shareURLs[platform], '_blank');
+    }
+</script>
+
+</body>
+</html>
