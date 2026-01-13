@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Python Masterclass: Encapsulation & OOP | Glenn Pansensoy</title>
+    <meta name="description" content="Master the art of Pythonic architecture. Learn encapsulation through the Code Weaver's narrative and build secure systems.">
+    
+    <link rel="canonical" href="https://yourdomain.com/python-masterclass" />
+    <meta property="og:title" content="Python Masterclass: Encapsulation & OOP | Glenn Pansensoy">
+    <meta property="og:description" content="Master the art of Pythonic architecture. Learn encapsulation through the Code Weaver's narrative.">
+    <meta property="og:type" content="article">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --obsidian-dark: #020617;
+            --obsidian-card: #0f172a;
+            --accent-blue: #38bdf8;
+            --accent-gold: #fbbf24;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --success-green: #10b981;
+            --midnight-blue: #0a192f; /* From second file */
+            --border: #233554;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--obsidian-dark); 
+            color: var(--text-main);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* --- NAVIGATION STYLES --- */
+        nav {
+            background-color: rgba(10, 25, 47, 0.9);
+            padding: 15px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a.brand {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            font-family: 'Fira Code', monospace;
+            letter-spacing: -0.5px;
+        }
+
+        .menu-toggle {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 2001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--accent-blue);
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        .nav-links {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: var(--midnight-blue);
+            display: flex;
+            flex-direction: column;
+            padding: 100px 40px;
+            gap: 25px;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+            border-left: 1px solid var(--border);
+        }
+
+        .nav-links.active { right: 0; }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent-blue); padding-left: 10px; }
+
+        /* --- CONTENT STYLES --- */
+        .cinzel { font-family: 'Cinzel', serif; letter-spacing: 0.1em; }
+
+        .hero-section { 
+            background: radial-gradient(circle at top, #1e293b 0%, var(--obsidian-dark) 100%);
+            padding: 120px 0;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .section-card { 
+            background: var(--obsidian-card); 
+            border-radius: 20px; 
+            padding: 45px; 
+            margin-bottom: 40px; 
+            border: 1px solid #1e293b;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border: 1px solid var(--accent-gold);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+            transform: translateY(-5px);
+        }
+
+        h2 { color: var(--accent-blue); font-family: 'Cinzel', serif; margin-bottom: 30px; }
+        .text-justified { text-align: justify; }
+
+        .side-nav { position: sticky; top: 100px; }
+        .nav-link-custom {
+            color: var(--text-dim);
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            border-left: 2px solid transparent;
+            padding-left: 15px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .nav-link-custom:hover {
+            color: var(--accent-blue);
+            border-left-color: var(--accent-blue);
+            background: linear-gradient(to right, rgba(56, 189, 248, 0.05), transparent);
+        }
+
+        .btn-buy {
+            background: var(--accent-gold);
+            color: #000;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            width: 100%;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-buy:hover { background: #fff; box-shadow: 0 0 15px #fff; color: #000; }
+
+        /* --- SOCIAL TRIGGER & FOOTER STYLES --- */
+        .social-trigger { position: fixed; bottom: 30px; right: 30px; z-index: 1000; }
+        .main-fab {
+            width: 60px; height: 60px; border-radius: 50%; background: var(--accent-blue); color: white;
+            display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4); transition: 0.3s;
+        }
+        .social-options {
+            position: absolute; bottom: 75px; right: 0; display: flex; flex-direction: column; gap: 15px;
+            opacity: 0; visibility: hidden; transition: 0.3s;
+        }
+        .social-trigger:hover .social-options { opacity: 1; visibility: visible; }
+        .social-trigger:hover .main-fab { transform: rotate(45deg); background: var(--accent-blue); }
+        .social-btn {
+            width: 50px; height: 50px; border-radius: 50%; background: var(--obsidian-card); color: var(--accent-blue);
+            display: flex; align-items: center; justify-content: center; text-decoration: none; border: 1px solid var(--border); transition: 0.3s;
+        }
+        .social-btn:hover { background: var(--accent-blue); color: white; transform: scale(1.1); }
+
+        footer { padding: 80px 20px; border-top: 1px solid var(--border); margin-top: 100px; background-color: var(--midnight-blue); }
+        .footer-content { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr; gap: 50px; }
+        footer h3 { color: var(--accent-blue); margin-bottom: 20px; }
+        .author-badge { display: inline-block; padding: 4px 12px; background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-radius: 20px; font-size: 0.8rem; margin-bottom: 10px; font-weight: 700; }
+        .ai-share-tool { background: var(--obsidian-dark); border: 1px solid var(--accent-blue); padding: 20px; border-radius: 8px; margin-top: 20px; text-align: left; }
+        .share-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-top: 15px; }
+        .share-btn-ai { background: var(--obsidian-card); border: 1px solid var(--border); color: var(--text-main); padding: 10px; border-radius: 4px; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 5px; transition: 0.3s; font-size: 0.85rem; }
+        .share-btn-ai:hover { border-color: var(--accent-blue); background: rgba(59, 130, 246, 0.1); }
+        
+        @media (max-width: 768px) {
+            .footer-content { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#" class="brand">PYTHON TUTORIAL</a>
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
+        <a href="#vision" onclick="toggleMenu()">The Vision</a>
+        <a href="#philosophy" onclick="toggleMenu()">Philosophy</a>
+        <a href="#marketplace" onclick="toggleMenu()">Digital Assets</a>
+        <a href="#programs" onclick="toggleMenu()">Active Programs</a>
+        <a href="#treasury" onclick="toggleMenu()">The Treasury</a>
+    </div>
+</nav>
+
+<header class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-3 fw-bold text-white cinzel">The Code Weaver's Realm</h1>
+        <p class="lead text-info">Architecture, Automation, and the Dark Elegance of Encapsulation.</p>
+        <div class="h-px w-25 bg-primary mx-auto my-4" style="height: 2px;"></div>
+    </div>
+</header>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-3 d-none d-lg-block">
+            <div class="side-nav">
+                <h6 class="text-uppercase text-muted small mb-4 tracking-widest">Navigation</h6>
+                <a href="#vision" class="nav-link-custom">I. The Architect's Vision</a>
+                <a href="#philosophy" class="nav-link-custom">II. Protective Wrapping</a>
+                <a href="#programs" class="nav-link-custom">III. Active Programs</a>
+                <a href="#marketplace" class="nav-link-custom text-gold fw-bold">★ Digital Assets</a>
+                <a href="#treasury" class="nav-link-custom">IV. The Treasury</a>
+                <hr class="border-secondary opacity-25">
+            </div>
+        </div>
+
+        <div class="col-lg-9">
+            <section id="vision" class="section-card text-justified">
+                <h2>The Architect's Vision: Python Architecture</h2>
+                <p>In the early days of computing, speaking to a machine felt like bargaining with a fickle, ancient god. One misplaced semicolon, and the entire ritual collapsed.</p>
+                <p>Python was designed to ensure code could be read like poetry—clear, rhythmic, and human. As an explorer in this digital wilderness, you are no longer a scribe of commands, but a master of intent.</p>
+                <p class="fst-italic text-dim">"Simple is better than complex. Readability counts." — The Zen of Python</p>
+            </section>
+
+            <section id="philosophy" class="section-card text-justified">
+                <h2>The Philosophy: Protective Wrapping & Encapsulation</h2>
+                <div class="mb-5">
+                    <p>At its core, <strong>Encapsulation</strong> is the sovereign principle of <em>Information Hiding</em>. It is the architectural boundary that separates the "What" from the "How." In the Weaver's Realm, we do not simply write code; we build fortresses where the internal state is shielded from the chaotic outside world.</p>
+                    <p class="mt-3">By bundling data (attributes) and the behaviors that manipulate them (methods) into a single logical unit, we achieve <strong>Modular Autonomy</strong>. This ensures that an object’s internal representation is hidden from the outside, allowing only authorized interactions through a controlled interface.</p>
+                </div>
+                <p>Encapsulation is the "Veil" that protects the inner logic of your creation. In Python, we treat developers as "consenting adults," using conventions to signal where one should not tread.</p>
+                <div class="table-responsive mt-4">
+                    <table class="table table-dark border-secondary">
+                        <thead>
+                            <tr><th class="text-info">Type</th><th class="text-info">Python Convention</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Public</td><td><code>balance</code></td></tr>
+                            <tr><td>Protected</td><td><code>_balance</code> (The Gentle Warning)</td></tr>
+                            <tr><td>Private</td><td><code>__balance</code> (The Name Mangler)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="marketplace" class="section-card border-warning">
+                <h2 style="color: var(--accent-gold);">The Weaver's Digital Assets</h2>
+                <p class="text-dim">Acquire the blueprints used to build the realm. Professional-grade Python assets for the serious architect.</p>
+                <div class="row g-4 mt-2">
+                    <div class="col-md-4">
+                        <div class="product-card">
+                            <i class="fas fa-file-code fa-2x text-gold mb-3"></i>
+                            <h6 class="text-white">Encapsulation Blueprints</h6>
+                            <p class="small text-muted">Complete source code for ATM & Store simulations.</p>
+                            <p class="fw-bold text-info">$19.00</p>
+                            <a href="#" class="btn-buy">Acquire Asset</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product-card">
+                            <i class="fas fa-book-dead fa-2x text-gold mb-3"></i>
+                            <h6 class="text-white">The Architect's Guide</h6>
+                            <p class="small text-muted">Advanced OOP patterns PDF masterclass.</p>
+                            <p class="fw-bold text-info">$29.00</p>
+                            <a href="#" class="btn-buy">Acquire Asset</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="product-card">
+                            <i class="fas fa-microchip fa-2x text-gold mb-3"></i>
+                            <h6 class="text-white">Automation Script Pack</h6>
+                            <p class="small text-muted">10 Ready-to-use Python automation templates.</p>
+                            <p class="fw-bold text-info">$49.00</p>
+                            <a href="#" class="btn-buy">Acquire Asset</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="programs" class="section-card">
+                <h2>Encapsulated Programs: OOP Examples</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="program-card-hub h-100 p-4 border border-secondary rounded">
+                            <i class="fas fa-vault fa-3x text-info mb-4"></i>
+                            <h4 class="text-white">The Mini-ATM</h4>
+                            <p class="small text-white mb-4">A secure simulation using private attributes to protect virtual wealth.</p>
+                            <a href="#" class="btn btn-outline-info btn-sm w-100">Enter Program</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="program-card-hub h-100 p-4 border border-secondary rounded">
+                            <i class="fas fa-carrot fa-3x text-info mb-4"></i>
+                            <h4 class="text-white">Vegetable Store</h4>
+                            <p class="small text-white mb-4">Mastering complex state management and inventory logic through OOP.</p>
+                            <a href="#" class="btn btn-outline-info btn-sm w-100">Enter Program</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="program-card-hub h-100 p-4 border border-secondary rounded">
+                            <i class="fas fa-book fa-3x text-info mb-4"></i>
+                            <h4 class="text-white">The Bookstore</h4>
+                            <p class="small text-white mb-4">Secure catalog management and hidden pricing logic for digital archives.</p>
+                            <a href="#" class="btn btn-outline-info btn-sm w-100">Enter Program</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div class="social-trigger">
+    <div class="social-options">
+        <a href="javascript:void(0)" onclick="aiShare('facebook')" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="javascript:void(0)" onclick="aiShare('linkedin')" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="javascript:void(0)" onclick="aiShare('instagram')" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="javascript:void(0)" onclick="aiShare('x')" class="social-btn" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+    </div>
+    <div class="main-fab">
+        <i class="fas fa-plus"></i>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="about-section">
+            <span class="author-badge">Senior Software Architect</span>
+            <h3>About the Author</h3>
+            <p>
+                Glenn Pansensoy is a software architect specializing in Pythonic systems. He weaves complex logic into elegant, secure digital architectures with a focus on clean code and effective Object-Oriented Design.
+            </p>
+            <div class="ai-share-tool">
+                <h4><i class="fas fa-robot"></i> AI Viral Sharing Tool</h4>
+                <div class="share-grid">
+                    <button class="share-btn-ai" onclick="aiShare('facebook')"><i class="fab fa-facebook"></i>Facebook</button>
+                    <button class="share-btn-ai" onclick="aiShare('linkedin')"><i class="fab fa-linkedin"></i>LinkedIn</button>
+                    <button class="share-btn-ai" onclick="aiShare('instagram')"><i class="fab fa-instagram"></i>Instagram</button>
+                    <button class="share-btn-ai" onclick="aiShare('x')"><i class="fab fa-x"></i>X / Twitter</button>
+                </div>
+            </div>
+        </div>
+        <div class="contact-section">
+            <h3>Contact</h3>
+            <p><a href="mailto:pansensoyglenn@gmail.com" style="color: var(--accent-blue); text-decoration: none;"><i class="fas fa-envelope"></i> pansensoyglenn@gmail.com</a></p>
+            <p style="margin-top: 20px; color: var(--text-dim); font-size: 0.9rem;">
+                PYTHON TUTORIAL Educational Portal &copy; 2026<br>
+                Crafting Excellence in Every Byte.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() {
+        const links = document.getElementById('navLinks');
+        links.classList.toggle('active');
+    }
+
+    function aiShare(platform) {
+        const url = window.location.href;
+        const aiMessages = {
+            facebook: `Check out this deep-dive into Python OOP! 🐍 Perfect for developers looking to master Encapsulation and Data Integrity. #PythonProgramming #OOP`,
+            linkedin: `Just finished an intensive guide on Object-Oriented Logic in Python. This walkthrough on the Vegetable Store implementation is a must-read for backend architects. #SoftwareEngineering #Python #CleanCode`,
+            instagram: `Mastering Python logic one byte at a time! 💻 Check the link in bio for the full Encapsulation breakdown. #DevLife #CodeNewbie #PythonTutorial`,
+            x: `Elevate your #Python skills! 🚀 This guide breaks down Encapsulation using a real-world Vegetable Store logic. #100DaysOfCode`
+        };
+
+        const message = aiMessages[platform];
+        let shareUrl = "";
+
+        switch(platform) {
+            case 'facebook':
+                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(message)}`;
+                break;
+            case 'linkedin':
+                shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+                break;
+            case 'x':
+                shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`;
+                break;
+            case 'instagram':
+                alert("Link copied to clipboard! (Instagram requires manual posting): \n\n" + message);
+                navigator.clipboard.writeText(url);
+                return;
+        }
+        window.open(shareUrl, '_blank', 'width=600,height=400');
+    }
+</script>
+
+</body>
+</html>
