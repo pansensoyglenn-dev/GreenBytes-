@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Python Masterclass: Encapsulation & OOP | Glenn Pansensoy</title>
+    <meta name="description" content="Master the art of Pythonic architecture. Learn encapsulation through the Code Weaver's narrative and build secure systems.">
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4575646748966866" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --obsidian-dark: #020617;
+            --obsidian-card: #0f172a;
+            --accent-blue: #38bdf8;
+            --accent-gold: #fbbf24;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--obsidian-dark); 
+            color: var(--text-main);
+            line-height: 1.8;
+        }
+
+        .cinzel { font-family: 'Cinzel', serif; letter-spacing: 0.1em; }
+
+        .hero-section { 
+            background: radial-gradient(circle at top, #1e293b 0%, var(--obsidian-dark) 100%);
+            padding: 120px 0;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .section-card { 
+            background: var(--obsidian-card); 
+            border-radius: 20px; 
+            padding: 45px; 
+            margin-bottom: 40px; 
+            border: 1px solid #1e293b;
+            transition: transform 0.3s ease;
+        }
+
+        h2 { color: var(--accent-blue); font-family: 'Cinzel', serif; margin-bottom: 30px; }
+        
+        .side-nav { position: sticky; top: 100px; }
+        .nav-link-custom {
+            color: var(--text-dim);
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+            border-left: 2px solid transparent;
+            padding-left: 15px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .nav-link-custom:hover {
+            color: var(--accent-blue);
+            border-left-color: var(--accent-blue);
+            background: linear-gradient(to right, rgba(56, 189, 248, 0.05), transparent);
+        }
+
+        .program-card-hub {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .program-card-hub:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+        }
+
+        .btn-enter {
+            background: transparent;
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 12px 24px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+        }
+        .btn-enter:hover {
+            background: var(--accent-blue);
+            color: #000;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+        }
+
+        footer { background: #000; padding: 80px 0; border-top: 1px solid #1e293b; }
+        .footer-brand-text { color: #ffffff !important; opacity: 1 !important; }
+        .email-link { color: #ffffff !important; text-decoration: none; transition: 0.3s; }
+        
+        .dissemination-hub {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .ai-share-btn {
+            width: 50px; height: 50px; border-radius: 12px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            background: rgba(15, 23, 42, 0.8); color: white;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.4s; cursor: pointer;
+        }
+
+        .ai-share-btn:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+        }
+
+        .ai-status-pulse {
+            display: inline-block; width: 8px; height: 8px;
+            background: #10b981; border-radius: 50%; margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        #ai-mentor-btn { 
+            position: fixed; bottom: 30px; right: 30px; z-index: 1000; 
+            border-radius: 50px; padding: 15px 25px; 
+            background: var(--accent-blue); color: #000; font-weight: bold;
+            border: none; box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-3 fw-bold text-white cinzel">The Code Weaver's Realm</h1>
+        <p class="lead text-info">Architecture, Automation, and the Dark Elegance of Encapsulation.</p>
+        <div class="h-px w-25 bg-primary mx-auto my-4" style="height: 2px;"></div>
+    </div>
+</header>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-3 d-none d-lg-block">
+            <div class="side-nav">
+                <h6 class="text-uppercase text-muted small mb-4 tracking-widest">Navigation</h6>
+                <a href="#vision" class="nav-link-custom">I. The Architect's Vision</a>
+                <a href="#philosophy" class="nav-link-custom">II. Protective Wrapping</a>
+                <a href="#programs" class="nav-link-custom">III. Active Programs</a>
+                <a href="#treasury" class="nav-link-custom">IV. The Treasury</a>
+            </div>
+        </div>
+
+        <div class="col-lg-9">
+            <section id="vision" class="section-card">
+                <h2>The Architect's Vision</h2>
+                <p>In the early days of computing, speaking to a machine felt like bargaining with a fickle, ancient god. One misplaced semicolon, and the entire ritual collapsed.</p>
+                <p>Python was designed to ensure code could be read like poetry—clear, rhythmic, and human. As an explorer in this digital wilderness, you are no longer a scribe of commands, but a master of intent.</p>
+                <p class="fst-italic text-dim">"Simple is better than complex. Readability counts." — The Zen of Python</p>
+            </section>
+
+            <section id="philosophy" class="section-card">
+                <h2>The Philosophy: Protective Wrapping</h2>
+                <p>Encapsulation is the "Veil" that protects the inner logic of your creation. In Python, we treat developers as "consenting adults," using conventions to signal where one should not tread.</p>
+                <div class="table-responsive mt-4">
+                    <table class="table table-dark border-secondary">
+                        <thead>
+                            <tr><th class="text-info">Type</th><th class="text-info">Python Convention</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Public</td><td><code>balance</code></td></tr>
+                            <tr><td>Protected</td><td><code>_balance</code> (The Gentle Warning)</td></tr>
+                            <tr><td>Private</td><td><code>__balance</code> (The Name Mangler)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="programs" class="section-card">
+                <h2>Encapsulated Programs</h2>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="program-card-hub h-100">
+                            <i class="fas fa-vault fa-3x text-info mb-4"></i>
+                            <h4 class="text-white">The Mini-ATM</h4>
+                            <p class="small text-muted mb-4">A secure simulation using private attributes to protect virtual wealth.</p>
+                            <a href="page.html" class="btn-enter">Press to Enter Program</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="program-card-hub h-100">
+                            <i class="fas fa-carrot fa-3x text-info mb-4"></i>
+                            <h4 class="text-white">Vegetable Store</h4>
+                            <p class="small text-muted mb-4">Mastering complex state management and inventory logic through OOP.</p>
+                            <a href="encapsulation.html" class="btn-enter">Press to Enter Program</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="treasury" class="section-card">
+                <h2>The Treasury of Mastery</h2>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="p-3 border border-secondary rounded hover-glow">
+                            <h5 class="text-gold">Automate the Boring Stuff</h5>
+                            <a href="#" class="btn btn-sm btn-outline-info mt-2">Acquire Knowledge</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="p-3 border border-secondary rounded">
+                            <h5 class="text-gold">Beyond the Basic Stuff</h5>
+                            <a href="#" class="btn btn-sm btn-outline-info mt-2">Deepen the Craft</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <h6 class="cinzel text-white mb-3" style="letter-spacing: 2px; border-left: 3px solid var(--accent-blue); padding-left: 15px;">The Realm</h6>
+                <p class="small footer-brand-text mb-0">
+                    Architecting integrity through the art of the veil. <br>
+                    <span class="text-info">Designed for the next generation of Python architects.</span>
+                </p>
+            </div>
+            
+            <div class="col-lg-4 mb-4 mb-lg-0 text-center">
+                <div class="dissemination-hub">
+                    <h6 class="cinzel text-white small mb-3">Dissemination Engine</h6>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button onclick="aiDisseminate('facebook')" class="ai-share-btn" title="AI Facebook Share">
+                            <i class="fab fa-facebook-f"></i>
+                        </button>
+                        <button onclick="aiDisseminate('linkedin')" class="ai-share-btn" title="AI LinkedIn Share">
+                            <i class="fab fa-linkedin-in"></i>
+                        </button>
+                        <button onclick="aiDisseminate('instagram')" class="ai-share-btn" title="AI Instagram Optimization">
+                            <i class="fab fa-instagram"></i>
+                        </button>
+                    </div>
+                    <div class="mt-3 small">
+                        <span class="ai-status-pulse"></span>
+                        <span class="text-muted" style="font-size: 0.75rem; letter-spacing: 1px;">ENGINE ACTIVE</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 text-center text-lg-end">
+                <h6 class="cinzel text-white mb-3">The Architect</h6>
+                <p class="mb-1 fw-bold text-info">Glenn Pansensoy</p>
+                <a href="mailto:pansensoyglenn@gmail.com" class="email-link small">pansensoyglenn@gmail.com</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
