@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Mini ATM Project: Master Encapsulation & OOP | Glenn Pansensoy</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --obsidian-dark: #0f172a;
+            --obsidian-card: #1e293b;
+            --accent-blue: #38bdf8;
+            --text-main: #ffffff;
+            --text-dim: #cbd5e1;
+            --ai-glow: 0 0 15px rgba(56, 189, 248, 0.5);
+            --gold-accent: #fbbf24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--obsidian-dark); color: var(--text-main); line-height: 1.6; }
+        .hero-section { background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%); padding: 100px 0; border-bottom: 1px solid #334155; }
+        .section-card { background: var(--obsidian-card); border-radius: 16px; padding: 40px; margin-bottom: 30px; border: 1px solid #334155; }
+        p { text-align: justify; }
+        h2 { color: var(--accent-blue); font-family: 'Cinzel', serif; margin-bottom: 25px; border-bottom: 2px solid var(--accent-blue); display: inline-block; padding-bottom: 5px; }
+        .quote-box { font-style: italic; background: rgba(56, 189, 248, 0.1); border-left: 4px solid var(--accent-blue); padding: 20px; border-radius: 0 8px 8px 0; margin: 20px 0; }
+        .anatomy-step { border-left: 4px solid var(--accent-blue); padding: 15px 25px; margin-bottom: 20px; background: rgba(15, 23, 42, 0.5); border-radius: 0 12px 12px 0; }
+        .anatomy-step h4 { color: var(--accent-blue); font-weight: 700; }
+        
+        /* Resource Grid for Monetization */
+        .resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+        .affiliate-card { background: rgba(255,255,255,0.05); border: 1px solid #334155; border-radius: 12px; padding: 20px; transition: 0.3s; text-decoration: none; color: white !important; display: block; }
+        .affiliate-card:hover { border-color: var(--gold-accent); transform: translateY(-5px); background: rgba(255,255,255,0.08); }
+        .affiliate-card i { color: var(--gold-accent); font-size: 1.5rem; margin-bottom: 10px; }
+        .book-tag { font-size: 0.8rem; background: var(--gold-accent); color: black; padding: 2px 8px; border-radius: 4px; font-weight: bold; margin-bottom: 10px; display: inline-block; }
+
+        .navbar { background-color: #020617 !important; border-bottom: 1px solid #1e293b; }
+        .navbar-brand { font-family: 'Cinzel', serif; color: var(--accent-blue) !important; font-weight: bold; }
+        footer { background: #020617; padding: 60px 0; border-top: 1px solid #1e293b; margin-top: 80px; }
+        .viral-share-container { display: flex; gap: 12px; margin-bottom: 15px; }
+        .viral-btn { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: 0.3s; }
+        .v-fb { background: #1877F2; } .v-li { background: #0A66C2; } .v-ig { background: #e4405f; } .v-x { background: #000; }
+        
+        /* AI MENTOR IN BOTTOM LEFT */
+        #ai-mentor-btn { position: fixed; bottom: 20px; left: 20px; z-index: 1000; border-radius: 50px; padding: 15px 25px; border: 2px solid var(--accent-blue); background: var(--obsidian-dark); color: white; box-shadow: var(--ai-glow); }
+        #ai-chat-window { position: fixed; bottom: 90px; left: 20px; width: 350px; height: 450px; background: var(--obsidian-card); border: 1px solid var(--accent-blue); border-radius: 15px; display: none; flex-direction: column; z-index: 1000; overflow: hidden; }
+        .chat-header { background: var(--accent-blue); color: black; padding: 10px; font-weight: bold; }
+        .chat-body { flex: 1; padding: 15px; color: white; overflow-y: auto; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">PYTHON TUTORIAL</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="page.html">ATM Project</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-3 fw-bold cinzel" style="color: var(--accent-blue);">Pythonic Foundations</h1>
+        <p class="lead">Architecture, Automation, and the Dark Elegance of Encapsulation.</p>
+    </div>
+</header>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+
+            <section class="section-card">
+                <h2>The Architect’s Vision</h2>
+                <p>In the early days of computing, speaking to a machine felt like bargaining with a fickle, ancient god. One misplaced semicolon, and the entire ritual collapsed.</p>
+                <p><strong>Python</strong> was designed by <strong>Guido van Rossum</strong> to ensure code could be read like poetry—clear, rhythmic, and human.</p>
+                
+                <h3 class="mt-5" style="color: var(--accent-blue);">Why Choose Python: A Captivating Journey</h3>
+                <p>Imagine a world where the barriers between human thought and machine execution dissolve like mist in the morning sun. This is the promise of Python, a language born not from rigid constraints but from a desire to empower creators, dreamers, and problem-solvers alike...</p>
+                <p>Picture yourself as an explorer in a vast digital wilderness. Other languages might arm you with cumbersome tools—verbose declarations, manual memory management, or cryptic error messages that feel like riddles from a sphinx. Python, however, hands you a sleek compass: readable code that mirrors natural language. "Print('Hello, World!')" is not just a command; it's an invitation to converse with the machine. This readability isn't accidental; it's Python's core philosophy, enshrined in the Zen of Python: "Simple is better than complex. Readability counts."</p>
+                <p>As we delve deeper, consider the ecosystems Python nurtures. From web development with Django and Flask to data science with Pandas and NumPy, Python adapts like a chameleon. In AI, it's the lingua franca—powering TensorFlow and PyTorch, enabling breakthroughs in machine learning that once seemed like science fiction. Scientists use it to unravel the mysteries of the universe, analyzing data from telescopes or simulating quantum phenomena. Entrepreneurs automate mundane tasks, turning hours of drudgery into seconds of efficiency. Python's vast library ecosystem, with over 400,000 packages on PyPI, means you're never starting from scratch; you're building on the shoulders of giants.</p>
+                <p>But the true captivation lies in Python's community—a global tapestry of enthusiasts, from novices coding their first script to experts pushing the boundaries of technology. Forums like Stack Overflow buzz with collaborative energy, and events like PyCon foster connections that transcend code. Learning Python isn't just acquiring a skill; it's joining a movement that values openness, inclusivity, and innovation. In a fast-paced world, Python's gentle learning curve ensures you spend more time creating and less time wrestling with syntax, making it ideal for beginners while scalable for professionals.</p>
+            </section>
+
+            <section class="section-card">
+                <h2>The Philosophy: Protective Wrapping</h2>
+                <div class="quote-box">
+                    "Encapsulation is less about hiding secrets and more about reducing cognitive load. By exposing only what is necessary, you allow others to use your code effectively."
+                </div>
+                <h3 class="mt-4" style="color: var(--accent-blue);">Why Encapsulation is the Best Practice</h3>
+                <p>Encapsulation isn't merely a technical feature; it's a masterful storytelling device in the realm of code, drawing readers into a narrative of security, maintainability, and elegance. In the grand tapestry of programming paradigms, encapsulation stands as a pillar of Object-Oriented Programming (OOP), bundling data and methods into cohesive units while shielding internal complexities from the outside world.</p>
+                <p>At its heart, encapsulation promotes modularity—like chapters in a gripping novel, each class or module tells its own story without spoiling the plot for others. By hiding implementation details (through private attributes and methods), it reduces complexity, allowing developers to interact with high-level interfaces rather than delving into murky internals. This "black box" approach minimizes errors; imagine tinkering with an ATM's balance directly—chaos ensues! Instead, encapsulation enforces controlled access, ensuring data integrity and security, much like a vault protecting treasures.</p>
+                <p>In Python, where strict enforcement is absent, encapsulation relies on conventions (_ for protected, __ for private with name mangling), fostering trust and discipline among coders. This gentle enforcement makes code more readable and maintainable, crucial for large projects or teams. Readers stay longer because encapsulation invites exploration: they can dissect the Mini ATM code, seeing how authentication gates sensitive operations, and apply it to real-world scenarios like banking apps or secure APIs.</p>
+            </section>
+
+            <section class="section-card">
+                <h2>The Master's Vault: Elevate Your Python</h2>
+                <p>Logic is only half the battle. To truly architect professional-grade systems, you need the right mentorship and literature.</p>
+                
+                <div class="resource-grid">
+                    <a href="https://www.coursera.org/specializations/python" target="_blank" class="affiliate-card">
+                        <i class="fas fa-university"></i>
+                        <h4>Coursera Mastery</h4>
+                        <p>Access Python Specializations from Michigan & Google. Professional certification for architects.</p>
+                    </a>
+                    <a href="https://www.udemy.com/topic/python/" target="_blank" class="affiliate-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>Udemy Bootcamp</h4>
+                        <p>Zero-to-Hero masterclasses for hands-on learners who want to build real-world apps fast.</p>
+                    </a>
+                    <a href="https://www.amazon.com/Automate-Boring-Stuff-Python-2nd/dp/1593279922" target="_blank" class="affiliate-card">
+                        <span class="book-tag">TOP SELLER</span>
+                        <i class="fas fa-book"></i>
+                        <h4>Automate Boring Stuff</h4>
+                        <p>The essential guide for turning Python into your personal productivity assistant.</p>
+                    </a>
+                    <a href="https://www.amazon.com/Fluent-Python-Concise-Effective-Programming/dp/1492056359" target="_blank" class="affiliate-card">
+                        <span class="book-tag">PRO CHOICE</span>
+                        <i class="fas fa-book-open"></i>
+                        <h4>Fluent Python</h4>
+                        <p>Deep dive into encapsulation, decorators, and the true soul of the Python language.</p>
+                    </a>
+                </div>
+            </section>
+
+            <section class="section-card">
+                <h2>Full ATM Implementation (Python)</h2>
+<pre><code class="language-python">import sys
+
+class ATM:
+    def __init__(self, card_number: str, initial_balance: float = 0.0):
+        self._card_number = self._validate_card_number(card_number)
+        self._balance = float(initial_balance)
+        self._is_authenticated = False
+        self._attempts = 0
+        self._max_attempts = 3
+        self._correct_pin = "2468"
+
+    def _validate_card_number(self, card_number: str) -> str:
+        cleaned = ''.join(filter(str.isdigit, str(card_number)))
+        if len(cleaned) != 16:
+            raise ValueError("Card number must contain 16 digits.")
+        return cleaned
+
+    def authenticate(self) -> bool:
+        if self._is_authenticated: return True
+        while self._attempts < self._max_attempts:
+            pin = input(f"Enter PIN ({self._max_attempts - self._attempts} left): ").strip()
+            if pin == self._correct_pin:
+                self._is_authenticated = True
+                print("✓ Access Granted.")
+                return True
+            self._attempts += 1
+            print("✗ Invalid PIN.")
+        print("!!! CARD LOCKED !!!")
+        return False
+
+    def _get_amount(self, prompt: str) -> float:
+        while True:
+            try:
+                val = input(f"{prompt} (or 'c' to cancel): ").strip().lower()
+                if val == 'c': return None
+                amount = float(val.replace(',', ''))
+                if amount > 0: return amount
+                print("Amount must be positive.")
+            except ValueError:
+                print("Invalid numeric input.")
+
+    def check_balance(self):
+        if self._is_authenticated:
+            print(f"\n--- Current Balance: ₱{self._balance:,.2f} ---\n")
+
+    def deposit(self):
+        if not self._is_authenticated: return
+        amount = self._get_amount("Enter deposit amount")
+        if amount:
+            self._balance += amount
+            print(f"✓ Deposited ₱{amount:,.2f}")
+
+    def withdraw(self):
+        if not self._is_authenticated: return
+        amount = self._get_amount("Enter withdrawal amount")
+        if amount:
+            if amount <= self._balance:
+                self._balance -= amount
+                print(f"✓ Withdrew ₱{amount:,.2f}")
+            else:
+                print("✗ Insufficient funds.")
+
+def main():
+    my_atm = ATM("1234567890123456", 5000.0)
+    if not my_atm.authenticate():
+        sys.exit()
+    while True:
+        print("\n1. Balance | 2. Deposit | 3. Withdraw | 4. Exit")
+        choice = input("Select Option: ").strip()
+        if choice == "1": my_atm.check_balance()
+        elif choice == "2": my_atm.deposit()
+        elif choice == "3": my_atm.withdraw()
+        elif choice == "4": break
+    print("Thank you for using our service.")
+
+if __name__ == "__main__":
+    main()</code></pre>
+            </section>
+
+            <section class="section-card">
+                <h2>The Anatomy of the ATM Program: A Structural Breakdown</h2>
+                <div class="anatomy-step">
+                    <h4>1. The Blueprint (Class Initialization)</h4>
+                    <p>The `__init__` method sets up the initial state, using underscores to signal that the balance and card number are internal details not meant for direct external tampering.</p>
+                </div>
+                <div class="anatomy-step">
+                    <h4>2. The "Gatekeeper" (Authentication Logic)</h4>
+                    <p>Authentication logic ensures that the user is verified before any state-changing methods like `withdraw` can execute. This is a Boolean Gate.</p>
+                </div>
+                <div class="anatomy-step">
+                    <h4>3. Human-to-Machine Translation (Sanitization)</h4>
+                    <p>The `_get_amount` helper method ensures the program doesn't crash if a user enters a dollar sign or a typo, demonstrating robust error handling.</p>
+                </div>
+                <div class="anatomy-step">
+                    <h4>4. State Mutation (Controlled Updates)</h4>
+                    <p>The `withdraw` method includes a conditional check against the current balance to prevent the account from going into a negative state. This ensures data integrity.</p>
+                </div>
+                <div class="anatomy-step">
+                    <h4>5. The Application Controller (The Main Loop)</h4>
+                    <p>The `if __name__ == "__main__":` block ensures the code runs when executed as a script but remains importable as a module.</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="viral-share-container">
+                    <a href="#" class="viral-btn v-fb"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="viral-btn v-li"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="viral-btn v-ig"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="viral-btn v-x"><i class="fab fa-x-twitter"></i></a>
+                </div>
+                <div class="footer-logo mb-3">GLENN PANSENSOY</div>
+                <p class="text-dim">Bridging the gap between raw logic and human intuition. Specializing in Python architecture and secure systems design.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <p class="italic text-dim">"Code is not just instructions for machines; it is a legacy of logic left for the humans who follow us."</p>
+                <p class="text-dim mt-2 small">— 2026 Developer Manifesto</p>
+            </div>
+            <div class="col-md-4 text-end">
+                <h5 class="text-white mb-3">Legal & Support</h5>
+                <a href="privacy-policy.html" class="text-dim d-block mb-1">Privacy Policy</a>
+                <a href="terms-of-service.html" class="text-dim d-block">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<button id="ai-mentor-btn" onclick="toggleChat()"><i class="fas fa-robot"></i> AI Mentor</button>
+<div id="ai-chat-window">
+    <div class="chat-header">AI Coding Mentor</div>
+    <div class="chat-body">
+        Welcome! I am here to help you understand the core logic of this ATM script. Ask me anything about Classes or Encapsulation!
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script>
+    function toggleChat() {
+        const chat = document.getElementById('ai-chat-window');
+        chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
+    }
+</script>
+</body>
+</html>
