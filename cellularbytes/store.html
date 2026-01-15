@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4575646748966866"
+     crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PYTHON TUTORIAL | Vegetable Store Logic & Encapsulation</title>
+    
+    <meta property="og:title" content="Python Vegetable Store Tutorial">
+    <meta property="og:description" content="Master Encapsulation with Glenn Pansensoy.">
+
+    <meta name="description" content="Master Python Encapsulation and OOP logic. A deep-dive tutorial into the Vegetable Store architecture by Software Architect Glenn Pansensoy.">
+    <meta name="author" content="Glenn Pansensoy">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --midnight-blue: #0a192f;
+            --obsidian: #020c1b;
+            --obsidian-light: #112240;
+            --accent-blue: #3b82f6; 
+            --accent-light: #60a5fa;
+            --text-main: #ccd6f6;
+            --text-dim: #8892b0;
+            --border: #233554;
+            --code-bg: #011627;
+        }
+
+        body { font-family: 'Inter', sans-serif; line-height: 1.8; color: var(--text-main); background-color: var(--obsidian); margin: 0; padding: 0; overflow-x: hidden; }
+        .justify-text { text-align: justify; text-justify: inter-word; }
+
+        nav { background-color: rgba(10, 25, 47, 0.9); padding: 15px 40px; position: sticky; top: 0; z-index: 2000; border-bottom: 1px solid var(--border); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; }
+        nav a.brand { color: var(--accent-light); text-decoration: none; font-weight: 700; font-size: 1.1rem; font-family: 'Fira Code', monospace; }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-light); }
+        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; color: var(--accent-light); }
+
+        header { background: linear-gradient(180deg, var(--midnight-blue) 0%, var(--obsidian) 100%); padding: 6rem 1rem 4rem 1rem; text-align: center; }
+        header h1 { color: var(--accent-blue); font-size: clamp(2rem, 5vw, 3rem); margin: 0; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+        .intro-narrative { max-width: 850px; margin: 30px auto; color: var(--text-dim); font-size: 1.1rem; line-height: 1.9; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+        .code-block { background-color: var(--code-bg); color: #d6deeb; padding: 35px; border-radius: 12px; overflow-x: auto; font-family: 'Fira Code', monospace; border: 1px solid var(--border); margin-bottom: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+
+        .breakdown-title { color: var(--accent-light); margin-top: 60px; margin-bottom: 30px; border-left: 4px solid var(--accent-blue); padding-left: 20px; font-size: 1.8rem; }
+        .explanation-box { background: var(--obsidian-light); border: 1px solid var(--border); margin-bottom: 40px; border-radius: 12px; overflow: hidden; }
+        .insight-header { background: rgba(59, 130, 246, 0.08); padding: 20px 30px; font-weight: 700; color: var(--accent-light); font-family: 'Fira Code', monospace; border-bottom: 1px solid var(--border); }
+        .content-body { padding: 35px; }
+        .label-group { margin-bottom: 35px; }
+        .logic-label { color: var(--accent-light); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; display: block; margin-bottom: 15px; }
+        .text-section { color: var(--text-main); font-size: 1.05rem; line-height: 1.8; }
+
+        /* Resource Grid */
+        .resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin: 40px 0; }
+        .resource-card { background: var(--obsidian-light); border: 1px solid var(--border); border-radius: 12px; padding: 25px; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+        .resource-card:hover { transform: translateY(-5px); border-color: var(--accent-light); }
+        .buy-btn { display: inline-block; text-align: center; background: transparent; color: var(--accent-light); border: 1px solid var(--accent-light); padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; margin-top: 15px; }
+        .buy-btn:hover { background: var(--accent-light); color: var(--obsidian); }
+
+        /* AI & Social */
+        .share-container { display: flex; gap: 15px; justify-content: center; padding: 20px 0; }
+        .share-btn { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; border: 1px solid var(--border); font-size: 1.2rem; transition: 0.3s; }
+        .share-fb:hover { background: #3b5998; } .share-tw:hover { background: #1da1f2; } .share-li:hover { background: #0077b5; }
+
+        footer { padding: 80px 0 40px 0; background: linear-gradient(0deg, var(--obsidian) 0%, var(--midnight-blue) 100%); border-top: 1px solid var(--border); margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+        .footer-link { color: var(--text-dim); text-decoration: none; display: block; margin-bottom: 12px; transition: 0.3s; font-size: 0.9rem; }
+        .footer-link:hover { color: var(--accent-light); }
+
+        @media (max-width: 768px) { .nav-links { display: none; } .footer-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#" class="brand">GLENN PANSENSOY | DEV</a>
+    <div class="nav-links">
+        <a href="#code">Source</a>
+        <a href="#breakdown">Logic Breakdown</a>
+        <a href="#ai-tool">AI Lab</a>
+        <a href="#resources">Courses</a>
+    </div>
+</nav>
+
+<header>
+    <h1>The Vegetable Store</h1>
+    <div class="intro-narrative justify-text">
+        In this tutorial, we explore <b>Encapsulation</b> through the lens of a production-grade retail system. You will learn how to build self-contained objects that protect their own data, preventing the common state-management errors found in procedural code.
+    </div>
+</header>
+
+<div class="container">
+    <h2 id="code" class="breakdown-title">I. Complete Tutorial Source Code</h2>
+    <div class="code-block">
+<pre>
+class Vegetable:
+    def __init__(self, name, price_per_kilo, initial_stock):
+        self.name = name
+        self.price_per_kilo = price_per_kilo
+        self.stock = initial_stock 
+
+    def sell(self, quantity):
+        if quantity > self.stock:
+            raise ValueError(f"Insufficient stock for {self.name}. Available: {self.stock}kg")
+        self.stock -= quantity
+        return quantity * self.price_per_kilo
+
+    def get_info(self):
+        return f"{self.name:<12} | Price: ₱{self.price_per_kilo}/kg | Stock: {self.stock}kg"
+
+class VegetableStore:
+    def __init__(self):
+        self.inventory = {
+            "asparagus": Vegetable("Asparagus", 180, 100),
+            "broccoli": Vegetable("Broccoli", 230, 100),
+            "cabbage": Vegetable("Cabbage", 140, 100),
+            "garlic": Vegetable("Garlic", 190, 100),
+            "onion": Vegetable("Onion", 180, 100),
+            "tomatoes": Vegetable("Tomatoes", 160, 100),
+            "lettuce": Vegetable("Lettuce", 180, 100),
+            "cauliflower": Vegetable("Cauliflower", 220, 100),
+            "potatoes": Vegetable("Potatoes", 180, 100),
+            "carrots": Vegetable("Carrots", 150, 100)
+        }
+
+    def display_menu(self):
+        print("\n" + "="*45 + "\nGREENBYTES INVENTORY STATUS\n" + "="*45)
+        for veg in self.inventory.values():
+            print(veg.get_info())
+
+    def process_transaction(self, item_name, quantity):
+        name_key = item_name.lower()
+        if name_key not in self.inventory:
+            raise ValueError(f"'{item_name}' not found in database.")
+        return self.inventory[name_key].sell(quantity)
+
+def main():
+    store = VegetableStore()
+    while True:
+        store.display_menu()
+        choice = input("\nBuy (or 'exit'): ").strip()
+        if choice.lower() == 'exit': break
+        try:
+            qty = float(input("Quantity in kilos: "))
+            print(f"Total: ₱{store.process_transaction(choice, qty):,.2f}")
+        except ValueError as e:
+            print(f"Error: {e}")
+
+if __name__ == "__main__": main()
+</pre>
+    </div>
+
+    <div style="text-align: center; margin: 40px 0;">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4575646748966866"
+             data-ad-slot="6447477860"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <h2 id="breakdown" class="breakdown-title">II. Architectural Deep-Dive</h2>
+
+    <div class="explanation-box">
+        <div class="insight-header">1. The Blueprint (Class Vegetable)</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">State Management & Encapsulation</span>
+                <p class="text-section justify-text">
+                    At its core, the <code>Vegetable</code> class demonstrates true encapsulation — not just data hiding, but active protection of object invariants. The critical invariant here is <code>stock >= 0</code>. By making <code>self.stock</code> only modifiable through the <code>sell()</code> method, we prevent any external code from corrupting the object's state (e.g., setting negative stock). This is a foundational principle of "safe state" in professional software engineering. In large-scale systems, such encapsulation becomes the first line of defense against race conditions, invalid transactions, and data corruption.
+                </p>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Logical Validation Gates & Fail-Fast</span>
+                <p class="text-section justify-text">
+                    The guard clause <code>if quantity > self.stock</code> followed by <code>raise ValueError</code> is a deliberate application of the <b>Fail-Fast</b> principle. We detect and reject invalid operations as early as possible — inside the object that owns the data. Raising exceptions enforces business rules at the lowest possible level, making bugs easier to trace and preventing silent failures (e.g., negative inventory that propagates through the system). In production code, you might extend this with custom exceptions like <code>InsufficientStockError</code> to allow more granular error handling by calling code.
+                </p>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Path to Greater Robustness</span>
+                <p class="text-section justify-text">
+                    For even stronger encapsulation, consider making attributes private by convention (<code>_stock</code>) and exposing read-only access via <code>@property</code>. This pattern is widely used in libraries and frameworks to give controlled read access while completely protecting mutation paths.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="explanation-box">
+        <div class="insight-header">2. The Orchestrator (Class VegetableStore)</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Advanced Composition over Inheritance</span>
+                <p class="text-section justify-text">
+                    <code>VegetableStore</code> is built using <b>composition</b> — it owns and coordinates a collection of <code>Vegetable</code> objects rather than inheriting from them. This "has-a" relationship is far more flexible than "is-a" inheritance. The dictionary-based <code>self.inventory</code> provides O(1) average-case lookup time thanks to Python's hash table implementation — critical when scaling from 10 items to 10,000+ SKUs without performance degradation.
+                </p>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Separation of Concerns & Loose Coupling</span>
+                <p class="text-section justify-text">
+                    This class follows the <b>Single Responsibility Principle</b> and <b>Open-Closed Principle</b>. It knows how to manage the collection and delegate behavior, but has zero knowledge of <i>how</i> a vegetable computes price or updates stock. This clean separation means you can completely rewrite pricing logic, add discounts, taxes, or promotions inside <code>Vegetable</code> without ever touching <code>VegetableStore</code>. In real-world systems (e.g., e-commerce platforms), this kind of decoupling dramatically reduces maintenance cost and risk when requirements change.
+                </p>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">Repository-like Pattern</span>
+                <p class="text-section justify-text">
+                    The inventory dictionary acts as an in-memory repository. In production, this pattern is often replaced with database access (SQLite, PostgreSQL, Redis), but the interface remains the same — demonstrating how well-designed composition allows seamless evolution from prototype to enterprise system.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="explanation-box">
+        <div class="insight-header">3. Runtime & Safety (The Main Loop)</div>
+        <div class="content-body">
+            <div class="label-group">
+                <span class="logic-label">Graceful Error Handling & EAFP</span>
+                <p class="text-section justify-text">
+                    The <code>try...except ValueError</code> block embodies Python's "Easier to Ask Forgiveness than Permission" (EAFP) philosophy. Rather than pre-checking every possible input error, we let operations run and catch exceptions when they occur. This produces cleaner, more readable code and handles a wide range of failure modes (invalid numbers, insufficient stock, missing items) with minimal boilerplate. In contrast to "Look Before You Leap" (LBYL) approaches, EAFP is often more performant and maintainable.
+                </p>
+            </div>
+            <div class="label-group">
+                <span class="logic-label">User-Centric Design</span>
+                <p class="text-section justify-text">
+                    By catching errors early and presenting friendly messages instead of stack traces, the loop creates a forgiving, professional user experience — a hallmark of mature software. In web or mobile applications, this same pattern translates to proper HTTP error responses and user feedback instead of 500 Internal Server Errors.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <h2 id="ai-tool" class="breakdown-title">III. AI Viral Marketing Lab</h2>
+    <div class="explanation-box" style="border: 2px solid var(--accent-blue);">
+        <div class="content-body">
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <input type="text" id="veggieInput" placeholder="Vegetable name..." style="flex: 1; padding: 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--obsidian); color: white;">
+                <button onclick="generateViralHook()" style="background: var(--accent-blue); color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-weight: 700;">GENERATE HOOK</button>
+            </div>
+            <div id="ai-output" style="display: none; background: var(--code-bg); padding: 20px; border-radius: 10px; margin-top: 20px;">
+                <p id="hookResult" style="color: var(--accent-light); font-family: 'Fira Code'; margin: 0;"></p>
+            </div>
+            <div class="share-container">
+                <a href="#" class="share-btn share-fb"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="share-btn share-tw"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="share-btn share-li"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+    <h2 id="about-author" class="breakdown-title">IV. About the Architect</h2>
+    <div class="explanation-box" style="border-color: var(--accent-light);">
+        <div class="content-body">
+            <p class="text-section justify-text">
+                <b>Glenn Pansensoy</b> is a Software Logic Architect and Technical Educator dedicated to the art of clean, scalable code. With a specialized focus on Object-Oriented Programming (OOP) and system encapsulation, Glenn transforms complex programming concepts into practical, industry-standard applications.
+            </p>
+        </div>
+    </div>
+
+    <h2 id="resources" class="breakdown-title">V. Recommended Pro Learning</h2>
+    <div class="resource-grid">
+        <div class="resource-card">
+            <div>
+                <span style="color:var(--accent-light); font-size:0.7rem; font-weight:700; text-transform:uppercase;">Bestseller Book</span>
+                <h3 style="color:white; margin:10px 0;">Python Crash Course, 3rd Edition</h3>
+                <p style="color:var(--text-dim); font-size:0.9rem;">Hands-on introduction to Python & OOP — perfect follow-up to understand real projects like your Vegetable Store.</p>
+            </div>
+            <a href="https://www.amazon.com/Python-Crash-Course-3rd-Edition/dp/1718502702" class="buy-btn">Buy on Amazon</a>
+        </div>
+
+        <div class="resource-card">
+            <div>
+                <span style="color:var(--accent-light); font-size:0.7rem; font-weight:700; text-transform:uppercase;">Udemy #1 Bestseller</span>
+                <h3 style="color:white; margin:10px 0;">100 Days of Code: The Complete Python Pro Bootcamp</h3>
+                <p style="color:var(--text-dim); font-size:0.9rem;">Build 100 projects — master OOP, automation, web apps & more (by Dr. Angela Yu).</p>
+            </div>
+            <a href="https://www.udemy.com/course/100-days-of-code/" class="buy-btn">Enroll on Udemy</a>
+        </div>
+
+        <div class="resource-card">
+            <div>
+                <span style="color:var(--accent-light); font-size:0.7rem; font-weight:700; text-transform:uppercase;">Udemy Top Pick</span>
+                <h3 style="color:white; margin:10px 0;">Complete Python Developer in 2026: Zero to Mastery</h3>
+                <p style="color:var(--text-dim); font-size:0.9rem;">Zero to pro — includes OOP, projects, web dev, ML basics & career advice (by Andrei Neagoie).</p>
+            </div>
+            <a href="https://www.udemy.com/course/complete-python-developer-zero-to-mastery/" class="buy-btn">Enroll on Udemy</a>
+        </div>
+
+        <div class="resource-card">
+            <div>
+                <span style="color:var(--accent-light); font-size:0.7rem; font-weight:700; text-transform:uppercase;">Coursera Classic</span>
+                <h3 style="color:white; margin:10px 0;">Python for Everybody Specialization</h3>
+                <p style="color:var(--text-dim); font-size:0.9rem;">University of Michigan — beginner-friendly OOP, data structures & real apps (by Dr. Chuck).</p>
+            </div>
+            <a href="https://www.coursera.org/specializations/python" class="buy-btn">Enroll on Coursera</a>
+        </div>
+
+        <div class="resource-card">
+            <div>
+                <span style="color:var(--accent-light); font-size:0.7rem; font-weight:700; text-transform:uppercase;">Coursera Professional</span>
+                <h3 style="color:white; margin:10px 0;">Google IT Automation with Python Professional Certificate</h3>
+                <p style="color:var(--text-dim); font-size:0.9rem;">Google cert — automation, Git, troubleshooting & OOP in real DevOps workflows.</p>
+            </div>
+            <a href="https://www.coursera.org/professional-certificates/google-it-automation" class="buy-btn">Enroll on Coursera</a>
+        </div>
+
+        <div class="resource-card">
+            <div>
+                <span style="color:var(--accent-light); font-size:0.7rem; font-weight:700; text-transform:uppercase;">Udemy Practical</span>
+                <h3 style="color:white; margin:10px 0;">Python Mega Course: Build 20 Real-World Apps</h3>
+                <p style="color:var(--text-dim); font-size:0.9rem;">Project-heavy — build apps with Flask, Pandas, databases & more (great for OOP practice).</p>
+            </div>
+            <a href="https://www.udemy.com/course/the-python-mega-course/" class="buy-btn">Enroll on Udemy</a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container footer-grid">
+        <div>
+            <span class="footer-brand">GLENN PANSENSOY</span>
+            <p style="color: var(--text-dim); font-size: 0.85rem;">Software Logic Architect specializing in educational tech.</p>
+        </div>
+        <div>
+            <h4 style="color:white; font-size:0.9rem; text-transform:uppercase;">Legal</h4>
+            <a href="cellularbytes/privacy.html" class="footer-link">Privacy Policy</a>
+            <a href="cellularbytes/terms.html" class="footer-link">Terms of Service</a>
+        </div>
+        <div>
+            <h4 style="color:white; font-size:0.9rem; text-transform:uppercase;">Contact</h4>
+            <a href="mailto:pansensoyglenn@gmail.com" class="footer-link">pansensoyglenn@gmail.com</a>
+        </div>
+    </div>
+    <div class="container" style="text-align:center; margin-top:40px; border-top:1px solid var(--border); padding-top:20px;">
+        <div style="color:var(--text-dim); font-size:0.75rem;">
+            © 2026 Glenn Pansensoy. As an Amazon, Udemy, and Coursera Associate, I earn from qualifying purchases.
+        </div>
+    </div>
+</footer>
+
+<script>
+    function generateViralHook() {
+        const input = document.getElementById('veggieInput').value.trim();
+        if (input === "") return;
+        document.getElementById('hookResult').innerText = `"Stop writing messy code. Learn how to encapsulate your health with our new ${input} class implementation. 🥦💻 #PythonOOP #CleanCode #PansensoyLogic"`;
+        document.getElementById('ai-output').style.display = "block";
+    }
+</script>
+</body>
+</html>
