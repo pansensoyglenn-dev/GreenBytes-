@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Architect | Glenn Pansensoy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --obsidian: #020617;
+            --midnight: #0f172a;
+            --accent: #00d4ff;
+            --text-gray: #94a3b8;
+        }
+        body { 
+            background-color: var(--obsidian); 
+            color: #ffffff; 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        .hero-section {
+            padding: 100px 0 60px;
+            background: radial-gradient(circle at top right, rgba(0, 212, 255, 0.05), transparent);
+        }
+        .profile-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 32px;
+            padding: 50px;
+            backdrop-filter: blur(15px);
+        }
+        .accent-text { color: var(--accent); font-weight: 700; }
+        h1 { font-family: 'Cinzel', serif; font-size: 3rem; margin-bottom: 1.5rem; }
+        .stat-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+        .lead { color: var(--text-gray); font-size: 1.25rem; }
+        .back-link { 
+            text-decoration: none; 
+            color: var(--accent); 
+            font-size: 0.9rem; 
+            letter-spacing: 1px; 
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container hero-section">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <a href="../index.html" class="back-link mb-4 d-inline-block"><i class="fas fa-arrow-left me-2"></i> Back to Curriculum</a>
+                
+                <div class="profile-card shadow-2xl">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h1 class="display-4">Glenn <span class="accent-text">Pansensoy</span></h1>
+                            <p class="lead">Software Architect & Python Specialist</p>
+                            <p class="mt-4" style="color: var(--text-gray);">
+                                With over a decade of experience navigating the evolution of backend systems, I have dedicated my career to the pursuit of <strong>clean architecture</strong>. 
+                                In an era dominated by rapid AI deployment, I believe the fundamental principles of Object-Oriented Programming are more critical than ever.
+                            </p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="rounded-circle mx-auto mb-3" style="width: 200px; height: 200px; background: linear-gradient(45deg, var(--midnight), var(--accent)); display: flex; align-items: center; justify-content: center; border: 4px solid rgba(255,255,255,0.1);">
+                                <i class="fas fa-user-tie fa-5x text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-4 mt-5">
+                        <div class="col-md-4">
+                            <div class="stat-box">
+                                <h3 class="accent-text">10+</h3>
+                                <p class="small mb-0 text-uppercase opacity-75">Years Experience</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-box">
+                                <h3 class="accent-text">50+</h3>
+                                <p class="small mb-0 text-uppercase opacity-75">Systems Optimized</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="stat-box">
+                                <h3 class="accent-text">∞</h3>
+                                <p class="small mb-0 text-uppercase opacity-75">Passion for Logic</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 pt-4 border-top border-secondary border-opacity-25">
+                        <h3 class="mb-4">My Philosophy</h3>
+                        <p style="color: var(--text-gray);">
+                            I don't just teach code; I teach <strong>mental models</strong>. My approach to Python is rooted in the "Art of the Object"—the belief that software should be as intuitive and resilient as the real-world systems it represents. 
+                            By focusing on encapsulation and modularity, I help developers build codebases that don't just work today, but scale into the 2030s.
+                        </p>
+                    </div>
+
+                    <div class="mt-5">
+                        <h4 class="accent-text mb-3">Core Expertise</h4>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-dark border border-info p-2 px-3">Advanced Python OOP</span>
+                            <span class="badge bg-dark border border-info p-2 px-3">System Design Architecture</span>
+                            <span class="badge bg-dark border border-info p-2 px-3">AI Integration Patterns</span>
+                            <span class="badge bg-dark border border-info p-2 px-3">High-Performance CPython</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-5 text-center">
+        <p class="small opacity-50">© 2026 Glenn Pansensoy. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
