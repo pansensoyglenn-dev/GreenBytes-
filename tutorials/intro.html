@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4575646748966866" crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 1: The Architectural Shift | Python OOP Mastery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --obsidian: #020617;
+            --midnight: #0f172a;
+            --accent: #00d4ff;
+            --text-gray: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
+        body { 
+            background-color: var(--obsidian); 
+            color: #ffffff; 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ELEGANT NAVIGATION */
+        .navbar {
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1rem 0;
+        }
+        .navbar-brand {
+            font-weight: 800;
+            color: var(--accent) !important;
+            font-size: 1.25rem;
+        }
+
+        /* RESPONSIVE CONTAINER */
+        .container-module {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: clamp(20px, 5vw, 50px);
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 40px;
+        }
+
+        /* GRID FIX: Prevention of Overlap */
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .analysis-item {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            padding: 35px;
+            border-radius: 24px;
+            height: 100%; /* Ensures uniform height without cutting off content */
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .analysis-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            background: rgba(15, 23, 42, 0.6);
+        }
+
+        /* PILLARS LAYOUT */
+        .pillar-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .pillar-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .code-block {
+            background: #010409;
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            font-family: 'Fira Code', monospace;
+            overflow-x: auto; /* Prevents code from breaking the container on mobile */
+        }
+
+        .next-btn {
+            background: var(--accent);
+            color: var(--obsidian);
+            font-weight: 800;
+            padding: 14px 35px;
+            border-radius: 14px;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s ease;
+        }
+
+        .next-btn:hover { background: #fff; box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); }
+
+        /* FOOTER DECOR */
+        footer a { transition: 0.3s; }
+        footer a:hover { color: var(--accent) !important; }
+
+        @media (max-width: 768px) {
+            .container-module { margin: 20px; border-radius: 24px; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fab fa-python me-2"></i>PYTHON TUTORIAL</a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <i class="fas fa-bars text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto text-center py-3 py-lg-0">
+                    <li class="nav-item"><a class="nav-link px-3" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="intro.html">Architectural Shift</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="objects.html">Classes</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-module">
+        <header class="mb-5">
+            <h1 class="display-5 fw-bolder mb-3 text-center text-lg-start">The Architectural Shift</h1>
+            <p class="lead text-gray text-center text-lg-start">The essence of OOP in the era of huge data and non-deterministic AI.</p>
+        </header>
+
+        <div class="analysis-grid">
+            <div class="analysis-item">
+                <h3 class="h4 mb-3"><i class="fas fa-microchip me-2"></i> Huge Data Scaling</h3>
+                <p class="small text-gray mb-0">Procedural logic collapses under the weight of petabyte-scale data streams. OOP provides the containment required to prevent "data bleed"—ensuring that massive state changes remain isolated and predictable.</p>
+            </div>
+            <div class="analysis-item">
+                <h3 class="h4 mb-3"><i class="fas fa-brain me-2"></i> AI Determinism</h3>
+                <p class="small text-gray mb-0">In 2026, AI agents generate logic on the fly. OOP classes act as the "Laws of Physics" for these agents, defining strict boundaries that even the most advanced LLMs cannot bypass during execution.</p>
+            </div>
+        </div>
+
+        
+
+        <h2 class="h5 fw-bold mb-4 text-center mt-5">Core Design Pillars</h2>
+        <div class="pillar-row text-center">
+            <div class="pillar-card"><h6 class="text-info mb-1">Encapsulation</h6><span class="x-small opacity-50">Data Security</span></div>
+            <div class="pillar-card"><h6 class="text-info mb-1">Abstraction</h6><span class="x-small opacity-50">Interface Focus</span></div>
+            <div class="pillar-card"><h6 class="text-info mb-1">Inheritance</h6><span class="x-small opacity-50">Code Reuse</span></div>
+            <div class="pillar-card"><h6 class="text-info mb-1">Polymorphism</h6><span class="x-small opacity-50">Dynamic Logic</span></div>
+        </div>
+
+        [attachment_0](attachment)
+
+        <section class="mt-5">
+            <h2 class="h4 mb-4">The Blueprint Logic</h2>
+            <div class="code-block">
+<pre style="color: #e6edf3; margin: 0;">
+<span style="color: #ff7b72;">class</span> <span style="color: #d2a8ff;">SmartEngine</span>:
+    <span style="color: #8b949e;"># Pre-allocate memory for performance</span>
+    __slots__ = (<span style="color: #a5d6ff;">'uuid'</span>, <span style="color: #a5d6ff;">'telemetry'</span>) 
+
+    <span style="color: #ff7b72;">def</span> <span style="color: #d2a8ff;">__init__</span>(<span style="color: #ffa657;">self</span>, uuid):
+        <span style="color: #ffa657;">self</span>.uuid = uuid
+        <span style="color: #ffa657;">self</span>.telemetry = []</pre>
+            </div>
+        </section>
+
+        <div class="text-center text-lg-end mt-5">
+            <a href="objects.html" class="next-btn">Module 2: Objects & Memory →</a>
+        </div>
+    </div>
+
+    <footer class="mt-5 py-5 border-top border-secondary border-opacity-10 bg-black">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-5">
+                    <h5 class="text-white fw-bold mb-3">PYTHON TUTORIAL</h5>
+                    <p class="small text-gray">Deep architectural insights for modern developers. Master the logic that powers the world's most scalable systems.</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="text-white fw-bold mb-3">Governance</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="privacy.html" class="text-gray text-decoration-none">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="terms.html" class="text-gray text-decoration-none">Terms of Service</a></li>
+                        <li class="mb-2"><a href="contact.html" class="text-gray text-decoration-none">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="text-white fw-bold mb-3">Legal Notice</h6>
+                    <p class="x-small text-gray">This site uses cookies and third-party tracking to optimize user experience and provide relevant advertising through Google AdSense.</p>
+                </div>
+            </div>
+            <div class="text-center pt-5">
+                <p class="x-small text-gray mb-0">&copy; 2026 Glenn Pansensoy. All designs and content are original works.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
