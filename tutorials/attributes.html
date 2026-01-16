@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4575646748966866" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2: Attributes | Python Tutorial</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --obsidian: #020617;
+            --accent: #00d4ff;
+            --text-gray: #94a3b8;
+            --code-bg: #0d1117;
+        }
+
+        body { 
+            background-color: var(--obsidian); 
+            color: #ffffff; 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(2, 6, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .main-wrapper {
+            flex: 1 0 auto;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .content-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            padding: clamp(20px, 5vw, 50px);
+        }
+
+        .significance-banner {
+            border-left: 4px solid var(--accent);
+            background: rgba(0, 212, 255, 0.05);
+            padding: 25px;
+            border-radius: 0 16px 16px 0;
+            margin: 30px 0;
+        }
+
+        .code-block {
+            background: var(--code-bg);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            font-family: 'Fira Code', monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .pitfall-box {
+            background: rgba(0, 212, 255, 0.08); 
+            border: 2px solid var(--accent); 
+            border-radius: 20px; 
+            padding: 30px; 
+            margin: 40px 0;
+        }
+
+        .insight-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .pro-tip {
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            background: #010409;
+            padding: 50px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        h2, h3 { margin-top: 40px; font-weight: 700; }
+        .text-info { color: var(--accent) !important; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-info" href="../index.html">PYTHON TUTORIAL</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+                <i class="fas fa-bars text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navContent">
+                <ul class="navbar-nav ms-auto text-center">
+                    <li class="nav-item"><a class="nav-link text-white" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-info" href="classes.html">Module 2</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-wrapper">
+        <article class="content-card">
+            <header class="text-center mb-5">
+                <span class="badge rounded-pill bg-info text-dark mb-2">Core Concepts</span>
+                <h1 class="display-5 fw-bold">Mastering Attributes</h1>
+                <p class="text-gray lead">Architecting data persistence in Python Objects.</p>
+            </header>
+
+            <section class="significance-banner">
+                <h2 class="h5 text-info mt-0">The Architectural Significance</h2>
+                <p class="small mb-0">In modern software engineering, efficiency is driven by state management. Attributes are the <strong>Internal State</strong> of your system. Mismanaging them leads to "Shadowing" and "Race Conditions" in asynchronous Python applications.</p>
+            </section>
+
+            <h2>1. Instance Attributes: The Individual State</h2>
+            <p>Instance attributes are owned by a specific object. They are defined inside the <code>__init__</code> method using the <code>self</code> keyword. This ensures that every object created from a class can hold unique values, isolated from other instances.</p>
+            
+            <div class="code-block">
+<pre style="color: #e6edf3;">
+<span style="color: #ff7b72;">class</span> <span style="color: #d2a8ff;">User</span>:
+    <span style="color: #ff7b72;">def</span> <span style="color: #d2a8ff;">__init__</span>(<span style="color: #ffa657;">self</span>, username, access_level):
+        <span style="color: #ffa657;">self</span>.username = username  <span style="color: #8b949e;"># Instance Attribute</span>
+        <span style="color: #ffa657;">self</span>.access_level = access_level
+
+user1 = User(<span style="color: #a5d6ff;">"Alice"</span>, <span style="color: #a5d6ff;">"Admin"</span>)
+user2 = User(<span style="color: #a5d6ff;">"Bob"</span>, <span style="color: #a5d6ff;">"Guest"</span>)</pre>
+            </div>
+
+            
+
+            <h2>2. Class Attributes: The Shared Metadata</h2>
+            <p>Class attributes are defined directly inside the class body. They are shared by <strong>all</strong> instances of the class. If you change a class attribute, every existing and future instance sees that change simultaneously because they all point to the same memory location for that attribute.</p>
+            
+            <div class="insight-box">
+                <span class="pro-tip">Use Case</span>
+                <p class="mb-0">Class attributes are ideal for constants (like PI), shared configuration settings, or counters that track how many objects have been instantiated across the entire application lifetime.</p>
+            </div>
+
+            <h2>3. The Resolution Order (Namespace Lookup)</h2>
+            <p>When you call <code>object.attribute</code>, Python follows a strict lookup hierarchy known as the namespace resolution order:</p>
+            <ol class="text-gray">
+                <li>Search the <strong>Instance Namespace</strong> (attributes unique to that specific object).</li>
+                <li>Search the <strong>Class Namespace</strong> (attributes shared by all instances of that class).</li>
+                <li>Search the <strong>Parent Classes</strong> (following the Method Resolution Order or MRO if inheritance is used).</li>
+            </ol>
+
+            
+
+            <div class="pitfall-box">
+                <h4 style="color: var(--accent); font-weight: 800; display: flex; align-items: center;">
+                    <i class="fas fa-exclamation-triangle me-3"></i> COMMON PITFALL: Mutable Class Attributes
+                </h4>
+                <p class="mt-3">A common mistake is using mutable types (like lists or dictionaries) as class attributes. Because these are shared in memory, an update from one instance leaks into all others, leading to difficult-to-trace bugs.</p>
+                
+                <div class="code-block" style="background: rgba(2, 6, 23, 0.6);">
+<pre style="color: #e6edf3; margin: 0;">
+<span style="color: #ff7b72;">class</span> <span style="color: #d2a8ff;">Database</span>:
+    logs = [] <span style="color: #8b949e;"># DANGEROUS: Shared across all instances</span>
+
+db1 = Database()
+db1.logs.append(<span style="color: #a5d6ff;">"Connection Error"</span>)
+
+db2 = Database()
+<span style="color: #ff7b72;">print</span>(db2.logs) <span style="color: #8b949e;"># Output: ["Connection Error"] - Unexpected sharing!</span></pre>
+                </div>
+                <p class="small mb-0 text-info"><strong>Pro Solution:</strong> Always initialize mutable attributes inside <code>__init__</code> to ensure each object gets its own private memory space.</p>
+            </div>
+
+            <div class="ad-container text-center my-5">
+                <span class="x-small text-gray d-block mb-2">SPONSORED CONTENT</span>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-4575646748966866"
+                     data-ad-slot="6447477860"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <div class="d-flex justify-content-between mt-5">
+                <a href="classes.html" class="btn btn-outline-secondary px-4 rounded-pill">← Back</a>
+                <a href="encapsulation.html" class="btn btn-info px-4 py-2 rounded-pill fw-bold text-dark">Next: Encapsulation →</a>
+            </div>
+        </article>
+    </div>
+
+    <footer class="mt-auto">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-6">
+                    <h5 class="text-white fw-bold mb-3">PYTHON TUTORIAL</h5>
+                    <p class="small text-gray">Deep-dive technical guides for the modern software architect. We focus on clarity, memory management, and clean code principles.</p>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="text-white fw-bold mb-3">Syllabus</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="intro.html" class="footer-link">Paradigm Shift</a></li>
+                        <li><a href="classes.html" class="footer-link">Attributes & State</a></li>
+                        <li><a href="encapsulation.html" class="footer-link">Encapsulation</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="text-white fw-bold mb-3">Governance</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="../privacy.html" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="../terms.html" class="footer-link">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary border-opacity-10">
+            <div class="text-center">
+                <p class="x-small text-gray mb-0">&copy; 2026 Glenn Pansensoy. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
