@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Python OOP: Vegetable Store Logic | Glenn Pansensoy</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <style>
+        :root {
+            --obsidian-dark: #0f172a;
+            --obsidian-card: #1e293b;
+            --accent-blue: #38bdf8;
+            --text-main: #ffffff;
+            --text-dim: #cbd5e1;
+            --footer-bg: #020617;
+            --terminal-bg: #000000;
+        }
+
+        body { font-family: 'Inter', sans-serif; background-color: var(--obsidian-dark); color: var(--text-main); line-height: 1.6; }
+        
+        /* Justify all text as requested */
+        p, ul, li, section, div { text-align: justify; }
+
+        .navbar { background-color: #020617 !important; border-bottom: 1px solid #1e293b; padding: 1rem 0; }
+        .navbar-brand { font-family: 'Cinzel', serif; color: var(--accent-blue) !important; font-weight: bold; letter-spacing: 1px; }
+
+        .hero-section { background: #0f172a; padding: 80px 0; border-bottom: 1px solid #334155; }
+        .hero-section h1 { font-family: 'Cinzel', serif; color: var(--accent-blue); font-weight: 700; }
+
+        /* Hub Button Styling */
+        .hub-btn {
+            display: inline-block;
+            color: var(--accent-blue);
+            text-decoration: none;
+            border: 1px solid var(--accent-blue);
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+        .hub-btn:hover {
+            background: var(--accent-blue);
+            color: #000;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+
+        .section-card { 
+            background: var(--obsidian-card); 
+            border-radius: 4px; 
+            padding: 40px; 
+            margin-bottom: 30px; 
+            border: 1px solid #334155;
+        }
+        
+        h2 { color: var(--accent-blue); font-family: 'Cinzel', serif; border-bottom: 2px solid var(--accent-blue); display: inline-block; padding-bottom: 5px; margin-bottom: 25px; text-align: left;}
+        h4 { color: var(--accent-blue); margin-top: 25px; font-weight: 600; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; text-align: left;}
+        
+        .logic-label { color: var(--accent-blue); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1.5px; margin-bottom: 10px; display: block; border-left: 3px solid var(--accent-blue); padding-left: 10px; text-align: left; }
+
+        .code-container { position: relative; margin: 20px 0; text-align: left; }
+        .code-header { background: #334155; color: var(--accent-blue); padding: 5px 15px; font-size: 0.75rem; font-weight: bold; border-radius: 4px 4px 0 0; display: inline-block; }
+
+        .terminal-window { background: var(--terminal-bg); border-radius: 6px; border: 1px solid #475569; overflow: hidden; box-shadow: 0 15px 30px rgba(0,0,0,0.5); margin-top: 20px; text-align: left; }
+        .terminal-header { background: #334155; padding: 10px 15px; display: flex; align-items: center; justify-content: space-between; }
+        .terminal-body { padding: 20px; font-family: 'Fira Code', monospace; font-size: 0.85rem; color: #4ade80; height: 320px; overflow-y: auto; white-space: pre-wrap; text-align: left; }
+
+        .run-btn { background: var(--accent-blue); color: #000; border: none; padding: 12px 30px; font-weight: bold; border-radius: 4px; transition: 0.3s; cursor: pointer; text-transform: uppercase; font-size: 0.85rem; }
+
+        footer { background: var(--footer-bg); padding: 80px 0 30px; border-top: 1px solid #1e293b; margin-top: 80px; }
+        .footer-heading { color: var(--accent-blue); font-family: 'Cinzel', serif; font-size: 1.1rem; margin-bottom: 25px; text-align: left; }
+        .footer-link { color: var(--text-dim); text-decoration: none; transition: 0.3s; font-size: 0.9rem; display: block; margin-bottom: 12px; text-align: left; }
+        .footer-text { color: var(--text-dim); font-size: 0.9rem; line-height: 1.8; text-align: left; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">PYTHON TUTORIAL</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="#code">Code</a></li>
+                <li class="nav-item"><a class="nav-link" href="#analysis">Analysis</a></li>
+                <li class="nav-item"><a class="nav-link" href="#advanced">Advanced</a></li>
+                <li class="nav-item"><a class="nav-link" href="#simulation">Simulation</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-4">Mastering Python OOP</h1>
+        <p class="lead text-dim">Encapsulation, Composition, and Object-Oriented Integrity.</p>
+    </div>
+</header>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            
+            <a href="encapsulation-hub.html" class="hub-btn">
+                <i class="fas fa-th-large me-2"></i> Return to Encapsulation Hub
+            </a>
+
+            <section class="section-card" id="overview">
+                <h2>Architectural Overview & Core Principles</h2>
+                <p>This Python script models a simple yet elegant vegetable store inventory system using <strong>Object-Oriented Programming (OOP)</strong> principles. It demonstrates encapsulation (bundling data and methods within classes to protect internal state), composition (a store object "owns" multiple vegetable objects), and error handling to ensure data integrity.</p>
+                <p>At its core, the code promotes modular, maintainable design: The <code>Vegetable</code> class handles individual item logic, the <code>VegetableStore</code> class manages the collection, and the <code>main()</code> function orchestrates user interaction. This separation follows the <strong>Single Responsibility Principle (SRP)</strong>.</p>
+            </section>
+
+            <section class="section-card" id="code">
+                <h2>Complete Implementation</h2>
+                <div class="code-container">
+                    <div class="code-header">VEGETABLE_STORE.PY</div>
+<pre><code class="language-python">class Vegetable:
+    def __init__(self, name, price_per_kilo, initial_stock):
+        self.name = name
+        self.price_per_kilo = price_per_kilo
+        self.stock = initial_stock 
+
+    def sell(self, quantity):
+        if quantity > self.stock:
+            raise ValueError(f"Insufficient stock for {self.name}. Available: {self.stock}kg")
+        self.stock -= quantity
+        return quantity * self.price_per_kilo
+
+    def get_info(self):
+        return f"{self.name:<12} | Price: ₱{self.price_per_kilo}/kg | Stock: {self.stock}kg"
+
+class VegetableStore:
+    def __init__(self):
+        self.inventory = {
+            "asparagus": Vegetable("Asparagus", 180, 100),
+            "broccoli": Vegetable("Broccoli", 230, 100),
+            "cabbage": Vegetable("Cabbage", 140, 100),
+            "garlic": Vegetable("Garlic", 190, 100),
+            "onion": Vegetable("Onion", 180, 100),
+            "tomatoes": Vegetable("Tomatoes", 160, 100),
+            "lettuce": Vegetable("Lettuce", 180, 100),
+            "cauliflower": Vegetable("Cauliflower", 220, 100),
+            "potatoes": Vegetable("Potatoes", 180, 100),
+            "carrots": Vegetable("Carrots", 150, 100)
+        }
+
+    def display_menu(self):
+        print("\n" + "="*45 + "\nGREENBYTES INVENTORY STATUS\n" + "="*45)
+        for veg in self.inventory.values():
+            print(veg.get_info())
+
+    def process_transaction(self, item_name, quantity):
+        name_key = item_name.lower()
+        if name_key not in self.inventory:
+            raise ValueError(f"'{item_name}' not found in database.")
+        return self.inventory[name_key].sell(quantity)
+
+def main():
+    store = VegetableStore()
+    while True:
+        store.display_menu()
+        choice = input("\nBuy (or 'exit'): ").strip()
+        if choice.lower() == 'exit': break
+        try:
+            qty = float(input("Quantity in kilos: "))
+            print(f"Total: ₱{store.process_transaction(choice, qty):,.2f}")
+        except ValueError as e:
+            print(f"Error: {e}")
+
+if __name__ == "__main__": main()</code></pre>
+                </div>
+            </section>
+
+            <section class="section-card" id="analysis">
+                <h2>Analysis: The Vegetable Class</h2>
+                
+                <h4>1. The Constructor Logic</h4>
+                <p><span class="logic-label">Step-by-Step Explanation</span> <code>class Vegetable:</code> defines the blueprint. The <code>__init__</code> method is called automatically during instantiation. It captures the name, price per kilo, and initial stock, assigning them to instance variables using <code>self</code>.</p>
+                <p><span class="logic-label">Significance</span> This constructor is the foundation of encapsulation in OOP. By bundling attributes (data) with the object, it ensures each vegetable maintains its own state independently. In real-world systems, this prevents global variables from causing conflicts.</p>
+                <p><span class="logic-label">Logical Analysis</span> Logically, this setup assumes positive numeric inputs for price and stock. The use of <code>self</code> binds data to the instance, enabling object-specific mutations without affecting others.</p>
+
+                <h4>2. The Sell Method Logic</h4>
+                <p><span class="logic-label">Step-by-Step Explanation</span> Defines a method to handle selling a given quantity. It first checks if the requested quantity exceeds available stock. If true, it raises a <code>ValueError</code>. Otherwise, it subtracts from stock and returns the total cost.</p>
+                <p><span class="logic-label">Significance</span> This method exemplifies data integrity through controlled mutation—stock can only decrease via this gatekeeper, preventing invalid states.</p>
+                <p><span class="logic-label">Logical Analysis</span> The logic follows a "guard clause" pattern: Early exit on invalid input via exception. This is efficient ($O(1)$ time) and enforces a business invariant: "Stock must always reflect reality."</p>
+            </section>
+
+            <section class="section-card">
+                <h2>Analysis: The VegetableStore Class</h2>
+                <h4>Inventory Composition Logic</h4>
+                <p><span class="logic-label">Step-by-Step Explanation</span> The <code>VegetableStore</code> initializes a dictionary where keys are lowercase names (for case-insensitive lookup) and values are <code>Vegetable</code> objects instantiated with 100kg each.</p>
+                <p><span class="logic-label">Significance</span> This showcases composition over inheritance: The store "has-a" collection of vegetables. In scalable apps, dictionaries enable fast lookups (average $O(1)$ access).</p>
+                <p><span class="logic-label">Logical Analysis</span> The dict uses lowercase keys for normalization, enabling flexible user input. Logically, it's a hash map, providing immediate access to object behaviors based on a string name.</p>
+            </section>
+
+            <section class="section-card" id="advanced">
+                <h2>Memory Management & Identity</h2>
+                
+                <p>In Python, every instantiated object has a unique identity. This is crucial for tracking individual stock items in our store.</p>
+                <p><span class="logic-label">Logical Analysis</span> When we create the <code>inventory</code> dictionary, each value is a reference to a unique memory address. Using <code>id(object)</code>, we can prove that 'Asparagus' and 'Broccoli' are distinct entities even if they share the same price or stock values.</p>
+                <p><span class="logic-label">Significance</span> Understanding object references prevents "aliasing" bugs where changing one item accidentally modifies another. Our architecture ensures complete <strong>Object Isolation</strong>.</p>
+            </section>
+
+            <section class="section-card">
+                <h2>Scalability: From Dict to Database</h2>
+                
+                <p>While a dictionary is perfect for a local POS, a production system would require a <strong>Data Access Layer (DAL)</strong>.</p>
+                <p><span class="logic-label">Step-by-Step Explanation</span> To scale this system, we would replace the <code>self.inventory</code> dictionary with an SQL connection. The <code>Vegetable</code> class would remain the same (the Model), but the <code>VegetableStore</code> would act as a Controller fetching data from a persistent storage unit.</p>
+                <p><span class="logic-label">Significance</span> This highlights <strong>Decoupling</strong>. Because our logic is encapsulated in methods like <code>sell()</code>, we can change the storage medium (SQL, NoSQL, or CSV) without breaking the user interaction loop.</p>
+            </section>
+
+            <section class="section-card">
+                <h2>Coding Standards & PEP 8</h2>
+                <p>Professional code isn't just about working logic; it's about readability and standards.</p>
+                <ul class="text-dim">
+                    <li><strong>Type Hinting:</strong> We can improve the code by using <code>sell(self, quantity: float) -> float:</code> to define expected data types.</li>
+                    <li><strong>Docstrings:</strong> Adding triple-quote comments <code>""" """</code> inside methods allows auto-documentation tools to generate manuals for our store system.</li>
+                    <li><strong>Naming Conventions:</strong> We use <code>CamelCase</code> for Classes and <code>snake_case</code> for methods, following the official Python Style Guide.</li>
+                </ul>
+            </section>
+
+            <section class="section-card">
+                <h2>The main() Function Orchestration</h2>
+                <p><span class="logic-label">Step-by-Step Explanation</span> The <code>main()</code> function creates a store instance and enters a loop. It prompts for a choice, handles the "exit" command, and uses a <code>try...except</code> block to catch errors from conversion or transaction logic.</p>
+                <p><span class="logic-label">Significance</span> This orchestrates the app, separating logic from execution. The loop mimics real POS systems, and error handling ensures robustness so users aren't crashed out on bad input.</p>
+                <p><span class="logic-label">Logical Analysis</span> This is a finite state machine: Display → Input → Process → Repeat. Try-except localizes errors to transactions, allowing continuation. Formatting (<code>,:2f</code>) enhances the user experience.</p>
+            </section>
+
+            <section class="section-card" id="simulation">
+                <h2>Execution Simulation</h2>
+                <button class="run-btn" onclick="simulateStore()"><i class="fas fa-play me-2"></i> Launch POS</button>
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                        <span class="small text-secondary fw-bold">vegetable_store.py</span>
+                    </div>
+                    <div class="terminal-body" id="terminal-output">> Ready for execution...</div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <h5 class="footer-heading">About the Architect</h5>
+                <p class="footer-text">Glenn Pansensoy is a software architect specializing in technical pedagogy. This platform focuses on bridging the gap between basic syntax and professional-grade system design.</p>
+            </div>
+            <div class="col-lg-3 mb-4 ps-lg-5">
+                <h5 class="footer-heading">Contact</h5>
+                <a href="mailto:pansensoyglenn@gmail.com" class="footer-link"><i class="fas fa-envelope me-2"></i> pansensoyglenn@gmail.com</a>
+                <p class="footer-text mt-2 small"><i class="fas fa-map-marker-alt me-2"></i> Zamboanga Peninsula, PH</p>
+            </div>
+            <div class="col-lg-3 mb-4">
+                <h5 class="footer-heading">Legal</h5>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Cookie Policy</a>
+            </div>
+            <div class="col-lg-2 mb-4">
+                <h5 class="footer-heading">Quick Links</h5>
+                <a href="#" class="footer-link">GitHub</a>
+                <a href="#" class="footer-link">Tutorials</a>
+            </div>
+        </div>
+        <hr class="border-secondary mt-5 mb-4">
+        <div class="text-center">
+            <p class="text-dim small mb-0">© 2026 Glenn Pansensoy. All Rights Reserved. Built with Logic and Precision.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    async function simulateStore() {
+        const out = document.getElementById('terminal-output');
+        out.innerHTML = "> python3 vegetable_store.py<br>";
+        const lines = [
+            "GREENBYTES INVENTORY STATUS",
+            "=============================================",
+            "Asparagus    | Price: ₱180.00 | Stock: 100kg",
+            "Broccoli     | Price: ₱230.00 | Stock: 100kg",
+            "\nBuy (or 'exit'): <span style='color:#fff'>broccoli</span>",
+            "Quantity in kilos: <span style='color:#fff'>5</span>",
+            "<span style='color:#4ade80'>✓ Total: ₱1,150.00</span>",
+            "\nBuy (or 'exit'): <span style='color:#fff'>exit</span>",
+            "Session Closed."
+        ];
+        for (let line of lines) {
+            await new Promise(r => setTimeout(r, 600));
+            out.innerHTML += line + "<br>";
+            out.scrollTop = out.scrollHeight;
+        }
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</body>
+</html>
