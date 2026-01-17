@@ -1,0 +1,9 @@
+# Robots.txt for GreenBytes
+User-agent: *
+Allow: /
+
+# Direct bots to your Sitemap
+Sitemap: https://pansensoyglenn-dev.github.io/GreenBytes/sitemap.xml
+
+# Prevent bots from indexing private or technical folders if you add them later
+# Disallow: /private/
