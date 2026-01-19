@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://pansensoyglenn-dev/GreenBytes/index.html</loc>
+    <lastmod>2026-01-19</lastmod>
+    <priority>1.00</priority>
+  </url>
+
+  <url><loc>https://pansensoyglenn-dev/GreenBytes/abstract/payment.html</loc><priority>0.90</priority></url>
+  <url><loc>https://pansensoyglenn-dev/GreenBytes/abstract/E-commerce.html</loc><priority>0.80</priority></url>
+  <url><loc>https://pansensoyglenn-dev/GreenBytes/abstract/wine.html</loc><priority>0.80</priority></url>
+  <url><loc>https://pansensoyglenn-dev/GreenBytes/abstract/fruit.html</loc><priority>0.80</priority></url>
+  <url><loc>https://pansensoyglenn-dev/GreenBytes/abstract/abstract-about.html</loc><priority>0.70</priority></url>
+  <url><loc>https://pansensoyglenn-dev/GreenBytes/abstract/abstract-privacy.html</loc><priority>0.70</priority></url>
+  <url><loc>https://pansensoyglenn-dev/GreenBytes/abstract/abstract-terms.html</loc><priority>0.70</priority></url>
+
+  <url><loc>https://pansensoyglenn-dev/GreenBytes/tutorials/intro.html</loc><priority>0.90</priority></url>
+  <url><loc>https://pansensoyglenn-dev/GreenBytes/tutorials/objects.html</loc><priority>0.85</priority></url>
+  <url><loc>https://pansensoyglenn-dev/GreenBytes/tutorials/attributes.html</loc><priority>0.85</priority></url>
+  <url><loc>https://pansensoyglenn-dev/GreenBytes/tutorials/encapsulation.html</loc><priority>0.85</priority></url>
+  <url><loc>https://pansensoyglenn-dev/GreenBytes/tutorials/atm.html</loc><priority>0.80</priority></url>
+  <url><loc>https://pansensoyglenn-dev/GreenBytes/tutorials/store.html</loc><priority>0.80</priority></url>
+  <url><loc>https://pansensoyglenn-dev/GreenBytes/tutorials/me.html</loc><priority>0.60</priority></url>
+  <url><loc>https://pansensoyglenn-dev/GreenBytes/tutorials/contact.html</loc><priority>0.60</priority></url>
+  <url><loc>https://pansensoyglenn-dev/GreenBytes/tutorials/terms.html</loc><priority>0.50</priority></url>
+  <url><loc>https://pansensoyglenn-dev/GreenBytes/tutorials/privacy.html</loc><priority>0.50</priority></url>
+
+</urlset>
