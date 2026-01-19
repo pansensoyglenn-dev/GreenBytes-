@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Tutorial | Wine Inventory & Sales Simulator – Philippines 2026</title>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4575646748966866" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --obsidian: #020617;
+            --midnight: #0a0f1d;
+            --accent: #38bdf8;
+            --border-color: #1e293b;
+            --code-bg: #010409;
+            --text-main: #94a3b8;
+            --text-bright: #f1f5f9;
+        }
+
+        body {
+            background-color: var(--obsidian);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+            text-align: justify;
+            padding-top: 80px;
+        }
+
+        header {
+            background-color: var(--midnight);
+            border-bottom: 2px solid var(--accent);
+            padding: 0.8rem 2rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 4000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-left { font-family: 'JetBrains Mono', monospace; font-weight: 800; color: var(--accent); font-size: 0.9rem; }
+        .hamburger { cursor: pointer; color: var(--text-bright); font-size: 1.5rem; }
+
+        .sidebar {
+            height: 0; width: 100%; position: fixed; z-index: 3000; top: 60px; left: 0;
+            background-color: var(--midnight); overflow: hidden; transition: height 0.4s ease-in-out;
+            border-bottom: 0 solid var(--accent); display: flex; flex-direction: column; align-items: center;
+        }
+        .sidebar.active { height: auto; padding: 20px 0; border-bottom: 2px solid var(--accent); }
+        .sidebar a { padding: 12px 24px; text-decoration: none; font-size: 1.1rem; color: var(--text-bright); font-family: 'JetBrains Mono', monospace; transition: color 0.2s; }
+        .sidebar a:hover { color: var(--accent); }
+
+        .home-btn {
+            display: inline-flex; align-items: center;
+            background: transparent; color: var(--accent); border: 1px solid var(--accent);
+            padding: 10px 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 700;
+            text-decoration: none !important; text-transform: uppercase; letter-spacing: 1px;
+            transition: 0.3s all ease; margin-bottom: 2rem; border-radius: 4px;
+        }
+        .home-btn:hover { background: var(--accent); color: var(--obsidian); box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); }
+
+        .doc-section {
+            background-color: var(--midnight); border: 1px solid var(--border-color); border-radius: 8px;
+            padding: 40px; margin-bottom: 3rem;
+        }
+        h1, h2 { color: var(--text-bright); font-weight: 800; margin-bottom: 1.5rem; text-align: left; }
+        .highlight { color: var(--accent); font-weight: 800; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 5px; }
+
+        .code-block {
+            background-color: var(--code-bg); border: 1px solid var(--border-color); padding: 24px;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #d1d5db;
+            overflow-x: auto; text-align: left; border-radius: 6px;
+        }
+
+        .contact-gateway {
+            background: var(--code-bg); padding: 2rem; border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent); border-radius: 6px;
+        }
+        .form-control { 
+            background: var(--obsidian); border: 1px solid var(--border-color); color: white; 
+            border-radius: 0; padding: 12px;
+        }
+        .form-control:focus { background: var(--obsidian); border-color: var(--accent); color: white; box-shadow: none; }
+        .transmit-btn {
+            background: transparent; border: 1px solid var(--accent); color: var(--accent); width: 100%;
+            padding: 12px; font-weight: 800; font-family: 'JetBrains Mono', monospace; transition: 0.3s;
+        }
+        .transmit-btn:hover { background: var(--accent); color: var(--obsidian); }
+
+        footer { 
+            background: var(--midnight); border-top: 2px solid var(--accent); padding: 4rem 1rem 2rem; margin-top: 5rem;
+        }
+        .footer-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem; max-width: 1100px; margin: 0 auto; text-align: left;
+        }
+        
+        .white-link { color: #ffffff !important; text-decoration: none; transition: 0.2s; }
+        .white-link:hover { color: var(--accent) !important; }
+
+        .share-btn { 
+            background: transparent; border: 1px solid var(--accent); color: var(--accent);
+            padding: 8px 20px; margin: 5px; min-width: 130px; 
+            font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; cursor: pointer; border-radius: 4px;
+        }
+        .share-btn:hover { background: var(--accent); color: var(--obsidian); }
+
+        .timestamp-badge { 
+            display: inline-block; background: var(--obsidian); border: 1px solid var(--border-color);
+            padding: 4px 12px; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--accent);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-left">PYTHON TUTORIAL</div>
+        <div class="hamburger" onclick="toggleNav()" aria-label="Toggle sidebar menu">&#9776;</div>
+    </header>
+
+    <nav id="mySidebar" class="sidebar" role="navigation" aria-label="Main navigation">
+        <a href="#intro" onclick="toggleNav()">Introduction</a>
+        <a href="#source-code" onclick="toggleNav()">Source Code</a>
+        <a href="#methods" onclick="toggleNav()">1: Methods</a>
+        <a href="#rationale" onclick="toggleNav()">2: Rationale</a>
+        <a href="#operation" onclick="toggleNav()">3: Operation</a>
+        <a href="#real-world" onclick="toggleNav()">Real-World PH 2026</a>
+        <a href="#summary" onclick="toggleNav()">4: Summary</a>
+        <a href="#contact-gateway" onclick="toggleNav()">Contact</a>
+    </nav>
+
+    <div class="container mt-4" style="max-width: 1000px;">
+        
+        <a href="abstract.html" class="home-btn">← Return to Abstraction Home</a>
+
+        <section class="doc-section" id="preface">
+            <span class="highlight">Preface – Updated January 2026</span>
+            <h1>Wine Selling Program in the Philippines</h1>
+            <p>This educational program simulates a small wine shop with inventory management. It includes five popular wines with realistic PHP prices and persistent inventory stored in <code>inventory.json</code>. Users can input daily sales quantities (with strong validation), and the system calculates gross income, deducts 12% VAT (standard Philippine rate in 2026), shows net income, updates stock levels, and saves changes so inventory persists between program runs.</p>
+            <p><small>Note: VAT remains 12% in 2026. This is a learning tool — real businesses require BIR-compliant receipts, proper VAT accounting (output vs input), excise tax handling for alcohol, and more advanced features.</small></p>
+        </section>
+
+        <section class="doc-section" id="source-code">
+            <span class="highlight">Code Implementation – Persistent & Precise</span>
+            <h1>Python Source Code</h1>
+            <div class="code-block">
+<!-- Your improved persistent code is already here – kept unchanged -->
+<pre><code>import json
+from decimal import Decimal, getcontext
+import os
+
+# Set precision for money calculations
+getcontext().prec = 10
+
+# File for persistent inventory
+INVENTORY_FILE = "inventory.json"
+
+# Tax rate (VAT in Philippines is 12% as of 2026)
+TAX_RATE = Decimal('0.12')
+
+def load_inventory():
+    """Load wines from JSON file or use defaults if not found."""
+    if os.path.exists(INVENTORY_FILE):
+        try:
+            with open(INVENTORY_FILE, 'r') as f:
+                data = json.load(f)
+                for wine in data:
+                    data[wine][0] = Decimal(str(data[wine][0]))
+                return data
+        except Exception as e:
+            print(f"Error loading inventory: {e}. Using defaults.")
+    return {
+        "Merlot": [Decimal('1500'), 50],
+        "Cabernet Sauvignon": [Decimal('1800'), 40],
+        "Chardonnay": [Decimal('1200'), 60],
+        "Pinot Noir": [Decimal('2000'), 30],
+        "Sauvignon Blanc": [Decimal('1400'), 55]
+    }
+
+def save_inventory(wines):
+    """Save current inventory to JSON (convert Decimal to str for JSON)."""
+    serializable = {k: [str(v[0]), v[1]] for k, v in wines.items()}
+    try:
+        with open(INVENTORY_FILE, 'w') as f:
+            json.dump(serializable, f, indent=4)
+    except Exception as e:
+        print(f"Error saving inventory: {e}")
+
+def display_inventory(wines):
+    print("\nCurrent Inventory:")
+    for wine, details in wines.items():
+        print(f"{wine}: Price = {details[0]:,.2f} PHP, Stock = {details[1]} bottles")
+
+def simulate_daily_sales(wines):
+    total_income = Decimal('0')
+    print("\nEnter the number of bottles sold for each wine (enter 0 if none):")
+    
+    for wine, details in wines.items():
+        while True:
+            try:
+                sold_str = input(f"{wine}: ")
+                sold = int(sold_str)
+                if sold < 0:
+                    print("Sold quantity cannot be negative. Try again.")
+                    continue
+                if sold > details[1]:
+                    print(f"Not enough stock for {wine}. Available: {details[1]}. Try again.")
+                    continue
+                break
+            except ValueError:
+                print("Invalid input. Please enter an integer.")
+        
+        details[1] -= sold
+        income = Decimal(str(sold)) * details[0]
+        total_income += income
+    
+    tax_amount = total_income * TAX_RATE
+    net_income = total_income - tax_amount
+    
+    print("\nDaily Sales Summary:")
+    print(f"Total Gross Income: {total_income:,.2f} PHP")
+    print(f"Tax (12% VAT): {tax_amount:,.2f} PHP")
+    print(f"Net Income: {net_income:,.2f} PHP")
+    
+    display_inventory(wines)
+    save_inventory(wines)
+
+if __name__ == "__main__":
+    print("Welcome to the Wine Shop in the Philippines!")
+    wines = load_inventory()
+    display_inventory(wines)
+    simulate_daily_sales(wines)
+    print("\nEnd of day. Inventory saved. Program complete.")</code></pre>
+            </div>
+            <p><small>Features: Persistent inventory (JSON file), precise money handling with <code>decimal.Decimal</code>, robust input validation, and automatic saving after each day’s sales.</small></p>
+        </section>
+
+        <section class="doc-section" id="methods">
+            <span class="highlight">Analysis Phase 01</span>
+            <h2>1: Explain One by One the Methods of Creating This Program</h2>
+            <p>The implementation of this version of the wine shop simulator follows a structured, professional approach suitable for both learning and small real-world prototyping. Here are the key methods/phases used:</p>
+            
+            <p><strong>1. Planning the Structure and Data Model:</strong><br>
+            We begin by defining how data will be stored and managed. A dictionary <code>wines</code> is used where each key is the wine name and the value is a list containing price (as <code>Decimal</code>) and current stock (integer). This allows fast lookup by name and easy modification of stock levels. To support persistence across program runs, we plan to save/load this data using JSON — a lightweight, human-readable format perfect for small applications. We also define <code>TAX_RATE</code> as a <code>Decimal</code> constant (0.12) for accuracy and future-proofing.</p>
+            
+            <p><strong>2. Implementing Data Persistence (Load & Save Functions):</strong><br>
+            New functions <code>load_inventory()</code> and <code>save_inventory()</code> handle reading from and writing to <code>inventory.json</code>. If the file doesn't exist or is corrupted, defaults are used. Prices are converted to/from <code>Decimal</code> to maintain precision. This step transforms the program from a one-time simulator into a tool that remembers inventory day after day — a critical real-world requirement.</p>
+            
+            <p><strong>3. Creating Utility Functions:</strong><br>
+            <code>display_inventory(wines)</code> is a reusable function that prints the current stock and prices in a clean, formatted way. It takes the wines dictionary as a parameter so it can be called anytime without global dependency. This promotes code reuse and separation of concerns.</p>
+            
+            <p><strong>4. Implementing the Core Business Logic:</strong><br>
+            <code>simulate_daily_sales(wines)</code> is the heart of the program. It:
+            <ul>
+                <li>Accumulates total income using <code>Decimal</code> for exact arithmetic</li>
+                <li>Loops through each wine and collects valid sales quantities with strong input validation (negative values, over-stock, non-integers)</li>
+                <li>Updates stock in place</li>
+                <li>Calculates VAT and net income precisely</li>
+                <li>Displays results and saves changes to disk</li>
+            </ul>
+            This function encapsulates all sales-related logic, making the code easier to test and extend.</p>
+            
+            <p><strong>5. Adding the Main Execution Flow:</strong><br>
+            The <code>if __name__ == "__main__":</code> block serves as the entry point. It loads the inventory, shows the starting state, runs the sales simulation, and ends with a confirmation message. This idiom ensures the script behaves correctly when run directly or imported as a module.</p>
+        </section>
+
+        <section class="doc-section" id="rationale">
+            <span class="highlight">Analysis Phase 02</span>
+            <h2>2: Why These Codes Are Used</h2>
+            <p>Every major design choice in this program is intentional and follows Python best practices while addressing real needs in small business simulation.</p>
+            
+            <p><strong>Dictionary for Wines:</strong><br>
+            Dictionaries provide O(1) average-time lookups by wine name and allow mutable values (stock can change). Using wine names as keys makes the code readable and self-documenting — ideal when displaying or updating items.</p>
+            
+            <p><strong>Decimal for Prices and Calculations:</strong><br>
+            Floating-point numbers (float) can cause rounding errors in financial applications (e.g., 0.1 + 0.2 ≠ 0.3). <code>decimal.Decimal</code> ensures exact representation and arithmetic — essential for money. Setting precision to 10 digits gives enough headroom for PHP calculations.</p>
+            
+            <p><strong>JSON Persistence:</strong><br>
+            Saving inventory to <code>inventory.json</code> means the program remembers stock levels between runs — a fundamental requirement for any real inventory tool. JSON is simple, portable, and doesn't require a full database for small-scale use.</p>
+            
+            <p><strong>Constant for Tax Rate:</strong><br>
+            Defining <code>TAX_RATE = Decimal('0.12')</code> makes it easy to update if Philippine tax laws change. It also clearly communicates intent and avoids magic numbers scattered in the code.</p>
+            
+            <p><strong>display_inventory() Function:</strong><br>
+            Avoids code duplication (DRY principle). The same display logic is needed at startup and after sales. Passing <code>wines</code> as a parameter makes it flexible and testable.</p>
+            
+            <p><strong>simulate_daily_sales() Function:</strong><br>
+            Encapsulates all sales logic in one place. Input validation loop (while + try-except) prevents crashes from bad user input — critical for usability. Using <code>Decimal</code> here ensures financial accuracy throughout.</p>
+            
+            <p><strong>Error Handling in File I/O:</strong><br>
+            try-except blocks around file operations prevent the program from crashing if the JSON file is missing, corrupted, or unwritable. Graceful fallback to defaults keeps the tool usable.</p>
+        </section>
+
+        <section class="doc-section" id="operation">
+            <span class="highlight">Analysis Phase 03</span>
+            <h2>3: How the Codes Operate</h2>
+            
+            <p><strong>1. Program Startup (Initialization):</strong><br>
+            When run, the script executes the <code>if __name__ == "__main__":</code> block. It calls <code>load_inventory()</code> which either reads existing data from <code>inventory.json</code> or uses default wines and stock levels. Prices are converted to <code>Decimal</code> for precision. The welcome message is printed, followed by the initial inventory display.</p>
+            
+            <p><strong>2. Sales Simulation Phase:</strong><br>
+            <code>simulate_daily_sales()</code> is called with the loaded wines dictionary. For each wine:
+            <ul>
+                <li>A <code>while True</code> loop repeatedly asks for sold quantity until valid input is received</li>
+                <li><code>try</code>/<code>except ValueError</code> catches non-integer inputs</li>
+                <li>Negative or over-stock values are rejected with helpful messages</li>
+                <li>Once valid, stock is decreased and income (Decimal multiplication) is added to total</li>
+            </ul>
+            After all wines are processed, VAT is calculated exactly and net income is derived. Results are formatted with commas and two decimal places for readability.</p>
+            
+            <p><strong>3. Persistence & Cleanup:</strong><br>
+            After displaying the updated inventory, <code>save_inventory()</code> serializes the current state (converting Decimal back to string) and writes it to <code>inventory.json</code>. If saving fails, an error is printed but the program continues gracefully. The final message confirms the day is complete and data is saved.</p>
+            
+            <p><strong>Overall Flow Summary:</strong><br>
+            Load → Display initial state → Collect sales (validate each entry) → Update stock & calculate totals precisely → Show summary → Save changes → Exit. The program is now stateful across executions, making it far more useful than the original one-shot version.</p>
+        </section>
+
+        <section class="doc-section" id="real-world">
+            <span class="highlight">Educational Extension</span>
+            <h2>Real-World Considerations in the Philippines – 2026</h2>
+            <p>While this simulator uses a straightforward 12% VAT deduction, actual wine retail involves:</p>
+            <ul>
+                <li><strong>VAT (12%)</strong>: Collected on sales; businesses remit net VAT (output minus input credits). Threshold for mandatory VAT registration: ₱3 million annual gross sales.</li>
+                <li><strong>Excise Tax on Wine</strong>: Specific tax of approximately ₱50 per liter (base from RA 11467, with 6% annual increases) — impacts pricing even if not directly deducted here.</li>
+                <li><strong>BIR Requirements</strong>: Official receipts/invoices with TIN, serial numbers, itemized sales, VAT breakdown. POS systems often need BIR PTU (Permit to Use).</li>
+                <li><strong>Other</strong>: FDA permits for alcohol, local business taxes, age verification, potential zero-rating for exports.</li>
+            </ul>
+            <p>This program is an excellent foundation — next realistic steps include CSV daily reports, user login, Flask web interface, or integration with BIR-accredited POS logic.</p>
+        </section>
+
+        <section class="doc-section" id="summary">
+            <span class="highlight">Analysis Phase 04</span>
+            <h2>4: Summary</h2>
+            <p>This improved Python program is a practical, educational console-based simulator for a wine shop in the Philippines. It manages five wines with realistic prices and now features persistent inventory (via JSON), precise financial calculations using <code>decimal.Decimal</code>, robust input validation, and automatic saving after each sales day.</p>
+            <p>Key improvements over the basic version:
+            <ul>
+                <li>Inventory survives program restarts</li>
+                <li>Money math is accurate (no floating-point surprises)</li>
+                <li>Error handling prevents crashes during file operations or bad input</li>
+            </ul>
+            It remains simple enough for beginners while demonstrating important real-world concepts: data persistence, financial precision, modular design, and Philippine tax simulation basics. For actual small business use, the next logical steps are adding reporting (CSV/PDF), a graphical/web interface (Flask or Tkinter), user authentication, and BIR-compliant receipt generation.</p>
+            <p>Built modularly and thoughtfully, this tool is perfect for learning Python while gaining insight into retail operations in the Philippine context.</p>
+            <a href="abstract.html" class="home-btn" style="margin-top: 20px;">Return to Abstraction Home</a>
+        </section>
+
+        <section class="doc-section" id="contact-gateway">
+            <span class="highlight">Get in Touch</span>
+            <h1>Contact Me</h1>
+            <div class="contact-gateway">
+                <form action="mailto:pansensoyglenn@gmail.com" method="post" enctype="text/plain">
+                    <div class="mb-3"><label class="form-label">Your Name</label><input type="text" class="form-control" name="name" placeholder="Your Full Name" required></div>
+                    <div class="mb-3"><label class="form-label">Email Address</label><input type="email" class="form-control" name="email" placeholder="your.email@example.com" required></div>
+                    <div class="mb-3"><label class="form-label">Message / Inquiry</label><textarea class="form-control" name="message" rows="5" placeholder="Questions about the code, suggestions, improvements, or collaboration ideas..." required></textarea></div>
+                    <button type="submit" class="transmit-btn">SEND MESSAGE</button>
+                </form>
+                <p><small>For reliable form delivery, consider a backend service like Formspree, Getform, or a simple Flask endpoint in production.</small></p>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-info">
+                <div class="footer-brand">GREENBYTES // PYTHON</div>
+                <p class="mt-3">Advancing software integrity through Pythonic principles. Part of the Zamboanga Peninsula & Northern Mindanao Tech Initiative.</p>
+                <div class="timestamp-badge">Last Updated: January 19, 2026 | System Status: Active</div>
+            </div>
+            <div class="footer-nav">
+                <div class="footer-header" style="color: var(--accent); font-weight: 800; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 1rem;">Documentation</div>
+                <ul class="list-unstyled">
+                    <li><a href="abstract.html" class="white-link">Abstraction Home</a></li>
+                    <li><a href="abstract/abstract-privacy.html" class="white-link">Privacy Policy</a></li>
+                    <li><a href="abstract/abstract-terms.html" class="white-link">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center mt-5 pt-4" style="border-top: 1px solid var(--border-color);">
+            <div class="mb-3">
+                <button class="share-btn" onclick="aiShare('Facebook')">Facebook</button>
+                <button class="share-btn" onclick="aiShare('LinkedIn')">LinkedIn</button>
+                <button class="share-btn" onclick="aiShare('X')">X (Twitter)</button>
+            </div>
+            <p style="font-size: 0.75rem; color: var(--text-main);">© 2026 Glenn Junsay Pansensoy | Lead Architect & Developer</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() {
+            document.getElementById("mySidebar").classList.toggle("active");
+        }
+        function aiShare(platform) {
+            const url = encodeURIComponent(window.location.href);
+            let sUrl = "";
+            if(platform === 'Facebook') sUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+            if(platform === 'LinkedIn') sUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+            if(platform === 'X') sUrl = `https://twitter.com/intent/tweet?url=${url}&text=Check%20out%20this%20improved%20Python%20Wine%20Inventory%20Simulator%20for%20Philippines!`;
+            window.open(sUrl, '_blank', 'width=600,height=400');
+        }
+    </script>
+</body>
+</html>
