@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway Abstraction | PYTHON TUTORIAL</title>
+    
+    <meta name="description" content="Master Python Abstraction by building a decoupled Payment Gateway. Learn how to integrate PayPal, GCash, and Stripe using OOP principles.">
+    <meta name="keywords" content="Python Tutorial, Abstraction, OOP, Payment Gateway, GCash API, PayPal Python, Software Architecture, GreenBytes">
+    <meta name="author" content="Glenn Junsay Pansensoy">
+    <link rel="canonical" href="https://pansensoyglenn-dev.github.io/GreenBytes/abstract-payment.html">
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4575646748966866" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --midnight-blue: #020617; 
+            --obsidian: #0f172a;      
+            --accent-blue: #38bdf8;
+            --text-main: #e2e8f0;
+            --card-bg: #1e293b;
+            --border-color: #1e293b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--midnight-blue);
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        h1, h2, h3, h4, h5, h6, .navbar-brand, .hero-banner, .sim-terminal, .quiz-option, .share-btn, .transmit-btn {
+            text-align: left;
+        }
+
+        .accent-text { color: var(--accent-blue); }
+        .hero-banner h1 { font-size: 2.2rem; }
+        .hero-banner .lead { font-size: 1.1rem; }
+
+        .navbar { background: var(--obsidian) !important; border-bottom: 1px solid var(--border-color); }
+        .navbar-brand { font-weight: 800; color: var(--accent-blue) !important; }
+        
+        .navbar-toggler { border-color: var(--accent-blue); }
+        .navbar-toggler-icon { 
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(56, 189, 248, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+        }
+
+        .dropdown-menu { background-color: var(--obsidian); border: 1px solid var(--accent-blue); padding: 1rem; }
+        .dropdown-item { color: var(--text-main); padding: 0.5rem 1.5rem; transition: 0.2s; }
+        .dropdown-item:hover { background-color: var(--accent-blue); color: var(--midnight-blue); }
+        .dropdown-header { color: var(--accent-blue); text-transform: uppercase; font-weight: 800; font-size: 0.75rem; letter-spacing: 1px; }
+
+        .hero-banner { padding: 60px 0; background: linear-gradient(to bottom, var(--obsidian), var(--midnight-blue)); border-bottom: 1px solid var(--border-color); text-align: center; }
+
+        .code-window { background: #000000; border: 1px solid var(--accent-blue); border-radius: 12px; padding: 25px; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: left; }
+
+        .concept-card { background: var(--card-bg); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); transition: transform 0.3s; margin-bottom: 2rem; }
+        .concept-card:hover { transform: translateY(-5px); border-color: var(--accent-blue); }
+
+        .sim-terminal { background: #000; border: 1px solid #334155; border-radius: 8px; padding: 20px; font-family: 'JetBrains Mono', monospace; min-height: 220px; color: #d1d5db; font-size: 0.9rem; overflow-y: auto; }
+
+        .quiz-option { transition: all 0.2s ease; border: 1px solid #334155; background: rgba(255,255,255,0.02); text-align: left; padding: 12px; color: var(--text-main); margin-bottom: 8px; width: 100%; }
+        .quiz-option:hover { background: var(--accent-blue); color: var(--midnight-blue); border-color: var(--accent-blue); }
+
+        .contact-gateway { background: #000; padding: 2rem; border: 1px solid var(--border-color); border-left: 4px solid var(--accent-blue); border-radius: 6px; }
+        .form-control { background: var(--obsidian); border: 1px solid var(--border-color); color: white; border-radius: 4px; padding: 12px; }
+        .form-control:focus { background: var(--obsidian); border-color: var(--accent-blue); color: white; box-shadow: none; }
+        
+        .transmit-btn { background: transparent; border: 1px solid var(--accent-blue); color: var(--accent-blue); width: 100%; padding: 12px; font-weight: 800; font-family: 'JetBrains Mono', monospace; transition: 0.3s; cursor: pointer; text-align: center; }
+        .transmit-btn:hover { background: var(--accent-blue); color: var(--midnight-blue); }
+
+        footer { background: var(--obsidian); border-top: 2px solid var(--accent-blue); padding: 4rem 1rem 2rem; margin-top: 5rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; max-width: 1100px; margin: 0 auto; }
+        .white-link { color: #ffffff !important; text-decoration: none; display: block; margin-bottom: 8px; transition: 0.2s; }
+        .white-link:hover { color: var(--accent-blue) !important; }
+        
+        .share-btn { background: transparent; border: 1px solid var(--accent-blue); color: var(--accent-blue); padding: 8px 20px; margin: 5px; min-width: 130px; font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; cursor: pointer; border-radius: 4px; text-align: center; }
+        .share-btn:hover { background: var(--accent-blue); color: var(--midnight-blue); }
+
+        .timestamp-badge { display: inline-block; background: var(--midnight-blue); border: 1px solid var(--border-color); padding: 4px 12px; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--accent-blue); border-radius: 4px; }
+        .btn-return { background-color: transparent; color: var(--accent-blue); border: 2px solid var(--accent-blue); font-weight: 700; padding: 12px 30px; border-radius: 8px; text-transform: uppercase; text-decoration: none; display: inline-block; transition: 0.3s; text-align: center; }
+        .btn-return:hover { background: var(--accent-blue); color: var(--midnight-blue); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="../abstract.html">PYTHON TUTORIAL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-info fw-bold" href="#" id="learningDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Learning Tracks
+                        </a>
+                        <ul class="dropdown-menu shadow-lg" aria-labelledby="learningDropdown">
+                            <li><h6 class="dropdown-header">OOP Core</h6></li>
+                            <li><a class="dropdown-item" href="../abstract.html">Abstraction Hub</a></li>
+                            <li><hr class="dropdown-divider border-secondary"></li>
+                            <li><h6 class="dropdown-header">Real-World Dev</h6></li>
+                            <li><a class="dropdown-item" href="#">API Integration</a></li>
+                            <li><a class="dropdown-item" href="#">Design Patterns</a></li>
+                            <li><a class="dropdown-item" href="#">Unit Testing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="abstract-about.html">About Developer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="abstract-privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-banner text-center">
+        <div class="container">
+            <h1 class="fw-bold">The Abstract Payment Gateway</h1>
+            <p class="lead opacity-75">Decoupling your application from PayPal, GCash, Maya, Stripe, and more.</p>
+        </div>
+    </header>
+
+    <div class="container mt-4 text-center">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4575646748966866"
+             crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4575646748966866"
+             data-ad-slot="6447477860"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                
+                <section class="mb-5">
+                    <h2 style="color: var(--accent-blue);" class="fw-bold">📘 Project Overview: Building Change-Resilient GreenBytes Systems</h2>
+                    <p class="lead mt-3">
+                        Payment providers come and go, change fees, update APIs, or get replaced by regional favorites. Hard-coding your checkout logic to one specific gateway (e.g. only PayPal) creates tight coupling — every new integration or provider change requires painful refactoring across your entire codebase.
+                    </p>
+                    <p class="mt-4">
+                        Using Python's <code>abc</code> module, we define a clean <strong>abstraction layer</strong> — a strict contract that every payment gateway must follow. This lets your business logic (cart → checkout → payment) remain completely agnostic to which gateway is actually processing the transaction.
+                    </p>
+
+                    <div class="row mt-4 g-3">
+                        <div class="col-md-4">
+                            <div class="p-3 border border-secondary rounded h-100 bg-dark">
+                                <h6 class="text-info">Uniform API</h6>
+                                <p class="small opacity-75 mb-0">One consistent <code>.authorize()</code> + <code>.transfer()</code> interface — no matter the provider.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 border border-secondary rounded h-100 bg-dark">
+                                <h6 class="text-info">Encapsulated Complexity</h6>
+                                <p class="small opacity-75 mb-0">API keys, OAuth flows, OTP logic, error handling, currency conversion — all hidden inside concrete classes.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 border border-secondary rounded h-100 bg-dark">
+                                <h6 class="text-info">Easy to Extend</h6>
+                                <p class="small opacity-75 mb-0">New gateway? Just create one new subclass. No changes to checkout or business logic.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-5">
+                    <h3 class="fw-bold" style="color: var(--accent-blue);">Why Choose Abstraction for Financial Tech?</h3>
+                    <p>In modern web development, scalability is everything. If your e-commerce platform relies on <strong>Stripe</strong> today, but you want to expand to the Philippine market tomorrow, you will need to integrate <strong>GCash</strong> or <strong>Maya</strong>. Without Abstraction, you would have <code>if/else</code> statements scattered through your code.</p>
+                    <p>By using the Abstract Base Class (ABC) pattern shown below, your system becomes "Closed for modification but Open for extension." You add new features by adding new files, not by breaking existing ones.</p>
+                </section>
+
+                <section class="my-5 p-4 rounded" style="background: rgba(56, 189, 248, 0.05); border: 1px solid var(--border-color);">
+                    <h3 class="text-info mb-4 fw-bold">Deep Dive: 6 Key Mechanics of Abstraction</h3>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <h6 class="fw-bold accent-text">1. Formalizing the "Contract"</h6>
+                            <p class="small">The <code>PaymentGateway(ABC)</code> acts as a legal document for your code. It ensures that any team member creating a new payment method follows the same method names and arguments, preventing integration bugs before they happen.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold accent-text">2. Prevention of Instantiation</h6>
+                            <p class="small">By inheriting from <code>ABC</code>, Python prevents you from creating a generic "PaymentGateway" object. This is a safety feature: a payment gateway is a concept, not a real tool. Only specific ones like PayPal should exist as objects.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold accent-text">3. Mandatory Implementation</h6>
+                            <p class="small">The <code>@abstractmethod</code> decorator acts as a compiler-level check. If a child class (like Maya) forgets to include the <code>transfer()</code> method, Python will refuse to run, forcing the developer to complete the required logic immediately.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold accent-text">4. Decoupled Business Logic</h6>
+                            <p class="small">Your <code>process_checkout</code> function only cares about the concept of a gateway. This means you can swap the entire financial backend of your website without changing a single line of your checkout UI or database logic.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold accent-text">5. Encapsulated Vendor Secrets</h6>
+                            <p class="small">Each class (PayPal, GCash) hides its own API keys and specific connection protocols. The rest of the app doesn't need to know how PayPal handles OAuth or how GCash handles OTPs; it just calls <code>.authorize()</code>.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold accent-text">6. Polymorphic Flexibility</h6>
+                            <p class="small">Abstraction enables polymorphism, allowing a single list of transactions to process multiple different types of payment objects in a single loop, drastically reducing the amount of redundant <code>if/else</code> code in your system.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <hr class="border-secondary my-5">
+
+                <h3>1. Core Abstraction Pattern</h3>
+                <p>The central idea: your application never talks directly to PayPal, GCash, Stripe, etc. It only talks to the <code>PaymentGateway</code> interface.</p>
+
+                <div class="d-flex justify-content-between align-items-end mb-2">
+                    <h4 class="mb-0">Implementation Source Code</h4>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-outline-info" onclick="copyCode()">
+                            <i class="bi bi-clipboard"></i> Copy Code
+                        </button>
+                        <a href="https://www.programiz.com/python-programming/online-compiler/" target="_blank" class="btn btn-sm btn-info text-dark fw-bold">
+                            Run Online 🚀
+                        </a>
+                    </div>
+                </div>
+
+                <div class="code-window mt-0">
+                    <pre><code id="pythonCode" class="language-python">from abc import ABC, abstractmethod
+
+class PaymentGateway(ABC):
+    """Abstract base class defining the payment gateway contract."""
+    
+    @abstractmethod
+    def authorize(self, amount: float) -> None:
+        """Authorize / reserve the amount (e.g. 3D Secure, OTP, card check)."""
+        pass
+
+    @abstractmethod
+    def transfer(self) -> None:
+        """Finalize / capture the payment."""
+        pass
+
+
+class PayPal(PaymentGateway):
+    def authorize(self, amount: float) -> None:
+        print(f"--- [PayPal] Authorizing ${amount:.2f} USD (OAuth flow) ---")
+    
+    def transfer(self) -> None:
+        print("--- [PayPal] Funds captured successfully ---")
+
+
+class GCash(PaymentGateway):
+    def authorize(self, amount: float) -> None:
+        print(f"--- [GCash] Sending OTP for ₱{amount:.2f} ---")
+    
+    def transfer(self) -> None:
+        print("--- [GCash] GCash wallet debited ---")
+
+
+class BankTransfer(PaymentGateway):
+    def authorize(self, amount: float) -> None:
+        print(f"--- [BankTransfer] Verifying account & initiating hold for ${amount:.2f} ---")
+    
+    def transfer(self) -> None:
+        print("--- [BankTransfer] Wire transfer scheduled ---")
+
+
+def process_checkout(gateway: PaymentGateway, amount: float) -> None:
+    """Core checkout logic — completely gateway-agnostic."""
+    print(f"[Checkout] Processing payment of {amount:.2f}...")
+    gateway.authorize(amount)
+    gateway.transfer()
+    print("[Checkout] Payment completed successfully.\n")
+
+
+# Demo
+print("=== SYSTEM VERIFICATION ===\n")
+process_checkout(PayPal(), 150.00)
+process_checkout(GCash(), 5000.00)
+process_checkout(BankTransfer(), 250.00)
+print("=== VERIFICATION COMPLETE ===")</code></pre>
+                </div>
+
+                <section class="mt-5">
+                    <h3 class="fw-bold accent-text mb-4">⚠️ Common Pitfalls & Fixes</h3>
+                    <div class="table-responsive">
+                        <table class="table table-dark table-hover border-secondary">
+                            <thead>
+                                <tr class="text-info">
+                                    <th>The Pitfall</th>
+                                    <th>The Error</th>
+                                    <th>The Fix</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Missing Abstract Method</td>
+                                    <td class="text-danger small">TypeError: Can't instantiate abstract class...</td>
+                                    <td>Ensure every method with <code>@abstractmethod</code> is defined in the child class.</td>
+                                </tr>
+                                <tr>
+                                    <td>Instantiating the ABC</td>
+                                    <td class="text-danger small">TypeError: ABC is not a constructor</td>
+                                    <td>Never call <code>PaymentGateway()</code> directly; only call the concrete classes like <code>PayPal()</code>.</td>
+                                </tr>
+                                <tr>
+                                    <td>Signature Mismatch</td>
+                                    <td class="text-warning small">Logic Errors / Crashes</td>
+                                    <td>Keep arguments consistent. If the ABC defines <code>amount: float</code>, the child must accept it.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <div class="concept-card mt-5" style="border: 2px solid var(--accent-blue);">
+                    <h3 class="text-info mb-4">Interactive Abstraction Simulator</h3>
+                    <div class="row g-4 align-items-start">
+                        <div class="col-md-5">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Transaction Amount:</label>
+                                <input type="number" id="paymentAmount" class="form-control bg-dark text-white border-secondary" value="100.00" step="0.01">
+                            </div>
+                            <label class="form-label fw-bold">Payment Method:</label>
+                            <select id="methodSelect" class="form-select bg-dark text-white border-secondary mb-4 py-2">
+                                <option value="paypal">PayPal (International / Cards)</option>
+                                <option value="gcash">GCash (Philippines Mobile Wallet)</option>
+                                <option value="bank">Bank Transfer (Direct / Wire)</option>
+                            </select>
+                            <button onclick="runSimulation()" class="btn btn-info w-100 fw-bold py-3">PROCESS PAYMENT</button>
+                        </div>
+                        <div class="col-md-7">
+                            <div id="simTerminal" class="sim-terminal">
+                                <span style="color: #6ee7b7;">[SYSTEM READY]</span> Select amount & method, then click PROCESS PAYMENT
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="concept-card mt-5" style="border: 1px solid #6366f1; background: #0f172a;">
+                    <h3 class="text-info mb-4">🧠 Knowledge Check</h3>
+                    <div id="quiz-container">
+                        <p id="question-text" class="fw-bold mb-3">1. Which module is required to define an Abstract Base Class in Python?</p>
+                        <div id="options-container" class="d-grid gap-2">
+                            <button class="btn quiz-option" onclick="handleQuiz(0)">math</button>
+                            <button class="btn quiz-option" onclick="handleQuiz(1)">abc</button>
+                            <button class="btn quiz-option" onclick="handleQuiz(2)">sys</button>
+                            <button class="btn quiz-option" onclick="handleQuiz(3)">random</button>
+                        </div>
+                        <div class="mt-4 d-flex justify-content-between">
+                            <small id="quiz-progress" class="text-secondary">Question 1 of 10</small>
+                            <small id="quiz-score" class="text-info">Score: 0</small>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="concept-card" id="contact-gateway">
+                    <h3 class="text-info mb-4">Contact Me / Project Inquiry</h3>
+                    <div class="contact-gateway">
+                        <form action="mailto:pansensoyglenn@gmail.com" method="post" enctype="text/plain">
+                            <div class="mb-3">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control" name="name" placeholder="John Doe" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-control" name="email" placeholder="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Inquiry Details</label>
+                                <textarea class="form-control" name="message" rows="5" placeholder="Your message about the Abstraction tutorial..." required></textarea>
+                            </div>
+                            <button type="submit" class="transmit-btn">TRANSMIT MESSAGE</button>
+                        </form>
+                    </div>
+                </section>
+
+                <div class="text-center mt-5">
+                    <a href="../abstract.html" class="btn-return">Return to Abstraction Hub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-info">
+                <div style="font-weight: 800; color: var(--accent-blue);">LEARNING PYTHON</div>
+                <p class="mt-3" style="font-size: 0.9rem; opacity: 0.8;">Specializing in OOP programming patterns and technological integration.</p>
+                <div class="timestamp-badge">Updated: Jan 20, 2026</div>
+            </div>
+            <div class="footer-nav">
+                <div style="color: var(--accent-blue); font-weight: 800; margin-bottom: 1rem;">RESOURCES</div>
+                <ul class="list-unstyled">
+                    <li><a href="../abstract.html" class="white-link">Abstraction Home</a></li>
+                    <li><a href="abstract-about.html" class="white-link">About Me</a></li>
+                    <li><a href="abstract-privacy.html" class="white-link">Privacy Policy</a></li>
+                    <li><a href="abstract-terms.html" class="white-link">Terms & Conditions</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center mt-5 pt-4" style="border-top: 1px solid var(--border-color);">
+            <div class="mb-3">
+                <button class="share-btn" onclick="aiShare('Facebook')">Facebook</button>
+                <button class="share-btn" onclick="aiShare('LinkedIn')">LinkedIn</button>
+                <button class="share-btn" onclick="aiShare('X')">X (Twitter)</button>
+            </div>
+            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 20px;">© 2026 Glenn Junsay Pansensoy | Lead Website Developer</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script>
+        function copyCode() {
+            const code = document.getElementById('pythonCode').innerText;
+            navigator.clipboard.writeText(code).then(() => { alert("Code copied!"); });
+        }
+
+        function runSimulation() {
+            const method = document.getElementById('methodSelect').value;
+            const amount = document.getElementById('paymentAmount').value || "0.00";
+            const terminal = document.getElementById('simTerminal');
+            terminal.innerHTML = `<span style="color: #38bdf8;">[Interface]</span> Starting checkout for ${amount}...<br>`;
+            setTimeout(() => {
+                terminal.innerHTML += `<span style="color: #fbbf24;">[Authorize]</span> Calling .authorize(${amount})...<br>`;
+                if(method === 'paypal') { terminal.innerHTML += `<span style="color: #6ee7b7;">[Success]</span> $${parseFloat(amount).toFixed(2)} USD authorized.<br>`; }
+                else if(method === 'gcash') { terminal.innerHTML += `<span style="color: #6ee7b7;">[Success]</span> ₱${parseFloat(amount).toFixed(2)} PHP authorized.<br>`; }
+                else { terminal.innerHTML += `<span style="color: #6ee7b7;">[Success]</span> Transfer authorized.<br>`; }
+                terminal.innerHTML += `<span style="color: #fbbf24;">[Transfer]</span> Calling .transfer()...<br>`;
+                terminal.innerHTML += `<span style="color: #6ee7b7;">[Complete]</span> Payment processed successfully!`;
+            }, 1200);
+        }
+
+        const quizData = [
+            { q: "Which module is required for ABC?", a: 1, ops: ["math", "abc", "sys", "random"] },
+            { q: "Can you instantiate an ABC directly?", a: 1, ops: ["Yes", "No", "Only if empty", "Always"] },
+            { q: "What decorator marks an abstract method?", a: 0, ops: ["@abstractmethod", "@static", "@blueprint", "@require"] },
+            { q: "What does 'decoupling' mean?", a: 2, ops: ["Deleting code", "Slowing code", "Separating logic from implementation", "Joining files"] },
+            { q: "What is the 'Contract' in OOP?", a: 0, ops: ["Required methods", "Legal document", "Price", "API key"] },
+            { q: "Which property makes a method abstract?", a: 1, ops: ["self.abstract", "@abstractmethod", "__abstract__", "pass"] },
+            { q: "If a subclass misses a method, it is...", a: 2, ops: ["Deleted", "Fast", "Still abstract", "Normal"] },
+            { q: "Real-world analogy for Abstraction?", a: 3, ops: ["Mirror", "Book", "Hammer", "TV Remote"] },
+            { q: "Abstraction improves security by...", a: 0, ops: ["Isolating sensitive API logic", "Longer passwords", "Hiding IP", "Blocking users"] },
+            { q: "Python ABC stands for?", a: 1, ops: ["Always Be Coding", "Abstract Base Class", "Automatic Binary", "Advanced Component"] }
+        ];
+
+        let curQ = 0; let score = 0;
+        function handleQuiz(idx) {
+            if(idx === quizData[curQ].a) score++;
+            curQ++;
+            if(curQ < quizData.length) {
+                document.getElementById('question-text').innerText = `${curQ+1}. ${quizData[curQ].q}`;
+                const btns = document.querySelectorAll('.quiz-option');
+                btns.forEach((b, i) => b.innerText = quizData[curQ].ops[i]);
+                document.getElementById('quiz-progress').innerText = `Question ${curQ+1} of 10`;
+                document.getElementById('quiz-score').innerText = `Score: ${score}`;
+            } else {
+                document.getElementById('quiz-container').innerHTML = `<h4 class='text-center text-info'>Final Score: ${score}/10</h4><button onclick='location.reload()' class='btn btn-outline-info w-100 mt-3'>Try Again</button>`;
+            }
+        }
+
+        function aiShare(platform) {
+            const url = encodeURIComponent(window.location.href);
+            let sUrl = '';
+            if (platform === 'Facebook') { sUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`; }
+            else if (platform === 'LinkedIn') { sUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=Python%20Payment%20Gateway%20Abstraction%20Tutorial`; }
+            else if (platform === 'X') { sUrl = `https://twitter.com/intent/tweet?url=${url}&text=Learning%20Python%20Abstraction!`; }
+            window.open(sUrl, '_blank', 'width=600,height=400');
+        }
+    </script>
+</body>
+</html>
