@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction | Python OOP Mastery</title>
+    <meta name="description" content="Deep dive into Object-Oriented Programming (OOP) for 2026. Understand the shift from procedural logic to Agentic AI architectures.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <style>
+        :root {
+            --obsidian: #020617;
+            --midnight-blue: #0c1425;
+            --accent: #00d4ff;
+            --text-main: #e2e8f0;
+            --text-gray: #94a3b8;
+            --glass-border: rgba(0, 212, 255, 0.15);
+        }
+        body { 
+            background: linear-gradient(135deg, var(--obsidian) 5%, var(--midnight-blue) 100%);
+            background-attachment: fixed;
+            color: var(--text-main); 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        p, li { text-align: justify; text-justify: inter-word; line-height: 1.5; margin-bottom: 1.5rem; }
+        
+        .navbar { background: rgba(2, 6, 23, 0.97); backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border); padding: 1rem 0; }
+        .navbar-brand { font-weight: 800; letter-spacing: 1px; color: var(--accent) !important; }
+        
+        .glass-card { background: rgba(12, 20, 37, 0.6); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; backdrop-filter: blur(10px); margin-bottom: 2.5rem; }
+        
+        h1, h2, h3 { color: #fff; font-weight: 800; }
+        h2 { border-left: 4px solid var(--accent); padding-left: 15px; margin-bottom: 1.5rem; margin-top: 2rem; }
+        .accent-text { color: var(--accent); }
+
+        .breadcrumb-item a { color: var(--accent); text-decoration: none; font-size: 1rem; }
+        .breadcrumb-item.active { color: var(--text-gray); font-size: 0.9rem; }
+
+        .code-block { background: #010409; border: 1px solid #30363d; border-radius: 12px; padding: 1.2rem; margin: 1.5rem 0; }
+        
+        .navigation-dock {
+            background: rgba(12, 20, 37, 0.9);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        footer { background: rgba(1, 4, 9, 0.95); border-top: 1px solid rgba(0,212,255,0.1); padding: 60px 0; margin-top: 80px; }
+        
+        .learning-objective {
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px dashed var(--accent);
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">PYTHON TUTORIAL</a>
+        </div>
+    </nav>
+
+    <main class="container" style="margin-top: 120px;">
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                
+            </ol>
+        </nav>
+
+        <section class="module-content">
+            <div class="glass-card">
+                <h1 class="mb-4"> Models for <span class="accent-text">Agentic Programming</span></h1>
+                
+                <div class="learning-objective">
+                    <h3 class="h5 mb-2 text-white">Learning Objectives</h3>
+                    <ul class="mb-0">
+                        <li>Analyze the shift from procedural scripts to high-level Object-Oriented systems.</li>
+                        <li>Identify why OOP is the standard for 2026 Autonomous AI development.</li>
+                        <li>Differentiate between Class blueprints and Object instances.</li>
+                    </ul>
+                </div>
+
+                <p>
+                    In the landscape of 2026, the transition from procedural scripts to Object-Oriented Programming (OOP) is no longer a stylistic choice—it is a functional necessity for <strong>Agentic AI Engineering</strong>. As we move away from static code execution toward autonomous entity behavior, our mental model of "data" and "logic" must evolve.
+                </p>
+                <p>
+                    The modern software stack is no longer just about processing input to generate output. We are now building <strong>systems that think, remember, and act</strong>. Procedural programming (writing a list of instructions) works well for simple calculations, but it buckles under the weight of state management required by modern AI.
+                </p>
+
+                <h2>The Evolution of Logic</h2>
+                <p>
+                    Historically, programmers viewed code as a waterfall. Data entered at the top, flowed through various functions, and emerged as a result at the bottom. However, in an era where AI agents must maintain their own "personality," "short-term memory," and "tool access," this waterfall approach becomes a tangled web of global variables and unpredictable bugs.
+                </p>
+                
+                
+
+                <p>
+                    OOP solves this by introducing <strong>Entities</strong>. By bundling state (memory) and behavior (capabilities) into a single object, we create a secure sandbox. This isolation ensures that when an LLM invokes a specific tool, it interacts with a predictable interface that cannot accidentally overwrite the internal logic of other system components.
+                </p>
+            </div>
+
+            <div class="glass-card">
+                <h2>Why Companies Require OOP Today</h2>
+                <p>
+                    As organizations scale their AI deployments, they look for code that is <strong>Modular</strong> and <strong>Extensible</strong>. If you write a script that handles one specific AI task, it is disposable. If you write a <strong>Class</strong> that defines a standard "Agent" behavior, you have created a reusable asset that can be inherited and refined across an entire enterprise.
+                </p>
+                
+                <h3>The Blueprint vs. The Actor</h3>
+                <p>
+                    In this curriculum, we treat a <strong>Class</strong> as a sophisticated blueprint. It defines what an agent *knows* (Attributes) and what an agent *can do* (Methods). When we instantiate this class, we create an <strong>Object</strong>—a unique actor with its own dedicated memory space.
+                </p>
+
+                <div class="code-block">
+                    <pre><code class="language-python"># Defining the capability blueprint
+class AutonomousAgent:
+    def __init__(self, name: str, role: str):
+        self.name = name  # Internal State: Identity
+        self.role = role  # Internal State: Expertise
+        self.task_count = 0 
+
+    def execute_task(self, task: str) -> str:
+        self.task_count += 1
+        return f"Agent {self.name} is performing {task} as a {self.role}."
+
+# Creating unique actors from the same blueprint
+researcher = AutonomousAgent("Echo-1", "Data Analyst")
+executor = AutonomousAgent("Delta-4", "System Optimizer")</code></pre>
+                </div>
+
+                <p>
+                    Notice how `researcher` and `executor` share the same structure but live entirely different lives. Updating the `task_count` for Echo-1 does not affect Delta-4. This <strong>State Isolation</strong> is the cornerstone of building reliable, multi-agent systems.
+                </p>
+            </div>
+
+            <div class="navigation-dock d-flex justify-content-between align-items-center">
+                <a href="../index.html" class="btn btn-outline-secondary text-white border-secondary">
+                    <i class="fas fa-chevron-left me-2"></i> Home
+                </a>
+                <div class="text-center d-none d-md-block">
+                    <span class="text-gray small d-block">Proceed to Next Module</span>
+                    <span class="fw-bold">Module 2: Class Basics</span>
+                </div>
+                <a href="classes.html" class="btn btn-info text-dark fw-bold">
+                    Next Module <i class="fas fa-chevron-right ms-2"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container text-center">
+            <p class="text-gray small">© 2026 Glenn Junsay Pansensoy. Masterclass Series for Python Architects.</p>
+            <div class="mt-3">
+                <a href="home-privacy.html" class="accent-text small mx-2 text-decoration-none">Privacy Policy</a>
+                <a href="home-terms.html" class="accent-text small mx-2 text-decoration-none">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</body>
+</html>
