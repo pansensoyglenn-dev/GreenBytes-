@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Educator | GreenBytes Python Project</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --obsidian: #020617;
+            --midnight: #0a0f1d;
+            --accent: #38bdf8;
+            --text-main: #94a3b8;
+            --text-bright: #f1f5f9;
+        }
+
+        body {
+            background-color: var(--obsidian);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+            padding-bottom: 60px;
+        }
+
+        /* Essential for AdSense: Professional text alignment */
+        p {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+
+        .profile-card {
+            background: var(--midnight);
+            border: 1px solid #1e293b;
+            border-radius: 16px;
+            padding: 50px;
+            margin-top: 80px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .educator-name {
+            color: var(--text-bright);
+            font-weight: 800;
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            text-align: left; /* Headers usually stay left-aligned */
+        }
+
+        .accent-line {
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 20px 0;
+        }
+
+        .skill-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* Interactive Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            padding: 25px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-right: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            background: #1e293b;
+            box-shadow: 0 5px 15px rgba(56, 189, 248, 0.2);
+        }
+
+        .contact-item:hover i {
+            transform: scale(1.2);
+        }
+
+        .contact-text h4 {
+            color: var(--text-bright);
+            font-size: 1rem;
+            margin: 0;
+            text-align: left;
+        }
+
+        .contact-text p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-align: left; /* Keep short labels left-aligned */
+        }
+
+        .btn-home {
+            color: var(--text-bright);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .btn-home:hover { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                
+                <div class="mt-4">
+                    <a href="../index.html" class="btn-home"><i class="fas fa-arrow-left me-2"></i>RETURN TO DIRECTORY</a>
+                </div>
+
+                <div class="profile-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <span class="text-uppercase fw-bold" style="color: var(--accent); font-size: 0.8rem; letter-spacing: 2px;">Educator & Developer</span>
+                            <h1 class="educator-name">Glenn Junsay Pansensoy</h1>
+                            <div class="accent-line"></div>
+                            
+                            <p class="lead text-white-50">Bridging the gap between raw code and professional software engineering principles in the Philippines.</p>
+                            
+                            <p>Based in <strong>Diplahan, Zamboanga Sibugay</strong>, I specialize in creating high-level blueprints for early-career developers. My mission with the <strong>GreenBytes Project</strong> is to democratize complex programming concepts like Abstraction and OOP, making them accessible and practical for the local tech landscape of 2026. This initiative focuses on clean code, financial precision in Python, and scalable architecture.</p>
+                            
+                            <div class="mt-4">
+                                <span class="skill-badge">Python Core</span>
+                                <span class="skill-badge">OOP Architecture</span>
+                                <span class="skill-badge">Web Systems</span>
+                                <span class="skill-badge">Tech Pedagogy</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="mt-5 text-white">Interactive Contact Gateway</h2>
+                    <p>Have questions about the Abstraction Masterclass or interested in a technical collaboration? Reach out through any of the channels below. My communication lines are open for educational inquiries and developer partnerships within the Mindanao tech community.</p>
+
+                    <div class="contact-grid">
+                        <a href="mailto:pansensoyglenn@gmail.com" class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-text">
+                                <h4>Email Me</h4>
+                                <p>pansensoyglenn@gmail.com</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="contact-item">
+                            <i class="fab fa-linkedin-in"></i>
+                            <div class="contact-text">
+                                <h4>LinkedIn</h4>
+                                <p>Connect Professionally</p>
+                            </div>
+                        </a>
+
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <p>Zamboanga Sibugay, PH</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 pt-4 border-top border-secondary">
+                        <p class="small" style="font-style: italic;">Glenn Junsay Pansensoy is a dedicated advocate for technological advancement. This project serves as a cornerstone for students pursuing mastery in scalable software architecture and aims to foster a community of high-integrity developers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
