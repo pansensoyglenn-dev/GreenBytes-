@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore Management System Learning Module | The Readers Hub</title>
+    
+    <meta name="description" content="A comprehensive Python tutorial on building a Bookstore Management System using Object-Oriented Programming (OOP) principles.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://pansensoyglenn-dev.github.io/GreenBytes/tutorials/book.html">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4575646748966866"
+     crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --obsidian-dark: #0f172a;
+            --obsidian-card: #1e293b;
+            --accent-blue: #00d4ff;
+            --text-main: #ffffff;
+            --text-dim: #8892b0;
+            --footer-bg: #020c1b;
+            --terminal-bg: #000000;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.8;
+            color: #d1d9e6;
+            background-color: #050a14;
+            padding-bottom: 0;
+        }
+        .navbar {
+            background-color: #0a192f;
+            border-bottom: 1px solid #00d4ff;
+        }
+        .navbar-brand {
+            color: #00d4ff !important;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .navbar-toggler {
+            border-color: #00d4ff;
+        }
+        .navbar-toggler-icon {
+            filter: invert(60%) sepia(80%) saturate(1000%) hue-rotate(170deg);
+        }
+        .container { 
+            max-width: 900px; 
+            background-color: #0a192f; 
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            margin-top: 30px;
+            border: 1px solid #112240;
+        }
+        pre { border-radius: 8px !important; margin: 20px 0; border: 1px solid #1e3a8a; }
+        h1, h2, h3 { color: #00d4ff; margin-top: 40px; font-weight: 700; }
+        h1 { border-bottom: 2px solid #00d4ff; padding-bottom: 10px; }
+        .verbatim-content { white-space: pre-wrap; margin-bottom: 20px; text-align: justify; }
+        .section-divider { border-bottom: 1px solid #1e3a8a; margin: 50px 0; }
+        code { color: #82aaff; background: rgba(0, 212, 255, 0.1); padding: 2px 5px; border-radius: 4px; }
+        .ad-spacer { margin: 30px 0; text-align: center; }
+        .narrative-box {
+            border-left: 4px solid #00d4ff;
+            padding: 20px;
+            background: rgba(0, 212, 255, 0.03);
+            border-radius: 0 15px 15px 0;
+            margin-bottom: 30px;
+        }
+        .share-btn { transition: transform 0.2s; border-color: #00d4ff; color: #00d4ff; }
+        .share-btn:hover { transform: scale(1.05); background-color: #00d4ff; color: #050a14; }
+        footer a:hover { color: #00d4ff !important; }
+        .back-link:hover {
+            background-color: rgba(0, 212, 255, 0.1) !important;
+            transform: translateX(-5px);
+            color: #00d4ff !important;
+        }
+        .btn-outline-info {
+            color: #00d4ff;
+            border-color: #00d4ff;
+        }
+        .btn-outline-info:hover {
+            background-color: #00d4ff;
+            border-color: #00d4ff;
+            color: #0a192f;
+        }
+        footer { background: var(--footer-bg); padding: 80px 0 20px; border-top: 1px solid #1e293b; margin-top: 80px; }
+        .footer-heading { color: var(--accent-blue); font-family: 'Cinzel', serif; font-size: 1.1rem; margin-bottom: 20px; letter-spacing: 1px; }
+        .footer-link { color: var(--text-dim); text-decoration: none; transition: 0.3s; font-size: 0.9rem; display: block; margin-bottom: 10px; }
+        .footer-link:hover { color: var(--accent-blue); transform: translateX(5px); }
+        .social-icons a { color: var(--text-dim); margin-right: 15px; font-size: 1.2rem; transition: 0.3s; }
+        .social-icons a:hover { color: var(--accent-blue); }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand" href="#">PYTHON TUTORIAL</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">Modules</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#">About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-5">
+    <div class="mb-4">
+        <a href="encapsulation.html" class="btn btn-outline-info d-inline-flex align-items-center back-link" style="text-decoration: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left me-2" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg>
+            Return to Encapsulation Hub
+        </a>
+    </div>
+
+    <h2>The Story Behind the Code: Bringing "The Readers Hub" to Life</h2>
+    <div class="narrative-box">
+        <div class="verbatim-content">
+Imagine you are the owner of a cozy, bustling bookshop called the <strong>The Readers Hub</strong>. Every morning, you unlock the doors to the scent of fresh paper and coffee. But as your collection grows from a few dozen shelves to hundreds of titles like <em>Atomic Habits</em> and <em>Ikigai</em>, managing the chaos becomes a challenge. 
+
+This Python program is the <strong>digital designer</strong> of your shop. It’s more than just lines of code; it is a system designed to think like a shopkeeper. The <strong>Brain</strong> (The Bookstore Class) remembers every title, the <strong>Guard</strong> (The Sell Method) protects your inventory from overselling, and the <strong>Analyst</strong> (The Report Method) summarizes your success at the end of the day. Let’s dive into the mechanics.
+        </div>
+    </div>
+
+    <h1>Python Source Code</h1>
+    <pre><code class="language-python">from dataclasses import dataclass
+from collections import defaultdict
+from typing import Dict, List
+from datetime import date
+
+
+@dataclass
+class Book:
+    title: str
+    author: str
+    price: float
+    stock: int = 0
+
+
+class Bookstore:
+    def __init__(self, name: str):
+        self.name = name
+        self.books: Dict[str, Book] = {}               # title → Book
+        self.sales_today: Dict[str, int] = defaultdict(int)   # title → qty sold today
+        self.total_revenue_today: float = 0.0
+        self.current_date = date.today()
+
+
+    def add_book(self, title: str, author: str, price: float, initial_stock: int = 0) -> None:
+        """Add a new book or update existing one"""
+        if title in self.books:
+            self.books[title].stock += initial_stock
+            print(f"Updated stock for '{title}' (+{initial_stock})")
+        else:
+            self.books[title] = Book(title, author, price, initial_stock)
+            print(f"Added new book: '{title}' by {author}")
+
+
+    def restock(self, title: str, quantity: int) -> bool:
+        """Restock an existing book"""
+        if title not in self.books:
+            print(f"Cannot restock — book '{title}' not found.")
+            return False
+        
+        self.books[title].stock += quantity
+        print(f"Restocked '{title}': +{quantity} → now {self.books[title].stock} copies")
+        return True
+
+
+    def sell(self, title: str, quantity: int = 1) -> bool:
+        """Try to sell one or more copies of a book"""
+        if title not in self.books:
+            print(f"Book '{title}' not found in store.")
+            return False
+
+        book = self.books[title]
+        
+        if book.stock < quantity:
+            print(f"Not enough stock for '{title}'. Only {book.stock} available.")
+            return False
+
+        book.stock -= quantity
+        revenue = quantity * book.price
+        
+        self.sales_today[title] += quantity
+        self.total_revenue_today += revenue
+        
+        print(f"SOLD → {quantity}x '{title}' @ ₱{book.price:,.2f} each = ₱{revenue:,.2f}")
+        return True
+
+
+    def end_of_day_report(self) -> None:
+        """Print inventory status and sales summary"""
+        print("\n" + "="*60)
+        print(f"📚 {self.name} - END OF DAY REPORT ({self.current_date})")
+        print("="*60)
+
+        print("\n📊 SALES TODAY")
+        if not self.sales_today:
+            print("  No sales recorded today.")
+        else:
+            # Sort by quantity sold (descending)
+            sorted_sales = sorted(self.sales_today.items(), key=lambda x: x[1], reverse=True)
+            
+            print("  Best-seller ranking:")
+            for rank, (title, qty) in enumerate(sorted_sales, 1):
+                book = self.books[title]
+                revenue = qty * book.price
+                print(f"  {rank}. {title} × {qty} = ₱{revenue:,.2f}")
+            
+            print(f"\n  Total revenue today: ₱{self.total_revenue_today:,.2f}")
+
+        print("\n📦 CURRENT INVENTORY")
+        if not self.books:
+            print("  No books in inventory.")
+        else:
+            # Sort by stock quantity (descending)
+            sorted_inventory = sorted(self.books.items(), key=lambda x: x[1].stock, reverse=True)
+            
+            for title, book in sorted_inventory:
+                status = "LOW STOCK" if book.stock <= 3 else "OK"
+                print(f"  • {title} by {book.author:.<30} "
+                      f"₱{book.price:>6.2f}  |  Stock: {book.stock:>3}  |  {status}")
+
+
+    def reset_daily_sales(self) -> None:
+        """Call this at the beginning of a new day"""
+        self.sales_today.clear()
+        self.total_revenue_today = 0.0
+        self.current_date = date.today()
+
+
+if __name__ == "__main__":
+    store = Bookstore("Mindanao Readers Hub")
+    store.add_book("Atomic Habits", "James Clear", 599.00, 12)
+    store.add_book("The Psychology of Money", "Morgan Housel", 450.00, 8)
+    store.add_book("Ikigai", "Héctor García & Francesc Miralles", 399.00, 5)
+    store.add_book("Rich Dad Poor Dad", "Robert Kiyosaki", 350.00, 15)
+    
+    print("\n" + "-"*50)
+    store.sell("Atomic Habits", 3)
+    store.sell("The Psychology of Money", 2)
+    store.restock("Ikigai", 10)
+    store.end_of_day_report()
+    
+    print("\n" + "-"*50 + "\nNew day begins...\n")
+    store.reset_daily_sales()
+    store.sell("Rich Dad Poor Dad", 5)
+    store.end_of_day_report()</code></pre>
+
+    <div class="ad-spacer">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4575646748966866"
+             data-ad-slot="6447477860"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <h2>Overview of the Bookstore Program</h2>
+    <div class="verbatim-content">
+This Python program implements a simple, encapsulated simulation of a bookstore management system. It uses object-oriented programming (OOP) principles to model books and bookstore operations. The core components include a Book class for representing individual books and a Bookstore class for handling inventory, sales, restocking, and reporting. The program tracks daily sales to identify best-sellers and provides an end-of-day summary of inventory and revenue. An example usage section demonstrates how to interact with the system.
+The code is structured for modularity, reusability, and ease of extension. It leverages Python's standard libraries and features like dataclasses for concise data modeling, defaultdict for simplified tracking, and type hints for better readability and maintainability. Now, I'll explain the code logically, step by step, followed by an in-depth analysis, the significance of key elements, and a summary.
+    </div>
+
+    <h2>Step-by-Step Explanation</h2>
+    <div class="verbatim-content">
+I'll break down the code into logical sections: imports, data structures, the main class and its methods, and the example usage. Each step builds on the previous one to create a cohesive system.
+    </div>
+
+    <h3>Step 1: Imports and Data Containers</h3>
+    <pre><code class="language-python">from dataclasses import dataclass
+from collections import defaultdict
+from typing import Dict, List
+from datetime import date
+
+@dataclass
+class Book:
+    title: str
+    author: str
+    price: float
+    stock: int = 0</code></pre>
+    <div class="verbatim-content">
+This section imports necessary modules for data management and dates. The Book dataclass acts as a clean, efficient container for each book's properties, encapsulating title, author, price, and stock levels.
+    </div>
+
+    <h3>Step 2: The Bookstore Engine</h3>
+    <div class="verbatim-content">
+The Bookstore class manages the entire shop. Its <code>__init__</code> method sets up the inventory dictionary and sales trackers. The <code>sell()</code> method is crucial; it performs a "safety check" on stock before allowing a transaction, ensuring you never sell a book you don't have.
+    </div>
+
+    <h3>Step 3: Business Analytics</h3>
+    <div class="verbatim-content">
+The <code>end_of_day_report()</code> method aggregates all transaction data. It sorts books to find best-sellers and identifies items that need urgent restocking. Finally, <code>reset_daily_sales()</code> clears the slate for a new business day.
+    </div>
+
+    <div class="section-divider"></div>
+
+    <h2>In-Depth Analysis</h2>
+    <div class="verbatim-content">
+Design Choices: The program uses OOP to encapsulate logic within the Bookstore class, adhering to the Single Responsibility Principle. Error Handling: Methods return booleans for success/failure, ensuring the system handles empty stock or missing titles gracefully. Performance: Using Dictionaries ensures O(1) lookup times for any book in the inventory.
+    </div>
+
+    <h2>Significance of the Code</h2>
+    <div class="verbatim-content">
+This code serves as a foundational model for business logic simulation. It demonstrates how real-world entities (books, shops, sales) are translated into digital objects. It provides a modular foundation that could easily be scaled into a full-scale web application or database-backed inventory system.
+    </div>
+
+    <div class="section-divider"></div>
+    <div class="py-5 px-4 mb-5 text-center" style="background: rgba(0, 212, 255, 0.03); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 15px;">
+        <h2 class="mt-0">🌐 Mindanao Readers Viral Hub</h2>
+        <p class="text-white-50 mb-4">Don't stop here! Dive deeper into our ecosystem of learning and growth.</p>
+        
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4">
+                <div class="p-3 h-100" style="background: #0a192f; border-radius: 10px; border: 1px solid #1e3a8a;">
+                    <div class="fs-1 mb-2">📚</div>
+                    <h5 class="text-white">More Modules</h5>
+                    <p class="small text-white-50">Explore concepts from Inheritance to Polymorphism.</p>
+                    <a href="#" class="btn btn-sm btn-outline-info">View Catalog</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 h-100" style="background: #0a192f; border-radius: 10px; border: 1px solid #1e3a8a;">
+                    <div class="fs-1 mb-2">💬</div>
+                    <h5 class="text-white">Join Community</h5>
+                    <p class="small text-white-50">Connect with fellow Mindanao developers on Discord.</p>
+                    <a href="#" class="btn btn-sm btn-outline-info">Join Now</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 h-100" style="background: #0a192f; border-radius: 10px; border: 1px solid #1e3a8a;">
+                    <div class="fs-1 mb-2">☕</div>
+                    <h5 class="text-white">Support the Hub</h5>
+                    <p class="small text-white-50">Help us keep the coffee brewing and the code flowing.</p>
+                    <a href="#" class="btn btn-sm btn-outline-info">Buy a Coffee</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <h5 class="footer-heading">About the Author</h5>
+                <p class="text-dim small">I am a passionate educator and software enthusiast dedicated to simplifying complex programming concepts for the next generation of developers.</p>
+                <div class="social-icons mt-3">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="col-6 col-lg-2 mb-4">
+                <h5 class="footer-heading">Resources</h5>
+                <a href="#" class="footer-link">Documentation</a>
+                <a href="#" class="footer-link">Source Files</a>
+                <a href="#" class="footer-link">OOP Basics</a>
+                <a href="#" class="footer-link">Python Tips</a>
+            </div>
+            <div class="col-6 col-lg-2 mb-4">
+                <h5 class="footer-heading">Legal</h5>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Cookie Policy</a>
+                <a href="#" class="footer-link">Disclaimers</a>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <h5 class="footer-heading">Contact & Support</h5>
+                <p class="text-dim small">Have questions about this module? Reach out for professional consultation or code review.</p>
+                <a href="mailto:pansensoyglenn@gmail.com" class="footer-link"><i class="fas fa-envelope me-2"></i> pansensoyglenn@gmail.com</a>
+                <p class="text-dim small mt-2"><i class="fas fa-map-marker-alt me-2"></i> Diplahan, Zamboanga Sibugay, Philippines</p>
+            </div>
+        </div>
+        <hr class="my-4 border-secondary">
+        <div class="text-center">
+            <p class="text-dim small mb-0">© 2026 Glenn Junsay Pansensoy. All Rights Reserved. Built with Logic and Precision.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
+</body>
+</html>
