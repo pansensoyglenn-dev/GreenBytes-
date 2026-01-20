@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>The Fruit Hub | Enterprise Python OOP & Abstraction Tutorial</title>
+    <meta name="title" content="The Fruit Hub | Enterprise Python OOP & Abstraction Tutorial">
+    <meta name="description" content="Master Python Object-Oriented Programming and Abstraction with The Fruit Hub. A professional guide for Website Development in the Zamboanga Peninsula region.">
+    <meta name="keywords" content="Python, OOP, Abstraction, Software Architecture, Fruit Hub, Programming Tutorial, Glenn Junsay Pansensoy, GreenBytes">
+    <meta name="author" content="Glenn Junsay Pansensoy">
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://pansensoyglenn-dev.github.io/GreenBytes/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pansensoyglenn-dev.github.io/GreenBytes/">
+    <meta property="og:title" content="The Fruit Hub | Enterprise Python OOP & Abstraction">
+    <meta property="og:description" content="Professional Python tutorial focusing on Abstraction and OOP principles for modern software development.">
+    <meta property="og:image" content="https://pansensoyglenn-dev.github.io/GreenBytes/assets/og-image.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://pansensoyglenn-dev.github.io/GreenBytes/">
+    <meta property="twitter:title" content="The Fruit Hub | Enterprise Python OOP & Abstraction">
+    <meta property="twitter:description" content="Professional Python tutorial focusing on Abstraction and OOP principles for modern software development.">
+    <meta property="twitter:image" content="https://pansensoyglenn-dev.github.io/GreenBytes/assets/og-image.jpg">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4575646748966866" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --midnight: #0a0f1d;
+            --obsidian: #020617;
+            --accent: #38bdf8;
+            --border-color: #1e293b;
+            --code-bg: #010409;
+            --text-main: #94a3b8;
+            --text-bright: #f1f5f9;
+            --border-weight: 2px;
+        }
+
+        body {
+            background-color: var(--obsidian);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 0;
+            padding-top: 80px;
+            text-align: justify;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background-color: var(--midnight);
+            border-bottom: var(--border-weight) solid var(--accent);
+            padding: 0.8rem 2rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 4000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left { font-family: 'JetBrains Mono', monospace; font-weight: 800; color: var(--accent); font-size: 0.9rem; }
+        .hamburger { cursor: pointer; color: var(--text-bright); font-size: 1.5rem; }
+
+        .sidebar {
+            height: 0; width: 100%; position: fixed; z-index: 3000; top: 60px; left: 0;
+            background-color: var(--midnight); overflow: hidden; transition: 0.4s ease-in-out;
+            border-bottom: 0 solid var(--accent); display: flex; flex-direction: column; align-items: center;
+        }
+        
+        .sidebar.active { height: auto; padding: 20px 0; border-bottom: var(--border-weight) solid var(--accent); }
+        .sidebar a { padding: 10px 20px; text-decoration: none; font-size: 1rem; color: var(--text-bright); width: 100%; text-align: center; font-family: 'JetBrains Mono', monospace; }
+
+        .main-container { max-width: 1100px; margin: 0 auto; padding: 1rem; }
+        
+        .doc-section {
+            background-color: var(--midnight);
+            border: var(--border-weight) solid var(--border-color);
+            border-radius: 4px;
+            padding: 20px; 
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 10px 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s all ease;
+            margin-bottom: 2rem;
+            cursor: pointer;
+        }
+        .home-btn:hover {
+            background: var(--accent);
+            color: var(--obsidian);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+
+        .copy-btn {
+            position: absolute; top: 10px; right: 10px;
+            background: var(--accent); color: var(--obsidian);
+            border: none; padding: 4px 8px; border-radius: 2px; 
+            font-weight: 700; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; cursor: pointer;
+        }
+
+        h1 { color: var(--text-bright); font-weight: 800; font-size: 1.7rem; margin: 1rem 0; text-align: left; }
+        h3 { color: var(--text-bright); font-size: 1.2rem; font-weight: 700; margin-top: 1.5rem; text-align: left; }
+
+        .code-block {
+            background-color: var(--code-bg); border: 1px solid var(--border-color);
+            padding: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
+            overflow-x: auto; color: #d1d5db; margin: 1rem 0; text-align: left;
+        }
+        .k { color: #ff7b72; } .cl { color: #79c0ff; } .s { color: #a5d6ff; } .d { color: #d2a8ff; } .c { color: #8b949e; }
+
+        .pillar-row { display: flex; align-items: flex-start; padding: 2rem 5px; border-bottom: 1px solid var(--border-color); }
+        .pillar-row:last-child { border-bottom: none; }
+        .pillar-id { min-width: 60px; color: var(--accent); font-family: 'JetBrains Mono', monospace; font-weight: 800; font-size: 1.5rem; }
+        .pillar-head { color: var(--text-bright); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; display: block; text-align: left; }
+
+        .highlight { color: var(--accent); font-weight: 800; text-transform: uppercase; font-size: 0.8rem; display: block; margin-bottom: 5px; }
+
+        .outro-section {
+            margin-top: 4rem; padding: 2rem; background-color: var(--midnight);
+            border: var(--border-weight) solid var(--border-color); border-left: 6px solid var(--accent); text-align: left;
+        }
+        .outro-text { color: var(--text-main); font-style: italic; margin-bottom: 1.5rem; }
+        .author-name { color: var(--text-bright); font-size: 1.05rem; font-weight: 700; margin: 0; }
+        .programmer-logic { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.95rem; margin-top: 0.5rem; display: block; }
+
+        .visual-aid {
+            background: var(--code-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        footer { 
+            background: var(--midnight); 
+            border-top: var(--border-weight) solid var(--accent); 
+            padding: 3rem 1rem; 
+            margin-top: 5rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .footer-brand { color: var(--text-bright); font-family: 'JetBrains Mono', monospace; font-weight: 800; }
+        .footer-tagline { font-size: 0.85rem; margin-top: 0.5rem; color: var(--text-main); }
+        .footer-header { color: var(--accent); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1.2rem; letter-spacing: 1px; }
+        .footer-links-list { list-style: none; padding: 0; margin: 0; }
+        .footer-links-list li { margin-bottom: 0.6rem; }
+        .footer-links-list a { color: var(--text-main); text-decoration: none; font-size: 0.9rem; transition: 0.2s; }
+        .footer-links-list a:hover { color: var(--accent); padding-left: 5px; }
+        
+        .footer-bottom { 
+            border-top: 1px solid var(--border-color); 
+            margin-top: 3rem; 
+            padding-top: 2rem; 
+            text-align: center;
+        }
+        .share-container { margin-bottom: 1.5rem; }
+        .timestamp-badge { 
+            display: inline-block; background: var(--obsidian); border: 1px solid var(--border-color);
+            padding: 4px 12px; border-radius: 2px; font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; color: var(--accent);
+            margin-top: 15px;
+        }
+        .share-btn { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 8px 16px; margin: 5px; font-size: 0.8rem; cursor: pointer; }
+        
+        .form-control { background: var(--obsidian); border: 1px solid var(--border-color); color: white; margin-bottom: 1rem; border-radius: 0; }
+        .form-control:focus { background: var(--obsidian); border-color: var(--accent); color: white; box-shadow: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-left">PYTHON TUTORIAL</div>
+        <div class="hamburger" onclick="toggleNav()">&#9776;</div>
+    </header>
+
+    <nav id="mySidebar" class="sidebar">
+        <a href="#intro" onclick="toggleNav()">Preface</a>
+        <a href="#source-code" onclick="toggleNav()">Source Code</a>
+        <a href="#deployment" onclick="toggleNav()">Deployment</a>
+        <a href="#analysis" onclick="toggleNav()">Analysis</a>
+        <a href="#pillars" onclick="toggleNav()">12 Pillars</a>
+        <a href="#summary" onclick="toggleNav()">Summary</a>
+        <a href="#contact-gateway" onclick="toggleNav()">Contact</a>
+    </nav>
+
+    <div class="main-container">
+
+        <a href="abstraction.html" class="home-btn">← Return to Abstraction Hub</a>
+
+        <section class="doc-section" id="intro">
+            <span class="highlight">The Preface</span>
+            <h1>The Paradigm of Abstraction in Modern Software</h1>
+            <p>
+                In the evolving landscape of computational logic, the ability to decouple high-level business requirements from low-level implementation details is the hallmark of professional software engineering. This tutorial explores <strong>The Fruit Hub Framework</strong>, a sophisticated retail management model built upon the pillars of Object-Oriented Programming (OOP). By utilizing Python’s <code>Abstract Base Classes (ABC)</code>, we demonstrate how to create a scalable, modular environment that mirrors real-world retail operations.
+            </p>
+        </section>
+
+        <section class="doc-section" id="source-code">
+            <button class="copy-btn" onclick="copyCode()">COPY CODE</button>
+            <span class="highlight">01. Original Implementation</span>
+            <h1>Full Python Source Code</h1>
+            <div class="code-block" id="python-code">
+<pre><code><span class="k">from</span> abc <span class="k">import</span> ABC, abstractmethod
+<span class="k">from</span> datetime <span class="k">import</span> datetime
+<span class="k">from</span> typing <span class="k">import</span> List
+<span class="k">from</span> dataclasses <span class="k">import</span> dataclass
+
+<span class="k">class</span> <span class="cl">FruitItem</span>(ABC):
+    <span class="d">"""Abstract interface for all sellable fruit items."""</span>
+    <span class="d">@abstractmethod</span>
+    <span class="k">def</span> <span class="cl">get_name</span>(self) -> <span class="cl">str</span>: <span class="k">pass</span>
+    <span class="d">@abstractmethod</span>
+    <span class="k">def</span> <span class="cl">get_price_per_kg</span>(self) -> <span class="cl">float</span>: <span class="k">pass</span>
+    <span class="d">@abstractmethod</span>
+    <span class="k">def</span> <span class="cl">get_unit</span>(self) -> <span class="cl">str</span>: <span class="k">pass</span>
+    <span class="k">def</span> <span class="cl">calculate_subtotal</span>(self, quantity: <span class="cl">float</span>) -> <span class="cl">float</span>:
+        <span class="k">if</span> quantity <= 0:
+            <span class="k">raise</span> ValueError(<span class="s">"Quantity must be positive"</span>)
+        <span class="k">return</span> round(self.get_price_per_kg() * quantity, 2)
+    <span class="k">def</span> <span class="cl">__str__</span>(self) -> <span class="cl">str</span>:
+        <span class="k">return</span> f<span class="s">"{self.get_name()} (₱{self.get_price_per_kg():.2f}/{self.get_unit()})"</span>
+
+<span class="k">class</span> <span class="cl">ConcreteFruit</span>(FruitItem):
+    <span class="d">"""Concrete implementation using composition over one-class-per-fruit."""</span>
+    <span class="k">def</span> <span class="cl">__init__</span>(self, name: <span class="cl">str</span>, price_per_kg: <span class="cl">float</span>, unit: <span class="cl">str</span> = <span class="s">"kg"</span>):
+        self._name = name
+        self._price = price_per_kg
+        self._unit = unit
+    <span class="k">def</span> <span class="cl">get_name</span>(self) -> <span class="cl">str</span>: <span class="k">return</span> self._name
+    <span class="k">def</span> <span class="cl">get_price_per_kg</span>(self) -> <span class="cl">float</span>: <span class="k">return</span> self._price
+    <span class="k">def</span> <span class="cl">get_unit</span>(self) -> <span class="cl">str</span>: <span class="k">return</span> self._unit
+
+<span class="k">class</span> <span class="cl">ShoppingCart</span>:
+    <span class="d">"""Manages cart items with type-safe composition."""</span>
+    <span class="k">def</span> <span class="cl">__init__</span>(self): self.items: List[CartLine] = []
+    <span class="k">def</span> <span class="cl">add_item</span>(self, fruit: FruitItem, kilograms: <span class="cl">float</span>):
+        subtotal = fruit.calculate_subtotal(kilograms)
+        self.items.append(CartLine(fruit=fruit, kg=kilograms, subtotal=subtotal))
+        print(f<span class="s">"→ Added {kilograms:.2f} kg {fruit.get_name()} → ₱{subtotal:,.2f}"</span>)
+    <span class="k">def</span> <span class="cl">get_total</span>(self) -> <span class="cl">float</span>:
+        <span class="k">return</span> round(sum(item.subtotal <span class="k">for</span> item <span class="k">in</span> self.items), 2)
+    <span class="k">def</span> <span class="cl">print_receipt</span>(self):
+        print(<span class="s">"\n"</span> + <span class="s">"═"</span> * 60)
+        print(f<span class="s">"      FRUIT STAND RECEIPT – {datetime.now().strftime('%Y-%m-%d %I:%M %p')}"</span>)
+        print(<span class="s">"═"</span> * 60)
+        <span class="k">for</span> item <span class="k">in</span> self.items:
+            f = item.fruit
+            print(f<span class="s">"{f.get_name():&lt;15} {item.kg:&gt;6.2f} kg   ₱{item.subtotal:&gt;10,.2f}"</span>)
+        print(<span class="s">"─"</span> * 60)
+        print(f<span class="s">"TOTAL TO PAY              ₱{self.get_total():&gt;10,.2f}"</span>)
+        print(<span class="s">"═"</span> * 60)
+
+<span class="k">@dataclass</span>
+<span class="k">class</span> <span class="cl">CartLine</span>:
+    fruit: FruitItem
+    kg: <span class="cl">float</span>
+    subtotal: <span class="cl">float</span>
+
+<span class="k">def</span> <span class="cl">main</span>():
+    catalog = {
+        <span class="s">"1"</span>: ConcreteFruit(<span class="s">"Durian"</span>, 120.0),
+        <span class="s">"2"</span>: ConcreteFruit(<span class="s">"Orange"</span>, 80.0),
+        <span class="s">"3"</span>: ConcreteFruit(<span class="s">"Apple"</span>, 80.0),
+        <span class="s">"4"</span>: ConcreteFruit(<span class="s">"Lanzones"</span>, 70.0),
+        <span class="s">"5"</span>: ConcreteFruit(<span class="s">"Mangosteen"</span>, 75.0),
+        <span class="s">"6"</span>: ConcreteFruit(<span class="s">"Guava"</span>, 80.0),
+        <span class="s">"7"</span>: ConcreteFruit(<span class="s">"Guyabano"</span>, 80.0),
+        <span class="s">"8"</span>: ConcreteFruit(<span class="s">"Banana"</span>, 60.0),
+        <span class="s">"9"</span>: ConcreteFruit(<span class="s">"Grapes"</span>, 120.0),
+    }
+    cart = ShoppingCart()
+    
+    print(<span class="s">"Welcome to Polomolok Fresh Fruits!"</span>)
+    print(<span class="s">"\n"</span> + <span class="s">"─"</span> * 30)
+    print(f<span class="s">"{'ID':&lt;4} {'FRUIT':&lt;15} {'PRICE/kg':&lt;10}"</span>)
+    print(<span class="s">"─"</span> * 30)
+    <span class="k">for</span> key, fruit <span class="k">in</span> catalog.items():
+        print(f<span class="s">"{key:&lt;4} {fruit.get_name():&lt;15} ₱{fruit.get_price_per_kg():&gt;6.2f}"</span>)
+    print(<span class="s">"─"</span> * 30)
+
+    <span class="k">while</span> True:
+        choice = input(<span class="s">"\nEnter fruit ID (0 to finish): "</span>).strip()
+        <span class="k">if</span> choice == <span class="s">"0"</span>: <span class="k">break</span>
+        <span class="k">if</span> choice <span class="k">not in</span> catalog:
+            print(<span class="s">"→ Item not found. Refer to ID list."</span>)
+            <span class="k">continue</span>
+        <span class="k">try</span>:
+            kg = float(input(f<span class="s">"Weight for {catalog[choice].get_name()} (kg): "</span>))
+            <span class="k">if</span> kg > 0: cart.add_item(catalog[choice], kg)
+            <span class="k">else</span>: print(<span class="s">"→ Quantity must be positive."</span>)
+        <span class="k">except</span> ValueError: print(<span class="s">"→ Invalid input. Enter numerical weight."</span>)
+            
+    <span class="k">if</span> cart.items: cart.print_receipt()
+
+<span class="k">if</span> __name__ == <span class="s">"__main__"</span>:
+    main()</code></pre>
+            </div>
+
+            <pre id="clean-python-code" style="display:none;">from abc import ABC, abstractmethod
+from datetime import datetime
+from typing import List
+from dataclasses import dataclass
+
+class FruitItem(ABC):
+    @abstractmethod
+    def get_name(self) -> str: pass
+    @abstractmethod
+    def get_price_per_kg(self) -> float: pass
+    @abstractmethod
+    def get_unit(self) -> str: pass
+    def calculate_subtotal(self, quantity: float) -> float:
+        if quantity <= 0: raise ValueError("Quantity must be positive")
+        return round(self.get_price_per_kg() * quantity, 2)
+
+class ConcreteFruit(FruitItem):
+    def __init__(self, name: str, price_per_kg: float, unit: str = "kg"):
+        self._name = name
+        self._price = price_per_kg
+        self._unit = unit
+    def get_name(self) -> str: return self._name
+    def get_price_per_kg(self) -> float: return self._price
+    def get_unit(self) -> str: return self._unit
+
+class ShoppingCart:
+    def __init__(self): self.items: List[CartLine] = []
+    def add_item(self, fruit: FruitItem, kilograms: float):
+        subtotal = fruit.calculate_subtotal(kilograms)
+        self.items.append(CartLine(fruit=fruit, kg=kilograms, subtotal=subtotal))
+        print(f"→ Added {kilograms:.2f} kg {fruit.get_name()} → ₱{subtotal:,.2f}")
+    def get_total(self) -> float: return round(sum(item.subtotal for item in self.items), 2)
+    def print_receipt(self):
+        print("\n" + "═" * 45)
+        print(f"   RECEIPT - {datetime.now().strftime('%Y-%m-%d %I:%M %p')}")
+        print("═" * 45)
+        for item in self.items:
+            f = item.fruit
+            print(f"{f.get_name():<15} {item.kg:>6.2f} kg   ₱{item.subtotal:>10,.2f}")
+        print("─" * 45)
+        print(f"TOTAL TO PAY              ₱{self.get_total():>10,.2f}")
+        print("═" * 45)
+
+@dataclass
+class CartLine:
+    fruit: FruitItem
+    kg: float
+    subtotal: float
+
+def main():
+    catalog = {
+        "1": ConcreteFruit("Durian", 120.0), "2": ConcreteFruit("Orange", 80.0),
+        "3": ConcreteFruit("Apple", 80.0), "4": ConcreteFruit("Lanzones", 70.0),
+        "5": ConcreteFruit("Mangosteen", 75.0), "6": ConcreteFruit("Guava", 80.0),
+        "7": ConcreteFruit("Guyabano", 80.0), "8": ConcreteFruit("Banana", 60.0),
+        "9": ConcreteFruit("Grapes", 120.0),
+    }
+    cart = ShoppingCart()
+    print("Welcome to Polomolok Fresh Fruits!\n" + "─" * 30)
+    print(f"{'ID':<4} {'FRUIT':<15} {'PRICE/kg':<10}\n" + "─" * 30)
+    for key, fruit in catalog.items():
+        print(f"{key:<4} {fruit.get_name():<15} ₱{fruit.get_price_per_kg():>6.2f}")
+    print("─" * 30)
+    while True:
+        choice = input("\nEnter fruit ID (0 to finish): ").strip()
+        if choice == "0": break
+        if choice in catalog:
+            try:
+                kg = float(input(f"Weight for {catalog[choice].get_name()} (kg): "))
+                if kg > 0: cart.add_item(catalog[choice], kg)
+                else: print("→ Quantity must be positive.")
+            except: print("→ Invalid input.")
+        else: print("→ Invalid ID.")
+    if cart.items: cart.print_receipt()
+
+if __name__ == "__main__": main()</pre>
+        </section>
+
+        <section class="doc-section" id="deployment">
+            <span class="highlight">Execution Strategy</span>
+            <h1>How to Run This Logic</h1>
+            <p>To implement and test the <strong>Fruit Hub Abstraction</strong> on your local machine, follow these technical steps:</p>
+            <ol style="color: var(--text-main); font-size: 0.95rem;">
+                <li><strong>Copy the Code:</strong> Click the "COPY CODE" button in the section above to store the script in your clipboard.</li>
+                <li><strong>Create a Python File:</strong> Save the content as <code>fruit_hub.py</code> using an editor like VS Code or PyCharm.</li>
+                <li><strong>Execute via Terminal:</strong> Run the command <code>python fruit_hub.py</code>.</li>
+                <li><strong>Interactive Testing:</strong> Follow the on-screen prompts to simulate a real-world transaction and verify the polymorphic receipt generation.</li>
+            </ol>
+            <p><em>Note: This code requires Python 3.7+ due to the use of <code>dataclasses</code> and type hinting.</em></p>
+        </section>
+
+        <section class="doc-section" id="analysis">
+            <span class="highlight">02. Theoretical Depth</span>
+            <h1>Why Major Elements Were Used</h1>
+            <p><strong>Import Statements:</strong> These provide essential tools for abstraction and type safety. <code>ABC</code> and <code>abstractmethod</code> enable formal abstraction. <code>datetime</code> is for timestamping receipts, making the program realistic for business use. <code>List</code> and <code>Dict</code> add type hints, improving code readability and IDE support.</p>
+            <h3>Abstract Base Class: FruitItem(ABC)</h3>
+            <p><strong>Why used:</strong> This is the core of abstraction. It defines an interface (contract) that all fruits must follow, hiding implementation details while ensuring consistency.</p>
+            
+            <div class="visual-aid">
+                <span class="highlight">Structural Logic Mapping</span>
+                
+            </div>
+
+            <p>It promotes polymorphism and makes the program extensible—new fruits can be added without changing the cart or main logic. By enforcing method overrides in subclasses, it ensures that every fruit has a name, price, and unit before the code can even run.</p>
+        </section>
+
+        <section class="doc-section" id="pillars">
+            <span class="highlight">03. Operational Pillars</span>
+            <h1>12 Key Pillars of Operation</h1>
+            
+            <div class="pillar-row">
+                <div class="pillar-id">01</div>
+                <div class="pillar-content">
+                    <span class="pillar-head">Import Statements Operation</span>
+                    <div class="pillar-body">When the script runs, Python loads the <code>abc</code> module for abstraction and <code>datetime</code> for current time access. These foundational imports establish the infrastructure for formal interface contracts (via ABC) and realistic business timestamping on receipts.</div>
+                </div>
+            </div>
+
+            <div class="pillar-row">
+                <div class="pillar-id">02</div>
+                <div class="pillar-content">
+                    <span class="pillar-head">Abstract Base Class: FruitItem</span>
+                    <div class="pillar-body">Defines the blueprint. You can't instantiate it directly. It ensures subclasses follow the mandatory method structure and enforces a strict contract across all fruit types.</div>
+                </div>
+            </div>
+
+            <div class="pillar-row">
+                <div class="pillar-id">03</div>
+                <div class="pillar-content">
+                    <span class="pillar-head">Abstract Method Placeholder</span>
+                    <div class="pillar-body">The <code>pass</code> keyword acts as a syntactic requirement, forcing child classes to implement logic. This placeholder triggers Python's ABC enforcement mechanism.</div>
+                </div>
+            </div>
+
+            <div class="pillar-row">
+                <div class="pillar-id">04</div>
+                <div class="pillar-content">
+                    <span class="pillar-head">Concrete Method: calculate_subtotal</span>
+                    <div class="pillar-body">Multiplies quantity by price dynamically fetched via polymorphism. Located in the base class, this method provides reusable default behavior that every fruit inherits automatically.</div>
+                </div>
+            </div>
+
+            <div class="pillar-row">
+                <div class="pillar-id">05</div>
+                <div class="pillar-content">
+                    <span class="pillar-head">The str Method Logic</span>
+                    <div class="pillar-body">Automatically formats the fruit object into a human-readable menu string. Because __str__ relies on the abstract interface, it remains polymorphic for any FruitItem subclass.</div>
+                </div>
+            </div>
+
+            <div class="pillar-row">
+                <div class="pillar-id">06</div>
+                <div class="pillar-content">
+                    <span class="pillar-head">Concrete Fruit Classes</span>
+                    <div class="pillar-body">Specific implementations (Durian, Orange, etc.) that fill in the "price" and "name" details of the blueprint. These classes are deliberately minimal to keep them focused.</div>
+                </div>
+            </div>
+
+            <div class="pillar-row">
+                <div class="pillar-id">07</div>
+                <div class="pillar-content">
+                    <span class="pillar-head">ShoppingCart Composition</span>
+                    <div class="pillar-body">Maintains a stateful list of transaction records. By composing FruitItem instances, the cart stays decoupled from concrete fruit details.</div>
+                </div>
+            </div>
+
+            <div class="pillar-row">
+                <div class="pillar-id">08</div>
+                <div class="pillar-content">
+                    <span class="pillar-head">Catalog Dictionary Lookup</span>
+                    <div class="pillar-body">Provides high-efficiency mapping between numeric user choices and fruit object instances, enabling fast O(1) lookups.</div>
+                </div>
+            </div>
+
+            <div class="pillar-row">
+                <div class="pillar-id">09</div>
+                <div class="pillar-content">
+                    <span class="pillar-head">Interactive Loop Workflow</span>
+                    <div class="pillar-body">Manages the UI experience, taking orders until the exit signal (0) is triggered. This creates a simple flow that matches a real fruit sale.</div>
+                </div>
+            </div>
+
+            <div class="pillar-row">
+                <div class="pillar-id">10</div>
+                <div class="pillar-content">
+                    <span class="pillar-head">Exception Handling Mechanism</span>
+                    <div class="pillar-body">Uses <code>try/except</code> to prevent user input errors from crashing the system, ensuring the program stays alive during real use.</div>
+                </div>
+            </div>
+
+            <div class="pillar-row">
+                <div class="pillar-id">11</div>
+                <div class="pillar-content">
+                    <span class="pillar-head">Receipt and Change Logic</span>
+                    <div class="pillar-body">Finalizes the session by summing subtotals and printing a formatted, timestamped transaction record using Unicode characters.</div>
+                </div>
+            </div>
+
+            <div class="pillar-row">
+                <div class="pillar-id">12</div>
+                <div class="pillar-content">
+                    <span class="pillar-head">The main Guard</span>
+                    <div class="pillar-body">Ensures script integrity by preventing the interactive loop from running if the file is imported elsewhere, a fundamental Python best practice.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="doc-section" id="summary">
+            <span class="highlight">04. Profound Analysis</span>
+            <h1>The Summary</h1>
+            <p>
+                In conclusion, this project serves as a comprehensive demonstration of how <strong>Pythonic abstraction</strong> can be applied to solve real-world logistical problems. By utilizing the <code>ABC</code> module, we have created a "contract" that ensures every fruit item added to the inventory shares a predictable interface.
+            </p>
+            <p>
+                For the developers across the <strong>Globe</strong>, this offers <strong>Scalability</strong> and <strong>Maintainability</strong>. Adherence to the Open/Closed Principle is what separates professional software architecture from simple scripting.
+            </p>
+            <a href="abstraction.html" class="home-btn" style="margin-top:20px;">Return to Abstraction Hub</a>
+        </section>
+
+        <section class="doc-section" id="contact-gateway">
+            <span class="highlight">Institutional Gateway</span>
+            <h1>Contact Me</h1>
+            <p>For technical inquiries or academic collaboration regarding the GreenBytes initiative, please use the formal channel below.</p>
+            
+            <div style="background: var(--code-bg); padding: 2rem; border: 1px solid var(--border-color);">
+                <form action="mailto:pansensoyglenn@gmail.com" method="post" enctype="text/plain">
+                    <div class="mb-3">
+                        <label class="form-label" style="color: var(--accent); font-family: 'JetBrains Mono'; font-size: 0.8rem;">IDENTIFICATION</label>
+                        <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" style="color: var(--accent); font-family: 'JetBrains Mono'; font-size: 0.8rem;">ELECTRONIC MAIL</label>
+                        <input type="email" name="email" class="form-control" placeholder="pansensoyglenn@gmail.com" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" style="color: var(--accent); font-family: 'JetBrains Mono'; font-size: 0.8rem;">INQUIRY PAYLOAD</label>
+                        <textarea name="message" class="form-control" rows="4" placeholder="Describe the nature of your technical inquiry..." required></textarea>
+                    </div>
+                    <button type="submit" class="share-btn" style="width: 100%; margin: 0; padding: 12px; font-weight: 800;">TRANSMIT MESSAGE</button>
+                </form>
+            </div>
+        </section>
+
+        <div class="outro-section">
+            <div class="outro-text">
+                "Software architecture is the art of balancing complexity with clarity."
+            </div>
+            <div class="author-name">Glenn Junsay Pansensoy</div>
+            <code class="programmer-logic">
+                while(alive) { innovate(); code(); repeat(); }
+            </code>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-info">
+                <div class="footer-brand">THE FRUIT HUB // ABSTRACTION</div>
+                <p class="footer-tagline">
+                    Advancing software architecture through Pythonic principles and modular design patterns. Part of the Zamboanga Peninsula Tech Initiative.
+                </p>
+                <div class="timestamp-badge" id="lastUpdated">
+                    System Status: Active // <span id="currentDate"></span>
+                </div>
+            </div>
+
+            <div class="footer-nav">
+                <div class="footer-header">Documentation</div>
+                <ul class="footer-links-list">
+                    <li><a href="abstraction.html">Abstraction Home</a></li>
+                    <li><a href="#intro">Architectural Preface</a></li>
+                    <li><a href="#source-code">Source Code Implementation</a></li>
+                    <li><a href="#pillars">12 Operational Pillars</a></li>
+                    <li><a href="https://pansensoyglenn-dev.github.io/GreenBytes/" target="_blank">GreenBytes GitHub</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-legal">
+                <div class="footer-header">Legal & Compliance</div>
+                <ul class="footer-links-list">
+                    <li><a href="/abstract/privacy.html">Privacy Policy</a></li>
+                    <li><a href="/abstract/terms.html">Terms of Service</a></li>
+                    <li><a href="#contact-gateway">Institutional Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="share-container">
+                <span style="font-size: 0.75rem; text-transform: uppercase; margin-right: 15px; letter-spacing: 1px;">Distribute via:</span>
+                <button class="share-btn" onclick="aiShare('Facebook')">Facebook</button>
+                <button class="share-btn" onclick="aiShare('Instagram')">Instagram</button>
+                <button class="share-btn" onclick="aiShare('LinkedIn')">LinkedIn</button>
+            </div>
+            <p style="color: var(--text-main); font-size: 0.75rem;">
+                © <span id="currentYear">2026</span> Glenn Junsay Pansensoy | Lead Architect<br>
+                Constructed with Pythonic integrity in Zamboanga Peninsula 
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleNav() { document.getElementById("mySidebar").classList.toggle("active"); }
+        
+        function copyCode() {
+            const cleanCode = document.getElementById('clean-python-code').innerText;
+            navigator.clipboard.writeText(cleanCode).then(() => {
+                alert("Clean architecture code copied successfully!");
+            }).catch(() => {
+                alert("Copy failed – please select manually.");
+            });
+        }
+
+        function aiShare(platform) {
+            const url = encodeURIComponent(window.location.href);
+            if(platform === 'Instagram') { 
+                alert("Link copied!"); 
+                navigator.clipboard.writeText(window.location.href); 
+                return; 
+            }
+            let sUrl = platform === 'Facebook' 
+                ? `https://www.facebook.com/sharer/sharer.php?u=${url}` 
+                : `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+            window.open(sUrl, '_blank', 'width=600,height=400');
+        }
+
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
